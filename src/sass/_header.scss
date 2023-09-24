@@ -34,7 +34,7 @@
                 margin-right: 0;
 
                 &:after {
-                    display: none;
+                    display: block;
                 }
             }
 
@@ -308,9 +308,9 @@
 }
 
 .humberger__menu__wrapper {
-    display: none;
+    display: block;
 }
 
 .humberger__open {
-    display: none;
+    display: block;
 }
