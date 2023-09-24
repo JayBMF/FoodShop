@@ -10,9 +10,6 @@ import 'font-awesome/css/font-awesome.min.css';
 function Humberger(){
     return(
         <div>
-            {/* <div id="preloder">
-                <div class="loader"></div>
-            </div> */}
             <div class="humberger_menu_overlay"></div>
             <div class="humberger__menu__wrapper">
                 <div class="humberger__menu__logo">
