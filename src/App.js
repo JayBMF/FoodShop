@@ -1,9 +1,15 @@
 import Humberger from './components/humberger';
 import './sass/style.scss';
+import Header from './components/header';
+import Hero from './components/hero';
 
 function App() {
   return (
-    <Humberger/>
+    <div>
+      <Humberger/>
+      <Header/>
+      <Hero/>
+    </div>
   );
 }
 

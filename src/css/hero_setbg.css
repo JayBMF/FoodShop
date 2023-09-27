@@ -1,0 +1,6 @@
+.hero__item{
+    background-image: url('../img/hero/banner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

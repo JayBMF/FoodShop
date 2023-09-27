@@ -1,8 +1,6 @@
 /*---------------------
   Header
 -----------------------*/
-@import '_variable';
-@import '_mixins';
 .header__top {
     background: #f5f5f5;
 }
@@ -34,7 +32,7 @@
                 margin-right: 0;
 
                 &:after {
-                    display: block;
+                    display: none;
                 }
             }
 
@@ -308,9 +306,9 @@
 }
 
 .humberger__menu__wrapper {
-    display: block;
+    display: none;
 }
 
 .humberger__open {
-    display: block;
+    display: none;
 }
