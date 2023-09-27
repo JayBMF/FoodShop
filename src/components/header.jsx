@@ -1,9 +1,6 @@
 import React from 'react';
 import Language from '../img/language.png';
 import Logo from '../img/logo.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faUser } from '@fortawesome/free-solid-svg-icons';
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import 'font-awesome/css/font-awesome.min.css';
 
 function Header(){
