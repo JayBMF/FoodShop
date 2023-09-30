@@ -11,3 +11,24 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.breadcrumb-section{
+    background-image: url('../img/breadcrumb.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.product__discount__item__pic{
+    background-image: url('../img/product/discount/pd-1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.product__item__pic{
+    background-image: url('../img/product/product-5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

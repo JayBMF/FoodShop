@@ -4,7 +4,6 @@ import LP2 from "../img/latest-product/lp-2.jpg";
 import LP3 from "../img/latest-product/lp-3.jpg";
 
 
-
 function Lastest_Product(){
     return(
         <div>
@@ -14,7 +13,7 @@ function Lastest_Product(){
                         <div class="col-lg-4 col-md-6">
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>
-                                <div class="latest-product__slider owl-carousel">
+                                <div class="latest-product__sliderl">
                                     
                                     <div class="latest-prdouct__slider__item">
                                         <a href="#" class="latest-product__item">
@@ -74,7 +73,7 @@ function Lastest_Product(){
                                             </div>
                                         </a>
                                     </div>
-                                   
+                                    
                                 </div>
                             </div>
                         </div>

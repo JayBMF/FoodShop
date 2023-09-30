@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 
 
-function App() {
+function Home() {
   return (
     <div>
       <Humberger/>
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
