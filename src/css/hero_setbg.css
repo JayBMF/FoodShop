@@ -4,7 +4,12 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
+.categories__item{
+    background-image: url('../img/categories/cat-1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .featured__item__pic{
     background-image: url('../img/featured/feature-1.jpg');
     background-size: cover;

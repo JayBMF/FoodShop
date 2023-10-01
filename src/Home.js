@@ -16,6 +16,7 @@ function Home() {
       <Humberger/>
       <Header/>
       <Hero/>
+      <Categories/>
       <Featured/>
       <Lastest_Product/>
       <Footer/>
