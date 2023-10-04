@@ -4,6 +4,81 @@ import Language from '../img/language.png';
 import Logo from '../img/logo.png';
 import 'font-awesome/css/font-awesome.min.css';
 
+function Content(){
+    const currentPage = window.location.pathname;
+
+    switch(currentPage){
+        case '/Home':
+            return <div>
+                <ul>
+                    <li class="active"><Link to="/Home">Home</Link></li>
+                    <li><Link to="/Shop">Shop</Link></li>
+                    <li><a href="#">Pages</a>
+                        <ul class="header__menu__dropdown">
+                            <li><Link to="/shop-details">Shop Details</Link></li>
+                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                            <li><a href="./checkout.html">Check Out</a></li>
+                            <li><a href="./blog-details.html">Blog Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>;
+        case '/Shop':
+            return <div>
+                <ul>
+                    <li><Link to="/Home">Home</Link></li>
+                    <li class="active"><Link to="/Shop">Shop</Link></li>
+                    <li><a href="#">Pages</a>
+                        <ul class="header__menu__dropdown">
+                            <li><Link to="/shop-details">Shop Details</Link></li>
+                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                            <li><a href="./checkout.html">Check Out</a></li>
+                            <li><a href="./blog-details.html">Blog Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>;
+        case '/shop-details':
+            return <div>
+                <ul>
+                    <li><Link to="/Home">Home</Link></li>
+                    <li class="active"><Link to="/Shop">Shop</Link></li>
+                    <li><a href="#">Pages</a>
+                        <ul class="header__menu__dropdown">
+                            <li><Link to="/shop-details">Shop Details</Link></li>
+                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                            <li><a href="./checkout.html">Check Out</a></li>
+                            <li><a href="./blog-details.html">Blog Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>;
+        default:
+            return <div>
+                <ul>
+                    <li class="active"><Link to="/Home">Home</Link></li>
+                    <li><Link to="/Shop">Shop</Link></li>
+                    <li><a href="#">Pages</a>
+                        <ul class="header__menu__dropdown">
+                            <li><Link to="/shop-details">Shop Details</Link></li>
+                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                            <li><a href="./checkout.html">Check Out</a></li>
+                            <li><a href="./blog-details.html">Blog Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>;
+    }
+}
+
 function Header(){
     return(
         <div>
@@ -53,20 +128,7 @@ function Header(){
                         </div>
                         <div class="col-lg-6">
                             <nav class="header__menu">
-                                <ul>
-                                    <li class="active"><Link to="/Home">Home</Link></li>
-                                    <li><Link to="/Shop">Shop</Link></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="header__menu__dropdown">
-                                            <li><Link to="/shop-details">Shop Details</Link></li>
-                                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                            <li><a href="./checkout.html">Check Out</a></li>
-                                            <li><a href="./blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="./blog.html">Blog</a></li>
-                                    <li><a href="./contact.html">Contact</a></li>
-                                </ul>
+                                <Content/>
                             </nav>
                         </div>
                         <div class="col-lg-3">

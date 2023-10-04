@@ -1,6 +1,7 @@
 import Humberger from './components/humberger';
 import './sass/style.scss';
-import ShopHeader from './components/shop_header';
+
+import Header from './components/header';
 import ShopHero from './components/shop_hero';
 import Footer from './components/footer';
 import Breadcrumb from './components/breadcrumb';
@@ -12,7 +13,7 @@ function Shop(){
     return(
         <div>
             <Humberger/>
-            <ShopHeader/>
+            <Header/>
             <ShopHero/>
             <Breadcrumb/>
             <Product/>

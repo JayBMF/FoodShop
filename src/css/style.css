@@ -282,7 +282,7 @@ ol {
 }
 
 .header__top__left ul li:last-child:after {
-	display: block;
+	display: none;
 }
 
 .header__top__left ul li i {
@@ -549,11 +549,11 @@ ol {
 }
 
 .humberger__menu__wrapper {
-	display: block;
+	display: none;
 }
 
 .humberger__open {
-	display: block;
+	display: none;
 }
 
 /*---------------------
@@ -573,7 +573,7 @@ ol {
 }
 
 .hero.hero-normal .hero__categories ul {
-	display: block;
+	display: none;
 	position: absolute;
 	left: 0;
 	top: 46px;
@@ -710,7 +710,6 @@ ol {
 	float: left;
 	margin-right: 20px;
 }
-
 
 .hero__search__phone__text {
 	overflow: hidden;
@@ -2507,7 +2506,7 @@ ol {
 }
 
 .blog__details__hero__text ul li:last-child:after {
-	display: block;
+	display: none;
 }
 
 /*---------------------
@@ -3086,7 +3085,7 @@ ol {
 		margin-right: 20px;
 	}
 	.humberger__menu__nav {
-		display: block;
+		display: none;
 	}
 	.humberger__menu__wrapper .header__top__right__social {
 		display: block;
@@ -3094,7 +3093,7 @@ ol {
 		margin-bottom: 20px;
 	}
 	.humberger__menu__wrapper .slicknav_btn {
-		display: block;
+		display: none;
 	}
 	.humberger__menu__wrapper .slicknav_nav .slicknav_item a {
 		border-bottom: none !important;
@@ -3147,10 +3146,10 @@ ol {
 		visibility: visible;
 	}
 	.header__top {
-		display: block;
+		display: none;
 	}
 	.header__menu {
-		display: block;
+		display: none;
 	}
 	.header__cart {
 		text-align: center;
@@ -3177,7 +3176,7 @@ ol {
 		width: 100%;
 	}
 	.hero__search__form form .hero__search__categories {
-		display: block;
+		display: none;
 	}
 	.hero__search__phone {
 		float: left;
@@ -3216,10 +3215,10 @@ ol {
 		margin-bottom: 40px;
 	}
 	.product__details__tab .nav-tabs:before {
-		display: block;
+		display: none;
 	}
 	.product__details__tab .nav-tabs:after {
-		display: block;
+		display: none;
 	}
 	.shoping__cart__table {
 		overflow-y: auto;
@@ -3344,7 +3343,7 @@ ol {
 		margin-right: 20px;
 	}
 	.humberger__menu__nav {
-		display: block;
+		display: none;
 	}
 	.humberger__menu__wrapper .header__top__right__social {
 		display: block;
@@ -3352,7 +3351,7 @@ ol {
 		margin-bottom: 20px;
 	}
 	.humberger__menu__wrapper .slicknav_btn {
-		display: block;
+		display: none;
 	}
 	.humberger__menu__wrapper .slicknav_nav .slicknav_item a {
 		border-bottom: none !important;
@@ -3405,10 +3404,10 @@ ol {
 		visibility: visible;
 	}
 	.header__top {
-		display: block;
+		display: none;
 	}
 	.header__menu {
-		display: block;
+		display: none;
 	}
 	.header__cart {
 		text-align: center;
@@ -3423,7 +3422,7 @@ ol {
 
 @media only screen and (max-width: 479px) {
 	.hero__search__form form .hero__search__categories {
-		display: block;
+		display: none;
 	}
 	.featured__controls ul li {
 		margin-bottom: 10px;

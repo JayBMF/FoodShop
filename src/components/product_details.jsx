@@ -13,6 +13,7 @@ import T1 from "../img/product/details/thumb-1.jpg";
 import T2 from "../img/product/details/thumb-2.jpg";
 import T3 from "../img/product/details/thumb-3.jpg";
 import T4 from "../img/product/details/thumb-4.jpg";
+import { event } from "jquery";
 
 
 
@@ -27,11 +28,21 @@ function ProductDetails(){
         dots: true,
         margin: 30,
     };
+
+    const [imgSrc, setImgSrc] = useState(PD);
+
+
     const handleClick = (event) => {
         const imgElement = event.target;
         const imgBigUrl = imgElement.getAttribute('data-imgbigurl');
-        console.log(imgBigUrl);
+
+        setImgSrc(imgBigUrl);
     };
+
+    const [quantity, setQuantity] = useState(1);
+    const pricePerItem = 50;
+
+    const total = quantity * pricePerItem;
     return(
         <div>
             <section className="product-details spad">
@@ -40,7 +51,7 @@ function ProductDetails(){
                         <div class="col-lg-6 col-md-6">
                             <div class="product__details__pic">
                                 <div class="product__details__pic__item">
-                                    <img class="product__details__pic__item--large" src={PD} alt=""/>
+                                    <img class="product__details__pic__item--large" src={imgSrc} alt=""/>
                                 </div>
                                 <div class="product__details__pic__slider ">
                                     <OwlCarousel className="owl-theme" {...options}>
@@ -67,14 +78,16 @@ function ProductDetails(){
                                     <i class="fa fa-star-half-o"></i>
                                     <span>(18 reviews)</span>
                                 </div>
-                                <div class="product__details__price">$50.00</div>
+                                <div class="product__details__price">${total}.00</div>
                                 <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
                                     vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
                                     quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
                                 <div class="product__details__quantity">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <input type="text" value="1"/>
+                                            <a onClick={() => setQuantity(quantity - 1)}>-</a>
+                                            <input type="text" value={quantity}/>
+                                            <a onClick={() => setQuantity(quantity + 1)}>+</a>
                                         </div>
                                     </div>
                                 </div>
