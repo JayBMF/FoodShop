@@ -4,7 +4,7 @@ import Language from '../img/language.png';
 import Logo from '../img/logo.png';
 import 'font-awesome/css/font-awesome.min.css';
 
-function ShopHeader(){
+function Header(){
     return(
         <div>
             <header class="header">
@@ -48,7 +48,7 @@ function ShopHeader(){
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="header__logo">
-                                <a href="./index.html"><img src={Logo} alt="Logo"/></a>
+                                <Link to="/Home"><img src={Logo} alt="Logo"/></Link>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -58,7 +58,7 @@ function ShopHeader(){
                                     <li><Link to="/Shop">Shop</Link></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="header__menu__dropdown">
-                                            <li><a href="./shop-details.html">Shop Details</a></li>
+                                            <li><Link to="/shop-details">Shop Details</Link></li>
                                             <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                                             <li><a href="./checkout.html">Check Out</a></li>
                                             <li><a href="./blog-details.html">Blog Details</a></li>
@@ -88,4 +88,4 @@ function ShopHeader(){
     );
 }
 
-export default ShopHeader;
+export default Header;
