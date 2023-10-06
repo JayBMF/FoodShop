@@ -5,6 +5,7 @@ import Home from './Home';
 import Shop from './Shop';
 import ShoppingCart from './shopping-cart';
 import Contact from './contact';
+import CheckOut from './check_out';
 import './css/style.css';
 import './css/slicknav.min.css';
 import './css/elegant-icons.css';
@@ -24,6 +25,7 @@ root.render(
                 <Route path='shop-details' element={<ShopDetails/>}/>
                 <Route path='shopping-cart' element={<ShoppingCart/>}/>
                 <Route path='contact' element={<Contact/>}/>
+                <Route path='check-out' element={<CheckOut/>}/>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
