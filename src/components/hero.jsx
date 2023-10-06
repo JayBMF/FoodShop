@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Banner from '../img/hero/banner.jpg';
 import '../css/hero_setbg.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 function Hero(){
+    // Sử dụng useState để quản lý trạng thái của việc hiển thị/ẩn danh sách ul
+    const [isListVisible, setListVisible] = useState(true);
+
+    // Hàm xử lý khi người dùng click vào "hero__categories__all"
+    const handleAllClick = () => {
+        setListVisible(!isListVisible); // Đảo ngược trạng thái hiển thị danh sách
+    }
     return(
         <div>
             <section class="hero">
@@ -11,23 +18,25 @@ function Hero(){
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="hero__categories">
-                                <div class="hero__categories__all">
+                                <div class="hero__categories__all" onClick={handleAllClick}>
                                     <i class="fa fa-bars"></i>
                                     <span>All departments</span>
                                 </div>
-                                <ul>
-                                    <li><a href="#">Fresh Meat</a></li>
-                                    <li><a href="#">Vegetables</a></li>
-                                    <li><a href="#">Fruit & Nut Gifts</a></li>
-                                    <li><a href="#">Fresh Berries</a></li>
-                                    <li><a href="#">Ocean Foods</a></li>
-                                    <li><a href="#">Butter & Eggs</a></li>
-                                    <li><a href="#">Fastfood</a></li>
-                                    <li><a href="#">Fresh Onion</a></li>
-                                    <li><a href="#">Papayaya & Crisps</a></li>
-                                    <li><a href="#">Oatmeal</a></li>
-                                    <li><a href="#">Fresh Bananas</a></li>
-                                </ul>
+                                {isListVisible &&(
+                                    <ul className="hero__categories ul">
+                                        <li><a href="#">Fresh Meat</a></li>
+                                        <li><a href="#">Vegetables</a></li>
+                                        <li><a href="#">Fruit & Nut Gifts</a></li>
+                                        <li><a href="#">Fresh Berries</a></li>
+                                        <li><a href="#">Ocean Foods</a></li>
+                                        <li><a href="#">Butter & Eggs</a></li>
+                                        <li><a href="#">Fastfood</a></li>
+                                        <li><a href="#">Fresh Onion</a></li>
+                                        <li><a href="#">Papayaya & Crisps</a></li>
+                                        <li><a href="#">Oatmeal</a></li>
+                                        <li><a href="#">Fresh Bananas</a></li>
+                                    </ul>
+                                )}
                             </div>
                         </div>
                         <div class="col-lg-9">

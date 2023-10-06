@@ -16,7 +16,7 @@ function Content(){
                     <li><a href="#">Pages</a>
                         <ul class="header__menu__dropdown">
                             <li><Link to="/shop-details">Shop Details</Link></li>
-                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                            <li><Link to="/shopping-cart">Shoping Cart</Link></li>
                             <li><a href="./checkout.html">Check Out</a></li>
                             <li><a href="./blog-details.html">Blog Details</a></li>
                         </ul>
@@ -33,7 +33,7 @@ function Content(){
                     <li><a href="#">Pages</a>
                         <ul class="header__menu__dropdown">
                             <li><Link to="/shop-details">Shop Details</Link></li>
-                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                            <li><Link to="/shopping-cart">Shoping Cart</Link></li>
                             <li><a href="./checkout.html">Check Out</a></li>
                             <li><a href="./blog-details.html">Blog Details</a></li>
                         </ul>
@@ -50,7 +50,7 @@ function Content(){
                     <li><a href="#">Pages</a>
                         <ul class="header__menu__dropdown">
                             <li><Link to="/shop-details">Shop Details</Link></li>
-                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                            <li><Link to="/shopping-cart">Shoping Cart</Link></li>
                             <li><a href="./checkout.html">Check Out</a></li>
                             <li><a href="./blog-details.html">Blog Details</a></li>
                         </ul>
@@ -59,6 +59,23 @@ function Content(){
                     <li><a href="./contact.html">Contact</a></li>
                 </ul>
             </div>;
+        case '/shopping-cart':
+            return <div>
+                    <ul>
+                        <li><Link to="/Home">Home</Link></li>
+                        <li class="active"><Link to="/Shop">Shop</Link></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="header__menu__dropdown">
+                                <li><Link to="/shop-details">Shop Details</Link></li>
+                                <li><Link to="/shopping-cart">Shoping Cart</Link></li>
+                                <li><a href="./checkout.html">Check Out</a></li>
+                                <li><a href="./blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./blog.html">Blog</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </div>;
         default:
             return <div>
                 <ul>
@@ -67,7 +84,7 @@ function Content(){
                     <li><a href="#">Pages</a>
                         <ul class="header__menu__dropdown">
                             <li><Link to="/shop-details">Shop Details</Link></li>
-                            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                            <li><Link to="/shopping-cart">Shoping Cart</Link></li>
                             <li><a href="./checkout.html">Check Out</a></li>
                             <li><a href="./blog-details.html">Blog Details</a></li>
                         </ul>
@@ -135,7 +152,7 @@ function Header(){
                             <div class="header__cart">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                                    <li><Link to="/shopping-cart"><i class="fa fa-shopping-bag"></i> <span>3</span></Link></li>
                                 </ul>
                                 <div class="header__cart__price">item: <span>$150.00</span></div>
                             </div>

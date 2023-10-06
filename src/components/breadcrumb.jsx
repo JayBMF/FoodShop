@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import '../css/hero_setbg.css';
 
 function Content(){
@@ -9,7 +10,7 @@ function Content(){
             return <div>
                 <h2>Organi Shop</h2>
                 <div class="breadcrumb__option">
-                    <a href="./index.html">Home</a>
+                    <Link to="/Home">Home</Link>
                     <span>Shop</span>
                 </div>
             </div>;
@@ -17,11 +18,19 @@ function Content(){
             return <div>
                 <h2>Vegetable’s Package</h2>
                 <div class="breadcrumb__option">
-                    <a href="./index.html">Home</a>
+                    <Link to="/Home">Home</Link>
                     <a href="./index.html">Vegetables</a>
                     <span>Vegetable’s Package</span>
                  </div>
             </div>;
+        case '/shopping-cart':
+            return <div>
+                <h2>Shopping Cart</h2>
+                <div class="breadcrumb__option">
+                    <Link to="/Home">Home</Link>
+                    <span>Shopping Cart</span>
+                </div>
+            </div>
         default:
             return <div></div>; 
     }

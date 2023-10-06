@@ -40,6 +40,15 @@ function ProductDetails(){
     };
 
     const [quantity, setQuantity] = useState(1);
+    const increaseQuantity = () => {
+        setQuantity(quantity + 1);
+    }
+    
+    const decreaseQuantity = () => {
+        if (quantity > 1) {
+          setQuantity(quantity - 1);
+        }
+    }
     const pricePerItem = 50;
 
     const total = quantity * pricePerItem;
@@ -85,9 +94,9 @@ function ProductDetails(){
                                 <div class="product__details__quantity">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <a onClick={() => setQuantity(quantity - 1)}>-</a>
+                                            <button className="btn btn-light"  onClick={decreaseQuantity}>-</button>
                                             <input type="text" value={quantity}/>
-                                            <a onClick={() => setQuantity(quantity + 1)}>+</a>
+                                            <button className="btn btn-light" onClick={increaseQuantity}>+</button>
                                         </div>
                                     </div>
                                 </div>
