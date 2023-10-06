@@ -31,6 +31,14 @@ function Content(){
                     <span>Shopping Cart</span>
                 </div>
             </div>
+        case '/contact':
+            return <div>
+                <h2>Contact Us</h2>
+                <div class="breadcrumb__option">
+                    <Link to="/Home">Home</Link>
+                    <span>Contact Us</span>
+                </div>
+            </div>;
         default:
             return <div></div>; 
     }

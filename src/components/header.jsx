@@ -22,7 +22,7 @@ function Content(){
                         </ul>
                     </li>
                     <li><a href="./blog.html">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><Link to="/contact">Contact</Link></li>
                 </ul>
             </div>;
         case '/Shop':
@@ -39,7 +39,7 @@ function Content(){
                         </ul>
                     </li>
                     <li><a href="./blog.html">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><Link to="/contact">Contact</Link></li>
                 </ul>
             </div>;
         case '/shop-details':
@@ -56,7 +56,7 @@ function Content(){
                         </ul>
                     </li>
                     <li><a href="./blog.html">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><Link to="/contact">Contact</Link></li>
                 </ul>
             </div>;
         case '/shopping-cart':
@@ -73,9 +73,26 @@ function Content(){
                             </ul>
                         </li>
                         <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><Link to="/contact">Contact</Link></li>
                     </ul>
                 </div>;
+        case '/contact':
+            return <div>
+                    <ul>
+                        <li><Link to="/Home">Home</Link></li>
+                        <li><Link to="/Shop">Shop</Link></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="header__menu__dropdown">
+                                <li><Link to="/shop-details">Shop Details</Link></li>
+                                <li><Link to="/shopping-cart">Shoping Cart</Link></li>
+                                <li><a href="./checkout.html">Check Out</a></li>
+                                <li><a href="./blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./blog.html">Blog</a></li>
+                        <li class="active"><Link to="/contact">Contact</Link></li>
+                    </ul>
+            </div>;
         default:
             return <div>
                 <ul>
@@ -90,7 +107,7 @@ function Content(){
                         </ul>
                     </li>
                     <li><a href="./blog.html">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><Link to="/contact">Contact</Link></li>
                 </ul>
             </div>;
     }
