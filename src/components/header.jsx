@@ -112,7 +112,7 @@ function Header(){
                                         </ul>
                                     </div>
                                     <div class="header__top__right__auth">
-                                        <a href="#"><i class="fa fa-user"></i> Login</a>
+                                        <Link to="/login"><i class="fa fa-user"></i> Login</Link>
                                     </div>
                                 </div>
                             </div>

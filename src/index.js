@@ -6,6 +6,8 @@ import Shop from './Shop';
 import ShoppingCart from './shopping-cart';
 import Contact from './contact';
 import CheckOut from './check_out';
+import Login from './components/login';
+import Register from './components/register';
 import './css/style.css';
 import './css/slicknav.min.css';
 import './css/elegant-icons.css';
@@ -26,6 +28,8 @@ root.render(
                 <Route path='shopping-cart' element={<ShoppingCart/>}/>
                 <Route path='contact' element={<Contact/>}/>
                 <Route path='check-out' element={<CheckOut/>}/>
+                <Route path='login' element={<Login/>}/>
+                <Route path='register' element={<Register/>}/>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
