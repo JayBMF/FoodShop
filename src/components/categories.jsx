@@ -8,15 +8,26 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 function Categories(){
     const options = {
-        items: 1,
+        items: 4,
         loop: true,
         autoplay: true,
+        rewind: true,
         autoplayTimeout: 3000,
         animateOut: 'slideOutUp',
         nav: false,
         dots: true,
         margin: 0,
-        
+        responsive: {
+            0: {
+              items: 1, // Số lượng mục hiển thị ở màn hình nhỏ
+            },
+            600: {
+              items: 2, // Số lượng mục hiển thị ở màn hình trung bình
+            },
+            1000: {
+              items: 4, // Số lượng mục hiển thị ở màn hình lớn
+            },
+          },
     };
     return(
         <div>
