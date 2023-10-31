@@ -13,21 +13,10 @@ function Categories(){
         autoplay: true,
         rewind: true,
         autoplayTimeout: 3000,
-        animateOut: 'slideOutUp',
-        nav: false,
-        dots: true,
-        margin: 0,
-        responsive: {
-            0: {
-              items: 1, // Số lượng mục hiển thị ở màn hình nhỏ
-            },
-            600: {
-              items: 2, // Số lượng mục hiển thị ở màn hình trung bình
-            },
-            1000: {
-              items: 4, // Số lượng mục hiển thị ở màn hình lớn
-            },
-          },
+        dots: false,
+        nav: true,
+        margin: 10,
+        
     };
     return(
         <div>
@@ -36,28 +25,28 @@ function Categories(){
                     <div class="row">
                         <div class="categories__slider">
                             <OwlCarousel className="owl-theme" {...options}>
-                                <div class="col-lg-3">
-                                    <div class="categories__item">
+                                <div className="col-lg">
+                                    <div className="categories__item">
                                         <h5><a href="#">Fresh Fruit</a></h5>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="categories__item">
+                                <div className="col-lg">
+                                    <div className="categories__item">
                                         <h5><a href="#">Dried Fruit</a></h5>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="categories__item set-bg">
+                                <div className="col-lg">
+                                    <div className="categories__item set-bg">
                                         <h5><a href="#">Vegetables</a></h5>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="categories__item set-bg">
+                                <div className="col-lg">
+                                    <div className="categories__item set-bg">
                                         <h5><a href="#">drink fruits</a></h5>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="categories__item set-bg">
+                                <div className="col-lg">
+                                    <div className="categories__item set-bg">
                                         <h5><a href="#">drink fruits</a></h5>
                                     </div>
                                 </div>

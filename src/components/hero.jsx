@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import Banner from '../img/hero/banner.jpg';
 import '../css/hero_setbg.css';
 import 'font-awesome/css/font-awesome.min.css';
+
+
 
 function Hero(){
     // Sử dụng useState để quản lý trạng thái của việc hiển thị/ẩn danh sách ul

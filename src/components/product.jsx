@@ -18,6 +18,17 @@ function Product(){
         dots: true,
         margin: 0,
     };
+
+    const discountOptions = {
+        items: 3,
+        loop: true,
+        autoplay: true,
+        rewind: true,
+        autoplayTimeout: 3000,
+        dots: true,
+        nav: false,
+        margin: 10,
+    };
     return(
         <div>
             <section className="product spad">
@@ -199,8 +210,8 @@ function Product(){
                                 </div>
                                 <div class="row">
                                     <div class="product__discount__slider">
-                                        <OwlCarousel className="owl-theme" {...options}>
-                                            <div class="col-lg-4">
+                                        <OwlCarousel className="owl-theme" {...discountOptions}>
+                                            <div class="col-lg">
                                                 <div class="product__discount__item">
                                                     <div class="product__discount__item__pic set-bg"
                                                         data-setbg="img/product/discount/pd-1.jpg">
@@ -218,7 +229,7 @@ function Product(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg">
                                                 <div class="product__discount__item">
                                                     <div class="product__discount__item__pic set-bg"
                                                         data-setbg="img/product/discount/pd-2.jpg">
@@ -236,7 +247,7 @@ function Product(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg">
                                                 <div class="product__discount__item">
                                                     <div class="product__discount__item__pic set-bg"
                                                         data-setbg="img/product/discount/pd-3.jpg">
@@ -254,7 +265,7 @@ function Product(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg">
                                                 <div class="product__discount__item">
                                                     <div class="product__discount__item__pic set-bg"
                                                         data-setbg="img/product/discount/pd-4.jpg">
@@ -272,7 +283,7 @@ function Product(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg">
                                                 <div class="product__discount__item">
                                                     <div class="product__discount__item__pic set-bg"
                                                         data-setbg="img/product/discount/pd-5.jpg">
@@ -290,7 +301,7 @@ function Product(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg">
                                                 <div class="product__discount__item">
                                                     <div class="product__discount__item__pic set-bg"
                                                         data-setbg="img/product/discount/pd-6.jpg">

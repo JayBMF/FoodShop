@@ -8,6 +8,7 @@ import Contact from './contact';
 import CheckOut from './check_out';
 import Login from './components/login';
 import Register from './components/register';
+import Profile from './profile';
 import './css/style.css';
 import './css/slicknav.min.css';
 import './css/elegant-icons.css';
@@ -30,6 +31,7 @@ root.render(
                 <Route path='check-out' element={<CheckOut/>}/>
                 <Route path='login' element={<Login/>}/>
                 <Route path='register' element={<Register/>}/>
+                <Route path='profile' element={<Profile/>}/>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

@@ -4,21 +4,21 @@ import Header from './components/header';
 import ShopHero from './components/shop_hero';
 import Footer from './components/footer';
 import Breadcrumb from './components/breadcrumb';
-import CartSection from './components/cart_section';
+import AccountSetting from './components/profile';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 
-function ShoppingCart(){
+function Profile(){
     return(
-        <div >
+        <div>
             <Humberger/>
             <Header/>
             <ShopHero/>
             <Breadcrumb/>
-            <CartSection/>
+            <AccountSetting/>
             <Footer/>
         </div>
     )
 }
 
-export default ShoppingCart
+export default Profile;
