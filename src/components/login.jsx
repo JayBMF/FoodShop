@@ -11,7 +11,15 @@ function Login(){
 
     const navigate = useNavigate();
 
-    const handleLogin = async () => {
+    useEffect (() => {
+        const token = Cookies.get('token');
+        if (token){
+            navigate('/Home');
+        }
+    });
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
         try {
             const dataLogin = {username, password};
             

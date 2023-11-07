@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Cookies from "js-cookie";
+import profileApi from "../api/profileApi";
 
 function AccountSetting(){
+    useEffect (() => {
+        profile();
+    },[]);
+
+    const profile = async () => {
+        try { 
+            const fetchInfo = await profileApi.get();
+            console.log(fetchInfo);
+        
+        } catch (error) {
+            console.log(error);
+        } 
+    }
+
     return(
         <div>
             <div className="container">
@@ -9,7 +25,7 @@ function AccountSetting(){
                         <div className="tab-content">
                             <div className="tab-pane fade active show" id="account-general">
                                 <div className="card-body media align-items-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt className="d-block ui-w-80" />
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt className="d-block ui-w-60" />
                                     <div className="media-body ml-4">
                                     <label className="btn btn-outline-primary">
                                         Upload new photo

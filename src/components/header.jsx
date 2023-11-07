@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 import Language from '../img/language.png';
 import Logo from '../img/logo.png';
@@ -97,6 +98,18 @@ function Content(){
 }
 
 function Header(){
+    const [isLogin, setIsLogin] = useState (false);
+    useEffect (() => {
+        const token = Cookies.get('token');
+        if (token){
+            setIsLogin(true);
+        }
+    },[isLogin]) 
+
+    const handleLogOut = () => {
+        Cookies.remove('token');
+        setIsLogin(false);
+    };
     return(
         <div>
             <header class="header">
@@ -129,7 +142,10 @@ function Header(){
                                         </ul>
                                     </div>
                                     <div class="header__top__right__auth">
+                                        {isLogin === true ? <button onClick={handleLogOut}>Log out</button>
+                                        :
                                         <Link to="/login"><i class="fa fa-user"></i> Login</Link>
+                                        }
                                     </div>
                                 </div>
                             </div>
