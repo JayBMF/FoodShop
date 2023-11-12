@@ -9,7 +9,7 @@ import CheckOut from './check_out';
 import Login from './components/login';
 import Register from './components/register';
 import Profile from './profile';
-import AdminIndex from './components/admin_index';
+import Admin from './Admin';
 import './css/style.css';
 import './css/slicknav.min.css';
 import './css/elegant-icons.css';
@@ -33,7 +33,14 @@ root.render(
                 <Route path='login' element={<Login/>}/>
                 <Route path='register' element={<Register/>}/>
                 <Route path='profile' element={<Profile/>}/>
-                <Route path='admin' element={<AdminIndex/>}/>
+                <Route path='admin' element={<Admin/>}/>
+                <Route path='admin/Dashboard' element={<Admin/>}/>
+                <Route path='admin/Registrations' element={<Admin/>}/>
+                <Route path='admin/Add-User' element={<Admin/>}/>
+                <Route path='admin/Categories' element={<Admin/>}/>
+                <Route path='admin/Add-Category' element={<Admin/>}/>
+                <Route path='admin/Products' element={<Admin/>}/>
+                <Route path='admin/Add-Product' element={<Admin/>}/>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

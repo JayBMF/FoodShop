@@ -107,9 +107,15 @@ ol {
 	margin: 0;
 }
 
+
+
 /*---------------------
   Helper CSS
 -----------------------*/
+
+.wrapper{
+	height: 785px;
+}
 
 .section-title {
 	margin-bottom: 50px;
