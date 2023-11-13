@@ -17,7 +17,7 @@ function Login(){
         if (token){
             navigate('/Home');
         }
-    });
+    },[]);
 
     const handleLogin = async (e) => {
         e.preventDefault();

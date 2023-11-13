@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 
-const token = Cookies.get('token');
+
 
 const axiosClient = axios.create({
     baseURL:'http://localhost:8080/',
@@ -16,6 +16,7 @@ const axiosClient = axios.create({
 // Add a request interceptor
 axiosClient.interceptors.request.use( 
     (config) => {
+        const token = Cookies.get('token');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }

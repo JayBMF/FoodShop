@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Dashboard from "./components/admin_dashboard";
 import UserRegistration from "./components/admin_users";
 import AddUser from "./components/add_user";
@@ -6,7 +6,11 @@ import AdminCategories from "./components/admin_categories";
 import AddCategory from "./components/add_category";
 import AdminProducts from "./components/admin_products";
 import AddProduct from "./components/add_product";
+import Cookies from "js-cookie";
+import identificationApi from "./api/identificationApi";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { error } from "jquery";
 
 function Content(){
     const currentPage = window.location.pathname;
@@ -34,10 +38,44 @@ function Content(){
 }
 
 function Admin(){
-    return(
-            <div className="wrapper">
-                
+    const navigate = useNavigate();
+    const [isAdmin, setIsAdmin] = useState(false);
+    useEffect (() => {
+        const token = Cookies.get('token');
+        if (!token){
+            navigate('/login');
+            return;
+        } 
+        fetchIdentify().then(data =>{
+            if(data === "ADMIN"){
+                setIsAdmin(true);
+            }else{
+                setIsAdmin(false)
+            }
+        }).catch(error => {
+            console.log('Error: ', error);
+        });
+    },[]);
 
+    const fetchIdentify = async() => {
+        try{
+            const fetchIdentify = await identificationApi.get();
+            return fetchIdentify;
+        } catch (error){
+            alert("ERROR");
+        }
+    }
+
+
+    const handleClick = () => {
+        Cookies.remove('token');
+        navigate('/Home');
+    };
+    return(
+        <div>
+            { isAdmin === false ? <h1>This website is for Admin only</h1> 
+            : 
+            <div className="wrapper">
                 {/*Main Sidebar Container*/}
                 <aside className="main-sidebar sidebar-dark-primary elevation-4">
                     {/* Brand Logo */}
@@ -56,6 +94,7 @@ function Admin(){
                             <div className="info">
                                 <a href="#" className="d-block">Admin</a>
                             </div>
+                            <button className="btn btn-primary" onClick={handleClick}>Log out</button>
                         </div>
                         
                         {/* Sidebar Menu */}
@@ -116,6 +155,8 @@ function Admin(){
 
                 <Content/>
             </div>
+        }
+        </div>
     );
 }
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 
-const token = Cookies.get('token');
+
 
 const axiosAdmin = axios.create({
     baseURL:'http://localhost:8080/admin/',
@@ -17,6 +17,7 @@ const axiosAdmin = axios.create({
 axiosAdmin.interceptors.request.use(
     // Do something before request is sent
     (config) => {
+        const token = Cookies.get('token');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
