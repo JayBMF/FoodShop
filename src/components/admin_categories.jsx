@@ -1,32 +1,45 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import { Link, useNavigate } from 'react-router-dom';
+import listCategories from "../api/listCategories";
 
 function AdminCategories(){
-    const data = [
-        { name: 'Safari 1.2', engineVersion: '125.5', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
-        { name: 'Safari 1.3', engineVersion: '312.8', cssGrade: 'A', browser: 'Safari', platform: 'OSX.3' },
+    const [data, setData] = useState([
+        
         // ...
-    ];
+    ]);
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try{
+                const response = await listCategories.get();
+                setData(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    });
        
     const columns = [
+        { name: 'Id', selector: 'id', sortable: true },
         { name: 'Name', selector: 'name', sortable: true },
-        { name: 'Engine Version', selector: 'engineVersion', sortable: true },
-        { name: 'CSS Grade', selector: 'cssGrade', sortable: true },
-        { name: 'Browser', selector: 'browser', sortable: true },
-        { name: 'Platform', selector: 'platform', sortable: true },
+        { name: 'Description', selector: 'description', sortable: true },
+        { name: 'Status', cell: (row) => (
+            <button className="btn btn-success">
+                Actived
+            </button>
+        )},
+        { name: 'Actions', cell: (row) => (
+            <button className="btn btn-danger">
+                Delete
+            </button>
+        ), },
     ];
     
     const customStyles = {

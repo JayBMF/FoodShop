@@ -4,8 +4,8 @@ import Cookies from "js-cookie";
 
 const token = Cookies.get('token');
 
-const axiosClient = axios.create({
-    baseURL:'http://localhost:8080/',
+const axiosAdmin = axios.create({
+    baseURL:'http://localhost:8080/admin/',
     headers:{
         
         'Content-Type': 'application/json',
@@ -14,7 +14,8 @@ const axiosClient = axios.create({
 
 // Interceptors
 // Add a request interceptor
-axiosClient.interceptors.request.use( 
+axiosAdmin.interceptors.request.use(
+    // Do something before request is sent
     (config) => {
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
@@ -27,7 +28,7 @@ axiosClient.interceptors.request.use(
 });
 
 // Add a response interceptor
-axiosClient.interceptors.response.use(function (response) {
+axiosAdmin.interceptors.response.use(function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     return response.data;
@@ -38,4 +39,4 @@ axiosClient.interceptors.response.use(function (response) {
 });
 
 
-export default axiosClient;
+export default axiosAdmin;

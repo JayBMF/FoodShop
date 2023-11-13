@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import loginApi from "../api/loginApi";
+import identificationApi from "../api/identificationApi";
 import "../css/login.css";
 
 function Login(){
@@ -27,13 +28,20 @@ function Login(){
             console.log(fetchLogin)
             if (fetchLogin) {
                 Cookies.set('token', fetchLogin, {expires: 7});
-                navigate('/Home');
+                const fetchIdentify = await identificationApi.get();
+                console.log(fetchIdentify);
+                if (fetchIdentify === "ADMIN"){
+                    navigate("/admin");
+                } else if (fetchIdentify === "USER"){
+                    navigate("/Home");
+                }
             }else{
                 alert("Đăng nhập không thành công");
             }
         } catch (error) {
             alert("Đăng nhập không thành công");
         }
+
     };
     return(
         <div>

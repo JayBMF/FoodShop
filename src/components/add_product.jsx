@@ -36,25 +36,33 @@ function AddProduct(){
                         {/* form start */}
                         <form id="quickForm">
                         <div className="card-body">
-                            <div className="form-group">
-                                <label htmlFor="exampleInputEmail1">Full name</label>
-                                <input type="text" name="FullName" className="form-control" placeholder="Enter name" />
+                        <div className="form-group">
+                                <label htmlFor="exampleInputEmail1">Name</label>
+                                <input type="text" name="Name" className="form-control" placeholder="Enter name" />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Phone number</label>
-                                <input type="text" name="PhoneNumber" className="form-control" placeholder="Phone number" />
+                                <label htmlFor="exampleInputPassword1">Category</label>
+                                <input type="text" name="Description" className="form-control" placeholder="Enter description" />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Email</label>
-                                <input type="email" name="email" className="form-control" placeholder="Enter email" />
+                                <label htmlFor="exampleInputPassword1">Amount</label>
+                                <input type="text" name="Amount" className="form-control" placeholder="Enter amount" />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">User name</label>
-                                <input type="text" name="UserName" className="form-control" placeholder="User Name" />
+                                <label htmlFor="exampleInputPassword1">Price</label>
+                                <input type="text" name="Price" className="form-control" placeholder="Enter price" />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Password</label>
-                                <input type="password" name="password" className="form-control" placeholder="Password" />
+                                <label htmlFor="exampleInputPassword1">Discount</label>
+                                <input type="text" name="Discount" className="form-control" placeholder="Enter discount" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exampleInputPassword1">Description</label>
+                                <input type="text" name="Description" className="form-control" placeholder="Enter description" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exampleInputPassword1">Image</label>
+                                <input type="file" name="Image" className="form-control" />
                             </div>
                         </div>
                         {/* /.card-body */}
