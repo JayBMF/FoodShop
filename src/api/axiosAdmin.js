@@ -1,13 +1,9 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-
-
-
 const axiosAdmin = axios.create({
     baseURL:'http://localhost:8080/admin/',
     headers:{
-        
         'Content-Type': 'application/json',
     },
 });

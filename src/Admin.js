@@ -11,6 +11,7 @@ import identificationApi from "./api/identificationApi";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { error } from "jquery";
+import Error from "./components/Error";
 
 function Content(){
     const currentPage = window.location.pathname;
@@ -73,7 +74,7 @@ function Admin(){
     };
     return(
         <div>
-            { isAdmin === false ? <h1>This website is for Admin only</h1> 
+            { isAdmin === false ? <Error/> 
             : 
             <div className="wrapper">
                 {/*Main Sidebar Container*/}
