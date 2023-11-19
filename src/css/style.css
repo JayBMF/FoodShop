@@ -3527,4 +3527,23 @@ ol {
 	color: #007bff;
 	text-decoration: none;
 	margin-top: 20px;
+
+}
+
+.wrapper a{
+	text-decoration: none;
+}
+
+
+
+.wrapper p{
+	color: #fff;
+}
+
+.content{
+	margin-top: 20px;
+}
+
+.content a{
+	text-decoration: none;
 }
