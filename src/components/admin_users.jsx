@@ -4,44 +4,57 @@ import { Link, useNavigate } from 'react-router-dom';
 import listUsers from "../api/listUsers";
 
 function UserRegistration(){
-    const [data, setData] = useState([
-       
-        // ...
-    ]);
-
-    const [loading, setLoading] = useState(true);
+    
+    const [data, setData] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try{
-                const response = await listUsers.get();
-                setData(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                setLoading(false);
-            }
-        };
-
         fetchData();
-    });
+    }, []);
+
+    const fetchData = async () => {
+        try{
+            const response = await listUsers.get();
+            setData(response.data);
+            
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            
+        }
+    };
+    
        
     const columns = [
-        { name: 'Id', selector: 'id', sortable: true },
-        { name: 'Full name', selector: 'fullName', sortable: true },
-        { name: 'Email', selector: 'email', sortable: true },
-        { name: 'Phone number', selector: 'phoneNumber', sortable: true },
-        { name: 'Username', selector: 'username', sortable: true },
-        { name: 'Status', cell: (row) => (
-            <button className="btn btn-success">
-                Actived
-            </button>
-        )},
-        { name: 'Actions', cell: (row) => (
-            <button className="btn btn-danger">
-                Delete
-            </button>
-        ), },
+        // { name: 'Id', selector: 'id', sortable: true },
+        // { name: 'Full name', selector: 'fullName', sortable: true },
+        // { name: 'Email', selector: 'email', sortable: true },
+        // { name: 'Phone number', selector: 'phoneNumber', sortable: true },
+        // { name: 'Username', selector: 'username', sortable: true },
+        // { name: 'Status', cell: (row) => (
+        //     <button className="btn btn-success">
+        //         Actived
+        //     </button>
+        // )},
+        // { name: 'Actions', cell: (row) => (
+        //     <button className="btn btn-danger">
+        //         Delete
+        //     </button>
+        // ), },
+        {
+            name: 'Id',
+            selector: 'id',
+            sortable: true,
+        },
+        {
+            name: 'Username',
+            selector: 'username',
+            sortable: true,
+        },
+        {
+            name: 'Create Date',
+            selector: 'createdDate',
+            sortable: true,
+        }
+
     ];
     
     const customStyles = {
@@ -71,7 +84,7 @@ function UserRegistration(){
         navigate('/admin/Add-User');
     };
 
-
+    
     return(
         <div className="content-wrapper">
             {/* Content Header (Page header) */}

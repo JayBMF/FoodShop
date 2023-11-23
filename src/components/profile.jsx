@@ -45,7 +45,7 @@ function AccountSetting(){
                                                 <b>Birth day</b> <a className="float-right">06/09/2001</a>
                                             </li>
                                         </ul>
-                                        <a href="#" className="btn btn-primary btn-block"><b>Change information</b></a>
+                                        <a href="#" className="btn btn-primary btn-block"><b>Setting</b></a>
                                         <a href="#" className="btn btn-danger btn-block" onClick={handleLogOut}><b>Log out</b></a>
                                     </div>
                                     {/* /.card-body */}

@@ -5,6 +5,8 @@ const axiosAdmin = axios.create({
     baseURL:'http://localhost:8080/admin/',
     headers:{
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials' : 'true'
     },
 });
 
