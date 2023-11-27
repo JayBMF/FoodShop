@@ -12,8 +12,7 @@ function AddUser(){
 
     const navigate = useNavigate();
 
-    const handleAddUser = async (e) => {
-        e.preventDefault();
+    const handleAddUser = async () => {
         try {
             const postData = {
                 "fullName": fullName,

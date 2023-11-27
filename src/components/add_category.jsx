@@ -1,7 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import addCategory from "../api/addCategory";
+import { useDispatch } from "react-redux";
+
 
 function AddCategory(){
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [image, setImage] = useState('');
+
+    const navigate = useNavigate();
+
+
+    const handleChange = (e) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setImage(reader.result);
+            }
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
+    const handleAddCategory = (e) => {
+        e.preventDefault();
+        try {
+            const formData = new FormData();
+            formData.set("name", name);
+            formData.set("description", description);
+            formData.set("image", image);
+            addCategory(formData);
+            navigate('/admin/Categories');
+        } catch (error){
+            console.log(error);
+            
+        }
+    };
+
     return(
         <div className="content-wrapper">
             {/* Content Header (Page header) */}
@@ -34,25 +70,25 @@ function AddCategory(){
                         </div>
                         {/* /.card-header */}
                         {/* form start */}
-                        <form id="quickForm">
-                        <div className="card-body">
-                            <div className="form-group">
-                                <label htmlFor="exampleInputEmail1">Name</label>
-                                <input type="text" name="Name" className="form-control" placeholder="Enter name" />
+                        <form id="quickForm" method="post" encType="multipart/form-data">
+                            <div className="card-body">
+                                <div className="form-group">
+                                    <label>Name</label>
+                                    <input type="text" name="Name" className="form-control" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} required/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Description</label>
+                                    <input type="text" name="Description" className="form-control" placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)} required/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Image</label>
+                                    <input type="file" name="Image" className="form-control" accept="image/*"  value={image} onChange={handleChange} required/>
+                                </div>
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Description</label>
-                                <input type="text" name="Description" className="form-control" placeholder="Enter description" />
+                            {/* /.card-body */}
+                            <div className="card-footer">
+                                <button type="submit" className="btn btn-primary float-right" onClick={handleAddCategory}>Submit</button>
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Image</label>
-                                <input type="file" name="Image" className="form-control" />
-                            </div>
-                        </div>
-                        {/* /.card-body */}
-                        <div className="card-footer">
-                            <button type="submit" className="btn btn-primary float-right">Submit</button>
-                        </div>
                         </form>
                     </div>
                     {/* /.card */}

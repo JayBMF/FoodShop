@@ -2,25 +2,28 @@ import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import { Link, useNavigate } from 'react-router-dom';
 import listUsers from "../api/listUsers";
+import { Box } from "@mui/material";
+
+
 
 function UserRegistration(){
     
     const [data, setData] = useState([]);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
     const fetchData = async () => {
         try{
             const response = await listUsers.get();
-            setData(response.data);
-            
+            setData(response);
+            console.log(data);
         } catch (error) {
-            console.error('Error fetching data:', error);
+            console.log('Error fetching data:', error);
             
         }
     };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
     
        
     const columns = [
@@ -50,10 +53,31 @@ function UserRegistration(){
             sortable: true,
         },
         {
+            name: 'Full name',
+            selector: 'fullName',
+            sortable: true,
+        },
+        {
+            name: 'Email',
+            selector: 'email',
+            sortable: true,
+        },
+        {
+            name: 'Phone',
+            selector: 'phone',
+            sortable: true,
+        },
+        {
             name: 'Create Date',
             selector: 'createdDate',
             sortable: true,
-        }
+        },
+        { name: 'Actions', cell: (row) => (
+            <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
+                
+
+            </Box>
+        ), },
 
     ];
     
@@ -76,14 +100,14 @@ function UserRegistration(){
         setCurrentPage(page);
     };
 
-    const paginatedData = data.slice((currentPage - 1) * 10, currentPage * 10);
+    // const paginatedData = data.slice((currentPage - 1) * 10, currentPage * 10);
 
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate('/admin/Add-User');
     };
-
+    
     
     return(
         <div className="content-wrapper">
@@ -123,7 +147,7 @@ function UserRegistration(){
                                 data={data}
                                 customStyles={customStyles}
                                 pagination
-                                paginationTotalRows={data.length}
+                                // paginationTotalRows={data.length}
                                 onChangePage={handleChangePage}
                             />
                         </div>
