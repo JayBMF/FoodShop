@@ -1,30 +1,42 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import { Link, useNavigate } from 'react-router-dom';
+import listPoducts from "../api/listProducts";
+import { Box } from "@mui/material";
 
 function AdminProducts(){
-    const data = [
-        { id: '1', name: 'Mì lẩu thái tôm gói 80g', category: 'Mì gói', amount: '50', price:'7000', discount:'5%', description:'description'  },
+    const [data, setData] = useState([
         // ...
-    ];
+    ]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try{
+                const response = await listPoducts.get();
+                setData(response);
+                
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                
+            }
+        };
+
+        fetchData();
+    });
        
     const columns = [
         { name: 'Id', selector: 'id', sortable: true },
         { name: 'Name', selector: 'name', sortable: true },
-        { name: 'Category', selector: 'category', sortable: true },
-        { name: 'Amount', selector: 'amount', sortable: true },
+        { name: 'Category', selector: 'category_id', sortable: true },
+        { name: 'Amount', selector: 'available', sortable: true },
         { name: 'Price', selector: 'price', sortable: true },
         { name: 'Discount', selector: 'discount', sortable: true },
         { name: 'Description', selector: 'description', sortable: true },
-        { name: 'Status', cell: (row) => (
-            <button className="btn btn-success">
-                Actived
-            </button>
-        )},
         { name: 'Actions', cell: (row) => (
-            <button className="btn btn-danger">
-                Delete
-            </button>
+            <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
+                
+
+            </Box>
         ), },
     ];
     

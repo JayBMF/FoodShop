@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import { Link, useNavigate } from 'react-router-dom';
 import listCategories from "../api/listCategories";
+import { Box } from "@mui/material";
 
 function AdminCategories(){
     const [data, setData] = useState([
@@ -9,17 +10,16 @@ function AdminCategories(){
         // ...
     ]);
 
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try{
                 const response = await listCategories.get();
-                setData(response.data);
-                setLoading(false);
+                setData(response);
+                
             } catch (error) {
                 console.error('Error fetching data:', error);
-                setLoading(false);
+                
             }
         };
 
@@ -27,18 +27,26 @@ function AdminCategories(){
     });
        
     const columns = [
-        { name: 'Id', selector: 'id', sortable: true },
-        { name: 'Name', selector: 'name', sortable: true },
-        { name: 'Description', selector: 'description', sortable: true },
-        { name: 'Status', cell: (row) => (
-            <button className="btn btn-success">
-                Actived
-            </button>
-        )},
+        {
+            name: 'Id',
+            selector: 'id',
+            sortable: true,
+        },
+        {
+            name: 'Name',
+            selector: 'name',
+            sortable: true,
+        },
+        {
+            name: 'Description',
+            selector: 'description',
+            sortable: true,
+        },
         { name: 'Actions', cell: (row) => (
-            <button className="btn btn-danger">
-                Delete
-            </button>
+            <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
+                
+
+            </Box>
         ), },
     ];
     

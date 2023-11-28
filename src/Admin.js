@@ -8,13 +8,13 @@ import AdminProducts from "./components/admin_products";
 import AddProduct from "./components/add_product";
 import Cookies from "js-cookie";
 import identificationApi from "./api/identificationApi";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { error } from "jquery";
 import Error from "./components/Error";
 
 function Content(){
-    const currentPage = window.location.pathname;
+    const currentPage = useLocation().pathname;
 
     console.log(currentPage);
 

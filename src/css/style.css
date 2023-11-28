@@ -3547,3 +3547,15 @@ ol {
 .content a{
 	text-decoration: none;
 }
+
+.previewImage {
+	margin-left: 100px;
+	margin-bottom: 50px;
+	margin-top: 25px;
+	height: 25%;
+	width: 25%;
+}
+
+aside.main-sidebar.sidebar-dark-primary.elevation-4 {
+    position: fixed;
+}

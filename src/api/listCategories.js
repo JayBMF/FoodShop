@@ -2,8 +2,12 @@ import axiosClient from "./axiosClient";
 
 const listCategories= {
     get(){
-        const url = '/category?pageNo=0&pageSize=3'
+        const url = '/categories';
         return axiosClient.get(url);
+    },
+    getById(id){
+        const url = `/category/${id}`;
+        return axiosClient.get(url, id);
     }
 };
 

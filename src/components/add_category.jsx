@@ -9,28 +9,33 @@ function AddCategory(){
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
+    const [imagePreview, setImagePreview] = useState('');
 
+    const [isLoading, setLoading] = useState(false);
     const navigate = useNavigate();
 
 
     const handleChange = (e) => {
+        setImage(e.target.files[0]);
         const reader = new FileReader();
         reader.onload = () => {
             if (reader.readyState === 2) {
-                setImage(reader.result);
+                setImagePreview(reader.result);
             }
         };
         reader.readAsDataURL(e.target.files[0]);
     }
 
-    const handleAddCategory = (e) => {
+    const handleAddCategory = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             const formData = new FormData();
-            formData.set("name", name);
-            formData.set("description", description);
-            formData.set("image", image);
-            addCategory(formData);
+            formData.append("name", name);
+            formData.append("description", description);
+            formData.append("image", image);
+            await addCategory.add(formData);
+            setLoading(false);
             navigate('/admin/Categories');
         } catch (error){
             console.log(error);
@@ -82,12 +87,13 @@ function AddCategory(){
                                 </div>
                                 <div className="form-group">
                                     <label>Image</label>
-                                    <input type="file" name="Image" className="form-control" accept="image/*"  value={image} onChange={handleChange} required/>
+                                    <img className="previewImage" alt="Preview Image" src={imagePreview}/>
+                                    <input type="file" name="Image" className="form-control" accept="image/*"  onChange={handleChange} required/>
                                 </div>
                             </div>
                             {/* /.card-body */}
                             <div className="card-footer">
-                                <button type="submit" className="btn btn-primary float-right" onClick={handleAddCategory}>Submit</button>
+                                <button type="submit" className="btn btn-primary float-right" onClick={handleAddCategory} disabled={isLoading}>Submit</button>
                             </div>
                         </form>
                     </div>

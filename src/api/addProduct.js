@@ -1,8 +1,8 @@
 import axiosAdmin from "./axiosAdmin";
 
-const addCategory = {
+const addProduct = {
     add(data){
-        const url= '/create-category';
+        const url= '/products';
         return axiosAdmin.post(url, data, {headers:{
             'Content-Type': 'multipart/form-data',
         }});
@@ -10,4 +10,4 @@ const addCategory = {
     },
 };
 
-export default addCategory;
+export default addProduct;

@@ -27,21 +27,6 @@ function UserRegistration(){
     
        
     const columns = [
-        // { name: 'Id', selector: 'id', sortable: true },
-        // { name: 'Full name', selector: 'fullName', sortable: true },
-        // { name: 'Email', selector: 'email', sortable: true },
-        // { name: 'Phone number', selector: 'phoneNumber', sortable: true },
-        // { name: 'Username', selector: 'username', sortable: true },
-        // { name: 'Status', cell: (row) => (
-        //     <button className="btn btn-success">
-        //         Actived
-        //     </button>
-        // )},
-        // { name: 'Actions', cell: (row) => (
-        //     <button className="btn btn-danger">
-        //         Delete
-        //     </button>
-        // ), },
         {
             name: 'Id',
             selector: 'id',

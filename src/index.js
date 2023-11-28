@@ -10,6 +10,7 @@ import Login from './components/login';
 import Register from './components/register';
 import Profile from './profile';
 import Admin from './Admin';
+import Error from './components/Error';
 import './css/style.css';
 import './css/slicknav.min.css';
 import './css/elegant-icons.css';
@@ -41,6 +42,7 @@ root.render(
                 <Route path='admin/Add-Category' element={<Admin/>}/>
                 <Route path='admin/Products' element={<Admin/>}/>
                 <Route path='admin/Add-Product' element={<Admin/>}/>
+                <Route path='/*' element={<Error/>}/>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
