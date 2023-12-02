@@ -1,4 +1,5 @@
 import axiosClient from "./axiosClient";
+import axiosAdmin from "./axiosAdmin";
 
 const listCategories= {
     get(){
@@ -7,7 +8,13 @@ const listCategories= {
     },
     getById(id){
         const url = `/category/${id}`;
-        return axiosClient.get(url, id);
+        return axiosClient.get(url);
+    },
+    update(id, data){
+        const url = `/category/${id}`;
+        return axiosAdmin.put(url, data, {headers:{
+            'Content-Type': 'multipart/form-data',
+        }});
     }
 };
 

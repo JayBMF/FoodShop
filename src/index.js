@@ -42,6 +42,7 @@ root.render(
                 <Route path='admin/Add-Category' element={<Admin/>}/>
                 <Route path='admin/Products' element={<Admin/>}/>
                 <Route path='admin/Add-Product' element={<Admin/>}/>
+                <Route path='admin/category/edit/:id' element={<Admin/>}/>
                 <Route path='/*' element={<Error/>}/>
             </Routes>
         </BrowserRouter>

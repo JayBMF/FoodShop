@@ -2,7 +2,7 @@ import axiosAdmin from "./axiosAdmin";
 
 const addCategory = {
     add(data){
-        const url= '/create-category';
+        const url= '/category';
         return axiosAdmin.post(url, data, {headers:{
             'Content-Type': 'multipart/form-data',
         }});

@@ -2,8 +2,9 @@ import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import { Link, useNavigate } from 'react-router-dom';
 import listUsers from "../api/listUsers";
-import { Box } from "@mui/material";
-
+import { Box, IconButton } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 
 function UserRegistration(){
@@ -58,9 +59,13 @@ function UserRegistration(){
             sortable: true,
         },
         { name: 'Actions', cell: (row) => (
-            <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
-                
-
+            <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
+                <IconButton aria-label="edit" >
+                    <EditIcon sx={{ color: '#1976d2' }} />
+                </IconButton>
+                <IconButton aria-label="delete">
+                    <DeleteIcon sx={{ color: 'red' }} />
+                </IconButton>
             </Box>
         ), },
 

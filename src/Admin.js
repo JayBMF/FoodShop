@@ -8,14 +8,15 @@ import AdminProducts from "./components/admin_products";
 import AddProduct from "./components/add_product";
 import Cookies from "js-cookie";
 import identificationApi from "./api/identificationApi";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { error } from "jquery";
 import Error from "./components/Error";
+import EditCategory from "./components/edit_category";
 
 function Content(){
     const currentPage = useLocation().pathname;
-
+    const {id} = useParams();
     console.log(currentPage);
 
     switch(currentPage){
@@ -32,7 +33,9 @@ function Content(){
         case('/admin/Products'):
             return <AdminProducts/>; 
         case('/admin/Add-Product'):
-            return <AddProduct/>; 
+            return <AddProduct/>;
+        case(`/admin/category/edit/${id}`):
+            return <EditCategory/>
         default:
             return <Dashboard/>;
     }

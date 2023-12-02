@@ -2,7 +2,10 @@ import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import { Link, useNavigate } from 'react-router-dom';
 import listPoducts from "../api/listProducts";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 function AdminProducts(){
     const [data, setData] = useState([
@@ -10,19 +13,30 @@ function AdminProducts(){
     ]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try{
-                const response = await listPoducts.get();
-                setData(response);
-                
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                
-            }
-        };
 
         fetchData();
     });
+
+    const fetchData = async () => {
+        try{
+            const response = await listPoducts.get();
+            setData(response);
+            
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            
+        }
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await listPoducts.delete(id);
+            fetchData();
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
        
     const columns = [
         { name: 'Id', selector: 'id', sortable: true },
@@ -33,9 +47,13 @@ function AdminProducts(){
         { name: 'Discount', selector: 'discount', sortable: true },
         { name: 'Description', selector: 'description', sortable: true },
         { name: 'Actions', cell: (row) => (
-            <Box sx={{ display: "flex", justifyContent: "space-between", width: "170px" }}>
-                
-
+            <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
+                <IconButton aria-label="edit" >
+                    <EditIcon sx={{ color: '#1976d2' }} />
+                </IconButton>
+                <IconButton aria-label="delete" onClick={() => handleDelete(row.id)}>
+                    <DeleteIcon sx={{ color: 'red' }} />
+                </IconButton>
             </Box>
         ), },
     ];
