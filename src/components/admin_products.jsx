@@ -48,9 +48,11 @@ function AdminProducts(){
         { name: 'Description', selector: 'description', sortable: true },
         { name: 'Actions', cell: (row) => (
             <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
-                <IconButton aria-label="edit" >
-                    <EditIcon sx={{ color: '#1976d2' }} />
-                </IconButton>
+                <Link to={`/admin/product/edit/${row.id}`}>
+                    <IconButton aria-label="edit" >
+                        <EditIcon sx={{ color: '#1976d2' }} />
+                    </IconButton>
+                </Link>
                 <IconButton aria-label="delete" onClick={() => handleDelete(row.id)}>
                     <DeleteIcon sx={{ color: 'red' }} />
                 </IconButton>

@@ -34,6 +34,7 @@ root.render(
                 <Route path='login' element={<Login/>}/>
                 <Route path='register' element={<Register/>}/>
                 <Route path='profile' element={<Profile/>}/>
+                <Route path='profile/update' element={<Profile/>}/>
                 <Route path='admin' element={<Admin/>}/>
                 <Route path='admin/Dashboard' element={<Admin/>}/>
                 <Route path='admin/Registrations' element={<Admin/>}/>
@@ -43,6 +44,7 @@ root.render(
                 <Route path='admin/Products' element={<Admin/>}/>
                 <Route path='admin/Add-Product' element={<Admin/>}/>
                 <Route path='admin/category/edit/:id' element={<Admin/>}/>
+                <Route path='admin/product/edit/:id' element={<Admin/>}/>
                 <Route path='/*' element={<Error/>}/>
             </Routes>
         </BrowserRouter>

@@ -62,6 +62,8 @@ function EditCategory () {
         }
     }
 
+    console.log(image);
+
     return (
         <div className="content-wrapper">
             {/* Content Header (Page header) */}

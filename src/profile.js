@@ -5,8 +5,23 @@ import ShopHero from './components/shop_hero';
 import Footer from './components/footer';
 import Breadcrumb from './components/breadcrumb';
 import AccountSetting from './components/profile';
+import UpdateProfile from './components/UpdateProfile';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import { useLocation } from 'react-router-dom';
+
+function Content() {
+    const currentPage = useLocation().pathname;
+    
+    switch (currentPage) {
+        case ('/profile'):
+            return <AccountSetting/>;
+        case ('/profile/update'):
+            return <UpdateProfile/>;
+        default:
+            break;
+    }
+}
 
 function Profile(){
     return(
@@ -15,7 +30,7 @@ function Profile(){
             <Header/>
             <ShopHero/>
             <Breadcrumb/>
-            <AccountSetting/>
+            <Content/>
             <Footer/>
         </div>
     )

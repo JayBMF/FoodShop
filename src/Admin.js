@@ -13,11 +13,12 @@ import { Link } from "react-router-dom";
 import { error } from "jquery";
 import Error from "./components/Error";
 import EditCategory from "./components/edit_category";
+import EditProduct from "./components/edit_product";
 
 function Content(){
     const currentPage = useLocation().pathname;
     const {id} = useParams();
-    console.log(currentPage);
+    
 
     switch(currentPage){
         case('/admin/Dashboard'):
@@ -36,6 +37,8 @@ function Content(){
             return <AddProduct/>;
         case(`/admin/category/edit/${id}`):
             return <EditCategory/>
+        case(`/admin/product/edit/${id}`):
+            return <EditProduct/>
         default:
             return <Dashboard/>;
     }

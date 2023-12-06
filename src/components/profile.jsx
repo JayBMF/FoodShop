@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Avatar from "../img/Admin.png"
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import profileApi from "../api/profileApi";
 import { error } from "jquery";
 
 function AccountSetting(){
     const [isLogin, setIsLogin] = useState (false);
     const navigate = useNavigate();
+
     useEffect (() => {
         const token = Cookies.get('token');
         if (token){
@@ -15,20 +16,20 @@ function AccountSetting(){
         }
     },[isLogin]) 
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState('');
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await profileApi();
-                setData(response);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
         fetchData();
     }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await profileApi.get();
+            setData(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const handleLogOut = () => {
         Cookies.remove('token');
@@ -48,10 +49,9 @@ function AccountSetting(){
                                        
                                             <div>
                                                 <div className="text-center">
-                                                    <img className="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture" />
+                                                    <img className="profile-user-img img-fluid img-circle" src={data.urlAvatar} alt="User profile picture" />
                                                 </div>
                                                 <h3 className="profile-username text-center">{data.fullName}</h3>
-                                                <p className="text-muted text-center">jay123</p>
                                                 <ul className="list-group list-group-unbordered mb-3">
                                                     <li className="list-group-item">
                                                         <b>Email</b> <a className="float-right">{data.email}</a>
@@ -65,8 +65,8 @@ function AccountSetting(){
                                                 </ul>
                                             </div>
                                         
-                                        <a href="#" className="btn btn-primary btn-block"><b>Setting</b></a>
-                                        <a href="#" className="btn btn-danger btn-block" onClick={handleLogOut}><b>Log out</b></a>
+                                        <Link to="/profile/update"><button  className="btn btn-primary btn-block"><b>Setting</b></button></Link>
+                                        <button  className="btn btn-danger btn-block" onClick={handleLogOut}><b>Log out</b></button>
                                     </div>
                                     {/* /.card-body */}
                                 </div>

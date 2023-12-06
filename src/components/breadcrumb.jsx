@@ -55,6 +55,14 @@ function Content(){
                     <span>Profile</span>
                 </div>
             </div>;
+        case '/profile/update':
+            return <div>
+                <h2>Profile</h2>
+                <div class="breadcrumb__option">
+                    <Link to="/Home">Home</Link>
+                    <span>Profile</span>
+                </div>
+            </div>;
         default:
             return <div></div>; 
     }

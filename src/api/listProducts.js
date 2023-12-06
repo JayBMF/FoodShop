@@ -8,6 +8,16 @@ const listPoducts= {
     delete(id){
         const url = `/admin/products/${id}`;
         return axiosClient.delete(url);
+    },
+    getById(id){
+        const url = `/products/${id}`;
+        return axiosClient.get(url);
+    },
+    update(id, data){
+        const url = `/admin/products/${id}`;
+        return axiosClient.put(url, data, {headers:{
+            'Content-Type': 'multipart/form-data',
+        }});
     }
 };
 
