@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Banner from '../img/hero/banner.jpg';
 import '../css/hero_setbg.css';
 import 'font-awesome/css/font-awesome.min.css';
+import listCategories from '../api/listCategories';
 
 function ShopHero(){
     // Sử dụng useState để quản lý trạng thái của việc hiển thị/ẩn danh sách ul
@@ -11,6 +12,22 @@ function ShopHero(){
     const handleAllClick = () => {
         setListVisible(!isListVisible); // Đảo ngược trạng thái hiển thị danh sách
     }
+
+    const [listCategory, setListCategory] = useState('');
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async() => {
+        try {
+            const response = await listCategories.get();
+            setListCategory(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return(
         <div>
             <section class="hero">
@@ -24,17 +41,10 @@ function ShopHero(){
                                 </div>
                                 {isListVisible &&(
                                     <ul className="hero__categories ul">
-                                        <li><a href="#">Fresh Meat</a></li>
-                                        <li><a href="#">Vegetables</a></li>
-                                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                                        <li><a href="#">Fresh Berries</a></li>
-                                        <li><a href="#">Ocean Foods</a></li>
-                                        <li><a href="#">Butter & Eggs</a></li>
-                                        <li><a href="#">Fastfood</a></li>
-                                        <li><a href="#">Fresh Onion</a></li>
-                                        <li><a href="#">Papayaya & Crisps</a></li>
-                                        <li><a href="#">Oatmeal</a></li>
-                                        <li><a href="#">Fresh Bananas</a></li>
+                                        {listCategory &&
+                                         listCategory.map((item) => (
+                                            <li key={item.id}><a>{item.name}</a></li>
+                                        ))}
                                     </ul>
                                 )}
                             </div>

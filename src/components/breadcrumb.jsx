@@ -60,7 +60,15 @@ function Content(){
                 <h2>Profile</h2>
                 <div class="breadcrumb__option">
                     <Link to="/Home">Home</Link>
-                    <span>Profile</span>
+                    <span>Profile update</span>
+                </div>
+            </div>;
+        case '/profile/update-password':
+            return <div>
+                <h2>Profile</h2>
+                <div class="breadcrumb__option">
+                    <Link to="/Home">Home</Link>
+                    <span>Update password</span>
                 </div>
             </div>;
         default:

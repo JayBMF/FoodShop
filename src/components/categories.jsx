@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import '../css/hero_setbg.css';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import listCategories from "../api/listCategories";
+import Loading from "./Loading";
 
 
 
@@ -18,43 +20,57 @@ function Categories(){
         margin: 10,
         
     };
+
+    const [listCategory, setListCategory] = useState('');
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async() => {
+            try {
+                const response = await listCategories.get();
+                setListCategory(response);
+                setLoading(false);
+            } catch (error) {
+                console.log(error);
+            }
+  
+    };
+
+
     return(
         <div>
-            <section>
-                <div class="container">
-                    <div class="row">
-                        <div class="categories__slider">
-                            <OwlCarousel className="owl-theme" {...options}>
-                                <div className="col-lg">
-                                    <div className="categories__item">
-                                        <h5><a href="#">Fresh Fruit</a></h5>
-                                    </div>
+            {
+                loading ? (
+                    <Loading/>
+                ) : (
+                    <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="categories__slider">
+                                    <OwlCarousel className="owl-theme" {...options}>
+                                        {/* <div className="col-lg">
+                                            <div className="categories__item">
+                                                <h5><a href="#">Fresh Fruit</a></h5>
+                                            </div>
+                                        </div> */}
+
+                                        {listCategory && listCategory.map((item) => (
+                                            <div className="col-lg" key={item.id}>
+                                                <div className="categories__item" style={{backgroundImage: `url(${item.urlImage})`}}>
+                                                    <h5><a>{item.name}</a></h5>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </OwlCarousel>
                                 </div>
-                                <div className="col-lg">
-                                    <div className="categories__item">
-                                        <h5><a href="#">Dried Fruit</a></h5>
-                                    </div>
-                                </div>
-                                <div className="col-lg">
-                                    <div className="categories__item set-bg">
-                                        <h5><a href="#">Vegetables</a></h5>
-                                    </div>
-                                </div>
-                                <div className="col-lg">
-                                    <div className="categories__item set-bg">
-                                        <h5><a href="#">drink fruits</a></h5>
-                                    </div>
-                                </div>
-                                <div className="col-lg">
-                                    <div className="categories__item set-bg">
-                                        <h5><a href="#">drink fruits</a></h5>
-                                    </div>
-                                </div>
-                            </OwlCarousel>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
+                )
+            }
         </div>
     );
 }

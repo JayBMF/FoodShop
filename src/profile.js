@@ -6,6 +6,7 @@ import Footer from './components/footer';
 import Breadcrumb from './components/breadcrumb';
 import AccountSetting from './components/profile';
 import UpdateProfile from './components/UpdateProfile';
+import UpdatePassword from './components/UpdatePassword';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import { useLocation } from 'react-router-dom';
@@ -18,6 +19,8 @@ function Content() {
             return <AccountSetting/>;
         case ('/profile/update'):
             return <UpdateProfile/>;
+        case ('/profile/update-password'):
+            return <UpdatePassword/>;    
         default:
             break;
     }

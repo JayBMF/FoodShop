@@ -35,6 +35,7 @@ root.render(
                 <Route path='register' element={<Register/>}/>
                 <Route path='profile' element={<Profile/>}/>
                 <Route path='profile/update' element={<Profile/>}/>
+                <Route path='profile/update-password' element={<Profile/>}/>
                 <Route path='admin' element={<Admin/>}/>
                 <Route path='admin/Dashboard' element={<Admin/>}/>
                 <Route path='admin/Registrations' element={<Admin/>}/>

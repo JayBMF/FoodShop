@@ -1,7 +1,8 @@
-import React, {useState, Component} from 'react';
+import React, {useState, Component, useEffect} from 'react';
 import Banner from '../img/hero/banner.jpg';
 import '../css/hero_setbg.css';
 import 'font-awesome/css/font-awesome.min.css';
+import listCategories from '../api/listCategories';
 
 
 
@@ -13,6 +14,21 @@ function Hero(){
     const handleAllClick = () => {
         setListVisible(!isListVisible); // Đảo ngược trạng thái hiển thị danh sách
     }
+
+    const [listCategory, setListCategory] = useState('');
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async() => {
+        try {
+            const response = await listCategories.get();
+            setListCategory(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return(
         <div>
             <section class="hero">
@@ -26,7 +42,7 @@ function Hero(){
                                 </div>
                                 {isListVisible &&(
                                     <ul className="hero__categories ul">
-                                        <li><a href="#">Fresh Meat</a></li>
+                                        {/* <li><a href="#">Fresh Meat</a></li>
                                         <li><a href="#">Vegetables</a></li>
                                         <li><a href="#">Fruit & Nut Gifts</a></li>
                                         <li><a href="#">Fresh Berries</a></li>
@@ -36,7 +52,11 @@ function Hero(){
                                         <li><a href="#">Fresh Onion</a></li>
                                         <li><a href="#">Papayaya & Crisps</a></li>
                                         <li><a href="#">Oatmeal</a></li>
-                                        <li><a href="#">Fresh Bananas</a></li>
+                                        <li><a href="#">Fresh Bananas</a></li> */}
+                                        {listCategory &&
+                                         listCategory.map((item) => (
+                                            <li key={item.id}><a>{item.name}</a></li>
+                                        ))}
                                     </ul>
                                 )}
                             </div>

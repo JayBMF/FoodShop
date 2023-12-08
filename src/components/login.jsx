@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import loginApi from "../api/loginApi";
 import identificationApi from "../api/identificationApi";
 import "../css/login.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Login(){
     const [username, setUserName] = useState('');
@@ -35,6 +38,7 @@ function Login(){
                 } else if (fetchIdentify === "USER"){
                     navigate("/Home");
                 }
+                toast("Login success");
             }else{
                 alert("Đăng nhập không thành công");
             }
