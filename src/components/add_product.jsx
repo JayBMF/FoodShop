@@ -5,7 +5,7 @@ import addProduct from "../api/addProduct";
 
 function AddProduct(){
     const [name, setName] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState(9);
     const [amount, setAmount] = useState('');
     const [discount, setDiscount] = useState('');
     const [price, setPrice] = useState('');
@@ -28,7 +28,7 @@ function AddProduct(){
         };
         reader.readAsDataURL(e.target.files[0]);
     }
-
+    
     useEffect(() => {
         fetchData();
     }, []);
@@ -44,8 +44,8 @@ function AddProduct(){
 
     const handleSelected = (e) => {
         setCategory(e.target.value);
-    };
 
+    };
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
@@ -107,7 +107,7 @@ function AddProduct(){
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Category</label>
-                                <select value={category} onChange={handleSelected}>
+                                <select onChange={handleSelected}>
                                     {
                                         listCategory && 
                                         listCategory.map(item => (

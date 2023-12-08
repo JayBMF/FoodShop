@@ -119,11 +119,11 @@ function EditProduct () {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Category</label>
-                                <select onChange={handleSelected}>
+                                <select value={category} onChange={handleSelected}>
                                     {
                                         listCategory && 
                                         listCategory.map(item => { if (item === category){return (
-                                            <option key={item.id} value={item.id} selected>  
+                                            <option key={item.id} value={item.id} selected = "selected">  
                                                 {item.name}
                                             </option>
                                         )}
