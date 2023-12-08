@@ -11,6 +11,8 @@ import Register from './components/register';
 import Profile from './profile';
 import Admin from './Admin';
 import Error from './components/Error';
+import ForgotPassword from './components/ForgotPassword';
+import ResetNewPassword from './components/ResetPassword';
 import './css/style.css';
 import './css/slicknav.min.css';
 import './css/elegant-icons.css';
@@ -33,6 +35,8 @@ root.render(
                 <Route path='check-out' element={<CheckOut/>}/>
                 <Route path='login' element={<Login/>}/>
                 <Route path='register' element={<Register/>}/>
+                <Route path='forgot-password' element={<ForgotPassword/>}/>
+                <Route path='reset-password' element={<ResetNewPassword/>}/>
                 <Route path='profile' element={<Profile/>}/>
                 <Route path='profile/update' element={<Profile/>}/>
                 <Route path='profile/update-password' element={<Profile/>}/>

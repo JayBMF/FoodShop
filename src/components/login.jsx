@@ -65,7 +65,7 @@ function Login(){
                                 <label for="">Password</label>
                             </div>
                             <div class="forget">
-                                <label for=""><input type="checkbox"/>Remember Me  <a href="#">Forget Password</a></label>
+                                <label for=""><input type="checkbox"/>Remember Me <Link to='/forgot-password'>Forget Password</Link></label>
                             
                             </div>
                             <button class="btn-login" onClick={handleLogin}>Log in</button>
