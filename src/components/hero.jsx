@@ -3,6 +3,7 @@ import Banner from '../img/hero/banner.jpg';
 import '../css/hero_setbg.css';
 import 'font-awesome/css/font-awesome.min.css';
 import listCategories from '../api/listCategories';
+import { Link } from 'react-router-dom';
 
 
 
@@ -42,20 +43,9 @@ function Hero(){
                                 </div>
                                 {isListVisible &&(
                                     <ul className="hero__categories ul">
-                                        {/* <li><a href="#">Fresh Meat</a></li>
-                                        <li><a href="#">Vegetables</a></li>
-                                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                                        <li><a href="#">Fresh Berries</a></li>
-                                        <li><a href="#">Ocean Foods</a></li>
-                                        <li><a href="#">Butter & Eggs</a></li>
-                                        <li><a href="#">Fastfood</a></li>
-                                        <li><a href="#">Fresh Onion</a></li>
-                                        <li><a href="#">Papayaya & Crisps</a></li>
-                                        <li><a href="#">Oatmeal</a></li>
-                                        <li><a href="#">Fresh Bananas</a></li> */}
                                         {listCategory &&
                                          listCategory.map((item) => (
-                                            <li key={item.id}><a>{item.name}</a></li>
+                                            <li key={item.id}><Link to={`/Shop/${item.id}`}><a>{item.name}</a></Link></li>
                                         ))}
                                     </ul>
                                 )}

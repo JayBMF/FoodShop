@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../css/hero_setbg.css';
 
 function Content(){
     const currentPage = window.location.pathname;
+    const {id} = useParams();
 
     switch(currentPage){
-        case '/Shop':
+        case `/Shop/${id}`:
             return <div>
                 <h2>Organi Shop</h2>
                 <div class="breadcrumb__option">
@@ -14,7 +15,7 @@ function Content(){
                     <span>Shop</span>
                 </div>
             </div>;
-        case '/shop-details':
+        case `/shop-details/${id}`:
             return <div>
                 <h2>Vegetable’s Package</h2>
                 <div class="breadcrumb__option">

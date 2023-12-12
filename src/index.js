@@ -28,8 +28,8 @@ root.render(
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='Home' element={<Home/>}/>
-                <Route path='Shop' element={<Shop/>}/>
-                <Route path='shop-details' element={<ShopDetails/>}/>
+                <Route path='Shop/:id' element={<Shop/>}/>
+                <Route path='shop-details/:id' element={<ShopDetails/>}/>
                 <Route path='shopping-cart' element={<ShoppingCart/>}/>
                 <Route path='contact' element={<Contact/>}/>
                 <Route path='check-out' element={<CheckOut/>}/>

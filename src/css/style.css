@@ -3535,7 +3535,6 @@ ol {
 }
 
 
-
 .wrapper p{
 	color: #fff;
 }
@@ -3560,4 +3559,11 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
     position: fixed;
 }
 
+.featured__item__text h6 h5 {
+	text-decoration: none;
+}
 
+.item_image {
+	height: 100px;
+	width: 100px;
+}

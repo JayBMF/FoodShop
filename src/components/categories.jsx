@@ -5,6 +5,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import listCategories from "../api/listCategories";
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 
 
@@ -59,9 +60,11 @@ function Categories(){
 
                                         {listCategory && listCategory.map((item) => (
                                             <div className="col-lg" key={item.id}>
-                                                <div className="categories__item" style={{backgroundImage: `url(${item.urlImage})`}}>
-                                                    <h5><a>{item.name}</a></h5>
-                                                </div>
+                                                <Link to={`/Shop/${item.id}`}>
+                                                    <div className="categories__item" style={{backgroundImage: `url(${item.urlImage})`}}>
+                                                        <h5><a>{item.name}</a></h5>
+                                                    </div>
+                                                </Link>
                                             </div>
                                         ))}
                                     </OwlCarousel>

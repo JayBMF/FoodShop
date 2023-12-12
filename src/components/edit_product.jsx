@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import listPoducts from "../api/listProducts";
 import listCategories from "../api/listCategories";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function EditProduct () {
     const [name, setName] = useState('');
@@ -78,7 +80,7 @@ function EditProduct () {
         }
     };
 
-
+    
     return (
         <div className="content-wrapper">
             {/* Content Header (Page header) */}
@@ -149,7 +151,8 @@ function EditProduct () {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Description</label>
-                                <input type="text" name="Description" className="form-control" placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)} required/>
+                                {/* <input type="text" name="Description" className="form-control" placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)} required/> */}
+                                <ReactQuill theme="snow"  value={description} onChange={setDescription} required/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Image</label>

@@ -18,7 +18,6 @@ function Home() {
       <Hero/>
       <Categories/>
       <Featured/>
-      <Lastest_Product/>
       <Footer/>
     </div>
   );

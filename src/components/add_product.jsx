@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import listCategories from "../api/listCategories";
 import addProduct from "../api/addProduct";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function AddProduct(){
     const [name, setName] = useState('');
@@ -64,6 +66,7 @@ function AddProduct(){
             navigate('/admin/Products');
         } catch (error){
             console.log(error);
+            setLoading(true);
         }
     };
 
@@ -132,7 +135,8 @@ function AddProduct(){
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Description</label>
-                                <input type="text" name="Description" className="form-control" placeholder="Enter description" onChange={(e) => setDescription(e.target.value)} required/>
+                                {/* <input type="text" name="Description" className="form-control" placeholder="Enter description" onChange={(e) => setDescription(e.target.value)} required/> */}
+                                <ReactQuill theme="snow"  value={description} onChange={setDescription} required/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Image</label>
