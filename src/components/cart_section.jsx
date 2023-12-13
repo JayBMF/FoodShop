@@ -6,6 +6,8 @@ import '../css/hero_setbg.css';
 import cartAction from "../api/cartApi";
 import Loading from "./Loading";
 import { debounce } from "lodash";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function CartSection(){
@@ -65,8 +67,10 @@ function CartSection(){
             await cartAction.remove(param);
             fetchData();
             setLoading(false);
+            toast.success("Item removed!");
         } catch (error) {
             console.log(error);
+            toast.error("Remove failed");
         }
     };
     return(

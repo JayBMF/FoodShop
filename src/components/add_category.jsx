@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import addCategory from "../api/addCategory";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function AddCategory(){
@@ -37,9 +39,10 @@ function AddCategory(){
             await addCategory.add(formData);
             setLoading(false);
             navigate('/admin/Categories');
+            toast.success("Add category success!");
         } catch (error){
             console.log(error);
-            
+            toast.error("Add category failed!");
         }
     };
 

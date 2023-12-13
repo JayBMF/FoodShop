@@ -5,7 +5,8 @@ import listPoducts from "../api/listProducts";
 import { Box, IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AdminProducts(){
     const [data, setData] = useState([
@@ -32,9 +33,10 @@ function AdminProducts(){
         try {
             await listPoducts.delete(id);
             fetchData();
-            
+            toast.success("Delete product success");
         } catch (error) {
             console.log(error);
+            toast.error("Delete product failed");
         }
     }
        

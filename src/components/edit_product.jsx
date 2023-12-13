@@ -4,6 +4,8 @@ import listPoducts from "../api/listProducts";
 import listCategories from "../api/listCategories";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function EditProduct () {
     const [name, setName] = useState('');
@@ -75,8 +77,10 @@ function EditProduct () {
             await listPoducts.update(id, formData);
             setLoading(false);
             navigate('/admin/Products');
+            toast.success("Update product success");
         } catch (error) {
             console.log(error);
+            toast.error("Update product failed");
         }
     };
 

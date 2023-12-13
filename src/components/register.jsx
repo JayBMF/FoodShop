@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import registerApi from "../api/registerApi";
 import "../css/login.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Register(){
     const [userName, setUserName] = useState('');
@@ -18,17 +20,22 @@ function Register(){
     const handleRegister =() => {
         
         if (isPasswordCorrect) {
-            const postData = {
-                "fullName": fullName,
-                "username": userName,
-                "password": password,
-                "phone": phoneNumber,
-                "email": email
-            };
-            registerApi.add(postData);
-            navigate('/login');
+            try {
+                const postData = {
+                    "fullName": fullName,
+                    "username": userName,
+                    "password": password,
+                    "phone": phoneNumber,
+                    "email": email
+                };
+                registerApi.add(postData);
+                navigate('/login');
+                toast.success("Register success!");
+            } catch (error) {
+                toast.error("Register failed");
+            }
         } else{
-            alert('Mật khẩu không trùng khớp');
+            toast.error("Password is invalid");
         }
     };
 

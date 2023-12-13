@@ -4,6 +4,8 @@ import listCategories from "../api/listCategories";
 import addProduct from "../api/addProduct";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddProduct(){
     const [name, setName] = useState('');
@@ -64,8 +66,10 @@ function AddProduct(){
             await addProduct.add(formData);
             setLoading(false);
             navigate('/admin/Products');
+            toast.success("Add product success");
         } catch (error){
             console.log(error);
+            toast.error("Add product failed");
             setLoading(true);
         }
     };

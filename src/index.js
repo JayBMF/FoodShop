@@ -20,40 +20,44 @@ import './css/nice-select.css';
 import './css/owl.carousel.min.css';
 import ShopDetails from './shop_details';
 import reportWebVitals from './reportWebVitals';
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='Home' element={<Home/>}/>
-                <Route path='Shop/:id' element={<Shop/>}/>
-                <Route path='shop-details/:id' element={<ShopDetails/>}/>
-                <Route path='shopping-cart' element={<ShoppingCart/>}/>
-                <Route path='contact' element={<Contact/>}/>
-                <Route path='check-out' element={<CheckOut/>}/>
-                <Route path='login' element={<Login/>}/>
-                <Route path='register' element={<Register/>}/>
-                <Route path='forgot-password' element={<ForgotPassword/>}/>
-                <Route path='reset-password' element={<ResetNewPassword/>}/>
-                <Route path='profile' element={<Profile/>}/>
-                <Route path='profile/update' element={<Profile/>}/>
-                <Route path='profile/update-password' element={<Profile/>}/>
-                <Route path='admin' element={<Admin/>}/>
-                <Route path='admin/Dashboard' element={<Admin/>}/>
-                <Route path='admin/Registrations' element={<Admin/>}/>
-                <Route path='admin/Add-User' element={<Admin/>}/>
-                <Route path='admin/Categories' element={<Admin/>}/>
-                <Route path='admin/Add-Category' element={<Admin/>}/>
-                <Route path='admin/Products' element={<Admin/>}/>
-                <Route path='admin/Add-Product' element={<Admin/>}/>
-                <Route path='admin/category/edit/:id' element={<Admin/>}/>
-                <Route path='admin/product/edit/:id' element={<Admin/>}/>
-                <Route path='/*' element={<Error/>}/>
-            </Routes>
-        </BrowserRouter>
-    </React.StrictMode>
+    <>
+        <React.StrictMode>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='Home' element={<Home/>}/>
+                    <Route path='Shop/:id' element={<Shop/>}/>
+                    <Route path='shop-details/:id' element={<ShopDetails/>}/>
+                    <Route path='shopping-cart' element={<ShoppingCart/>}/>
+                    <Route path='contact' element={<Contact/>}/>
+                    <Route path='check-out' element={<CheckOut/>}/>
+                    <Route path='login' element={<Login/>}/>
+                    <Route path='register' element={<Register/>}/>
+                    <Route path='forgot-password' element={<ForgotPassword/>}/>
+                    <Route path='reset-password' element={<ResetNewPassword/>}/>
+                    <Route path='profile' element={<Profile/>}/>
+                    <Route path='profile/update' element={<Profile/>}/>
+                    <Route path='profile/update-password' element={<Profile/>}/>
+                    <Route path='admin' element={<Admin/>}/>
+                    <Route path='admin/Dashboard' element={<Admin/>}/>
+                    <Route path='admin/Registrations' element={<Admin/>}/>
+                    <Route path='admin/Add-User' element={<Admin/>}/>
+                    <Route path='admin/Categories' element={<Admin/>}/>
+                    <Route path='admin/Add-Category' element={<Admin/>}/>
+                    <Route path='admin/Products' element={<Admin/>}/>
+                    <Route path='admin/Add-Product' element={<Admin/>}/>
+                    <Route path='admin/category/edit/:id' element={<Admin/>}/>
+                    <Route path='admin/product/edit/:id' element={<Admin/>}/>
+                    <Route path='/*' element={<Error/>}/>
+                </Routes>
+            </BrowserRouter>
+        </React.StrictMode>
+        <ToastContainer/>
+    </>
 );
 
 

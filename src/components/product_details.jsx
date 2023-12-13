@@ -7,6 +7,8 @@ import listPoducts from "../api/listProducts";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
 import cartAction from "../api/cartApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -72,9 +74,9 @@ function ProductDetails(){
             formData.append("idProduct", id);
             await cartAction.add(formData);
             setIsLoading(false);
-            navigate('/shopping-cart');
+            toast.success("Add to cart successfully");
         } catch (error) {
-            console.log(error);
+            toast.error("Please login to do!");
         }
     };
     return(

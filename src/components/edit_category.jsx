@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import listCategories from "../api/listCategories";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function EditCategory () {
 
@@ -56,9 +57,10 @@ function EditCategory () {
             await listCategories.update(id, formData);
             setLoading(false);
             navigate('/admin/Categories');
+            toast.success("Update category success");
         } catch (error){
             console.log(error);
-            
+            toast.error("Update category failed");
         }
     }
 

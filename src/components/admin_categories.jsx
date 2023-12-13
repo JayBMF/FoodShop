@@ -7,6 +7,8 @@ import {IconButton} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import deleteCategory from "../api/deleteCategory";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AdminCategories(){
     const [data, setData] = useState([
@@ -35,9 +37,10 @@ function AdminCategories(){
         try {
             await deleteCategory.delete(id);
             fetchData();
-            alert("delete success");
+            toast.success("Delete category success");
         } catch (error) {
             console.log(error);
+            toast.success("Delete category failed");
         }
     }
     

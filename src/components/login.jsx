@@ -28,22 +28,26 @@ function Login(){
             const dataLogin = {username, password};
             
             const fetchLogin = await loginApi.add(dataLogin);
-            console.log(fetchLogin)
+            
             if (fetchLogin) {
                 Cookies.set('token', fetchLogin, {expires: 7});
                 const fetchIdentify = await identificationApi.get();
-                console.log(fetchIdentify);
+                
                 if (fetchIdentify === "ADMIN"){
                     navigate("/admin");
                 } else if (fetchIdentify === "USER"){
                     navigate("/Home");
                 }
-                toast("Login success");
+                toast.success("Login success!!!", {
+                    position: toast.POSITION.TOP_RIGHT,
+                });
             }else{
                 alert("Đăng nhập không thành công");
             }
         } catch (error) {
-            alert("Đăng nhập không thành công");
+            toast.error("Login failed!!!", {
+                position: toast.POSITION.TOP_RIGHT,
+            });
         }
 
     };
