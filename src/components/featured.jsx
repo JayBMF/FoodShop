@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import Banner1 from '../img/banner/banner-1.jpg';
 import Banner2 from '../img/banner/banner-2.jpg';
 import '../css/hero_setbg.css';
-import listPoducts from "../api/listProducts";
+import listProducts from "../api/listProducts";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import cartAction from "../api/cartApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Featured(){
     const [products, setProducts] = useState('');
@@ -17,7 +20,7 @@ function Featured(){
 
     const fetchData = async () => {
         try{
-            const response = await listPoducts.get();
+            const response = await listProducts.get();
             setProducts(response);
             setLoading(false);
         } catch (error) {
@@ -30,6 +33,7 @@ function Featured(){
         style: 'currency',
         currency: 'VND'
     });
+
 
     return(
         <div>
@@ -70,10 +74,10 @@ function Featured(){
                                             <Link to={`/shop-details/${item.id}`}>
                                                 <div class="featured__item">
                                                     <div class="featured__item__pic set-bg" style={{backgroundImage: `url(${item.urlImage})`}}>
-                                                        <ul class="featured__item__pic__hover">
+                                                        {/* <ul class="featured__item__pic__hover">
                                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                                        </ul>
+                                                            <li><a href="#"><i class="fa fa-shopping-cart" ></i></a></li>
+                                                        </ul> */}
                                                     </div>
                                                     <div class="featured__item__text">
                                                         <h6>{item.name}</h6>

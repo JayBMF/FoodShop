@@ -48,7 +48,6 @@ function AddProduct(){
 
     const handleSelected = (e) => {
         setCategory(e.target.value);
-
     };
 
     const handleAddProduct = async (e) => {

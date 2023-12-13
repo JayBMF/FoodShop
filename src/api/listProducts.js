@@ -1,6 +1,6 @@
 import axiosClient from "./axiosClient";
 
-const listPoducts= {
+const listProducts= {
     get(){
         const url = '/products';
         return axiosClient.get(url);
@@ -18,7 +18,16 @@ const listPoducts= {
         return axiosClient.put(url, data, {headers:{
             'Content-Type': 'multipart/form-data',
         }});
+    },
+    getByCategory(id){
+        const url = `/products/products-by-cate?cateId=${id}`;
+        return axiosClient.get(url);
+    },
+    getAndSort(idCategory, sortBy, sortDir){
+        const url = `/products?sortDir=${sortDir}&sortBy=${sortBy}&idCategory=${idCategory}`;
+        
+        return axiosClient.get(url);
     }
 };
 
-export default listPoducts;
+export default listProducts;

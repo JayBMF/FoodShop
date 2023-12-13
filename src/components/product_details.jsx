@@ -3,7 +3,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import '../css/hero_setbg.css';
-import listPoducts from "../api/listProducts";
+import listProducts from "../api/listProducts";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
 import cartAction from "../api/cartApi";
@@ -32,7 +32,7 @@ function ProductDetails(){
 
     const fetchData = async() => {
         try {
-            const response = await listPoducts.getById(id);
+            const response = await listProducts.getById(id);
             setName(response.name);
             setAmount(response.available);
             setDiscount(response.discount);
@@ -48,7 +48,11 @@ function ProductDetails(){
         
     const [quantity, setQuantity] = useState(1);
     const increaseQuantity = () => {
-        setQuantity(quantity + 1);
+        if (quantity < amount) {
+            setQuantity(quantity + 1);
+        } else {
+        toast.warning("The amount of product is not enough");
+        }
     }
     
     const decreaseQuantity = () => {
@@ -122,7 +126,6 @@ function ProductDetails(){
                                         <ul>
                                             <li><b>Availability</b> <span>{amount}</span></li>
                                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                                            <li><b>Weight</b> <span>0.5 kg</span></li>
                                             <li><b>Share on</b>
                                                 <div class="share">
                                                     <a href="#"><i class="fa fa-facebook"></i></a>

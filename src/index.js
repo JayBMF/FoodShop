@@ -25,7 +25,7 @@ import { ToastContainer } from 'react-toastify';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
-        <React.StrictMode>
+        {/* <React.StrictMode> */}
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
@@ -55,7 +55,7 @@ root.render(
                     <Route path='/*' element={<Error/>}/>
                 </Routes>
             </BrowserRouter>
-        </React.StrictMode>
+        {/* </React.StrictMode> */}
         <ToastContainer/>
     </>
 );

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Language from '../img/language.png';
 import Logo from '../img/logo.png';
 import 'font-awesome/css/font-awesome.min.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Content(){
     const currentPage = window.location.pathname;
@@ -157,7 +159,12 @@ function Header(){
                             <div class="header__cart">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                                    <li><Link to="/shopping-cart"><i class="fa fa-shopping-bag"></i> <span>3</span></Link></li>
+                                    {isLogin === true 
+                                        ? 
+                                        <li><Link to="/shopping-cart"><i class="fa fa-shopping-bag"></i></Link></li>
+                                        :
+                                        <li onClick={() => toast.info("Please login!")}><i class="fa fa-shopping-bag"></i></li>
+                                    }
                                 </ul>
                                 <div class="header__cart__price">item: <span>$150.00</span></div>
                             </div>

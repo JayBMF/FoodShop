@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import listPoducts from "../api/listProducts";
+import listProducts from "../api/listProducts";
 import listCategories from "../api/listCategories";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -30,7 +30,7 @@ function EditProduct () {
     
     const fetchData = async() => {
         try {
-            const response = await listPoducts.getById(id);
+            const response = await listProducts.getById(id);
             setName(response.name);
             setAmount(response.available);
             setDiscount(response.discount);
@@ -74,7 +74,7 @@ function EditProduct () {
             if(image){
                 formData.append("image", image);
             }
-            await listPoducts.update(id, formData);
+            await listProducts.update(id, formData);
             setLoading(false);
             navigate('/admin/Products');
             toast.success("Update product success");

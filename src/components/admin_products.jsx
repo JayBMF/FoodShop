@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import { Link, useNavigate } from 'react-router-dom';
-import listPoducts from "../api/listProducts";
+import listProducts from "../api/listProducts";
 import { Box, IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -20,7 +20,7 @@ function AdminProducts(){
 
     const fetchData = async () => {
         try{
-            const response = await listPoducts.get();
+            const response = await listProducts.get();
             setData(response);
             
         } catch (error) {
@@ -31,7 +31,7 @@ function AdminProducts(){
 
     const handleDelete = async (id) => {
         try {
-            await listPoducts.delete(id);
+            await listProducts.delete(id);
             fetchData();
             toast.success("Delete product success");
         } catch (error) {
