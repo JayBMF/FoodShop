@@ -21,6 +21,7 @@ import './css/owl.carousel.min.css';
 import ShopDetails from './shop_details';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer } from 'react-toastify';
+import FavouriteList from './favoutite_list';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -33,6 +34,7 @@ root.render(
                     <Route path='Shop/:id' element={<Shop/>}/>
                     <Route path='shop-details/:id' element={<ShopDetails/>}/>
                     <Route path='shopping-cart' element={<ShoppingCart/>}/>
+                    <Route path='favourite-list' element={<FavouriteList/>}/>
                     <Route path='contact' element={<Contact/>}/>
                     <Route path='check-out' element={<CheckOut/>}/>
                     <Route path='login' element={<Login/>}/>

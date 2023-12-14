@@ -14,9 +14,8 @@ function AdminProducts(){
     ]);
 
     useEffect(() => {
-
         fetchData();
-    });
+    },[]);
 
     const fetchData = async () => {
         try{

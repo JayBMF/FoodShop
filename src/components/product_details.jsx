@@ -4,13 +4,24 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import '../css/hero_setbg.css';
 import listProducts from "../api/listProducts";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
 import cartAction from "../api/cartApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Box, Button, Divider } from '@mui/material';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import commentApi from "../api/commentApi";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 
-
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import Cookies from "js-cookie";
+import identificationApi from "../api/identificationApi";
+import favoriteApi from "../api/favoriteApi";
 
 function ProductDetails(){
     const [name, setName] = useState('');
@@ -19,26 +30,38 @@ function ProductDetails(){
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
+    const [reviews, setReviews] = useState('');
+    const [listComment, setListComment] = useState('');
+    const [userInfo, setUserInfo] = useState('');
 
     const {id} = useParams();
     const [loading, setLoading] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
+    const [isLogin, setIsLogin] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
+        const token = Cookies.get('token');
+        if (token){
+            setIsLogin(true);
+        }
         fetchData();
     }, []);
 
     const fetchData = async() => {
         try {
             const response = await listProducts.getById(id);
+            
             setName(response.name);
             setAmount(response.available);
             setDiscount(response.discount);
             setPrice(response.price);
             setDescription(response.description);
             setImage(response.urlImage);
+            setReviews(response.rate);
+            setListComment(response.reviews);
+            
             setLoading(false);
         } catch (error) {
             console.log(error);
@@ -60,14 +83,14 @@ function ProductDetails(){
           setQuantity(quantity - 1);
         }
     }
-    const pricePerItem = price;
+    const pricePerItem = price - price * discount;
 
     const total = quantity * pricePerItem;
 
     const formattedAmount = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND'
-    }).format(total);
+    });
 
     const handleAddToCart = async (e) => {
         e.preventDefault();
@@ -83,6 +106,50 @@ function ProductDetails(){
             toast.error("Please login to do!");
         }
     };
+
+    const [rating, setRating] = useState(5);
+    const [comment, setComment] = useState('');
+
+    const handleStarClick = (selectedRating) => {
+        setRating(selectedRating);
+    };
+
+    const handleAddComment = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            await commentApi.add(id, rating, comment);
+            setLoading(false);
+            toast.success("Add comment success!");
+            
+        } catch (error) {
+            console.log(error);
+            toast.error("Add comment failed");
+        }
+    };
+
+    const handleAddFavorite = async (e) => {
+        e.preventDefault();
+        try {
+            await favoriteApi.add(id);
+            toast.success("Add favorite success");
+        } catch (error) {
+            console.log(error);
+            toast.error("Add favorite failed");
+        }
+    }
+
+    // const handleDeleteComment = async (id) => {
+    //     setLoading(true);
+    //     try {
+    //         await commentApi.delete(id);
+    //         setLoading(false);
+    //         toast.success("Delete comment success");
+    //     } catch (error) {
+    //         console.log(error);
+    //         toast.error("Delete comment failed");
+    //     }
+    // };
     return(
         <div>
             {
@@ -104,14 +171,45 @@ function ProductDetails(){
                                     <div class="product__details__text">
                                         <h3>{name}</h3>
                                         <div class="product__details__rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                            <span>(18 reviews)</span>
+                                            {/* {[1, 2, 3, 4, 5].map((star) => (
+                                                <span
+                                                    key={star}
+                                                    style={{ fontSize: '18px' ,cursor: 'pointer', color: star <= reviews ? 'gold' : 'gray' }}
+                                                >
+                                                    ★
+                                                </span>
+                                            ))} */}
+                                            <div className="rating-outer">
+                                                <div 
+                                                className="rating-inner"
+                                                style={{ width: `${reviews / 5 * 100}%`}}>
+
+                                                </div>
+                                            </div>
+                                            {
+                                                reviews === "NaN" ? (
+                                                    <span style={{ fontSize: '18px'}}>(0 Review)</span>
+                                                ) : (
+                                                    <span style={{ fontSize: '18px'}}>({listComment.length} Reviews)</span>
+                                                    
+                                                )
+                                            }
+                                            
                                         </div>
-                                        <div class="product__details__price">{formattedAmount}</div>
+                                        <div class="product__details__price" style={{ height: '100px'}}>
+                                            {formattedAmount.format(total)}
+                                            {
+                                                discount > 0 ? 
+                                                (
+                                                    <div class="product__discount__item__text">
+                                                        <div class="product__item__price" ><span style={{ float: 'left', fontSize: '20px'}}>{formattedAmount.format(price)}</span></div>
+                                                    </div>
+                                                ) : (
+                                                    <></>
+                                                )
+                                            }
+                                            
+                                        </div>
                                         <div class="product__details__quantity">
                                             <div class="quantity">
                                                 <div class="pro-qty">
@@ -122,18 +220,12 @@ function ProductDetails(){
                                             </div>
                                         </div>
                                         <button class="primary-btn" onClick={handleAddToCart} disabled={isLoading}>ADD TO CARD</button>
-                                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                                        <a href="#" class="heart-icon" onClick={handleAddFavorite}><span class="icon_heart_alt"></span></a>
                                         <ul>
                                             <li><b>Availability</b> <span>{amount}</span></li>
+                                            <li><b>Discount</b> <span>{discount * 100}%</span></li>
                                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                                            <li><b>Share on</b>
-                                                <div class="share">
-                                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                                </div>
-                                            </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -153,6 +245,109 @@ function ProductDetails(){
                                                 </div>
                                             </div>
                                             
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-12">
+                                    <div class="product__details__tab">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" data-target="#tabs-1" role="tab"
+                                                    aria-selected="true">Comments</a>
+                                            </li>
+                                        
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                                <div class="product__details__tab__desc">
+                                                    {
+                                                        listComment && listComment.map((item) => (
+                                                            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                                                                <ListItem alignItems="flex-start">
+                                                                    <ListItemText
+                                                                        primary={<strong>{item.name}</strong>}
+                                                                        secondary={
+                                                                            <>
+                                                                                {[1, 2, 3, 4, 5].map((star) => (
+                                                                                    <span
+                                                                                    key={star}
+                                                                                    style={{ fontSize: '15px' ,cursor: 'pointer', color: star <= item.rate ? 'gold' : 'gray' }}
+                                                                                    >
+                                                                                    ★
+                                                                                    </span>
+                                                                                ))} 
+                                                                                <br/>
+                                                                                <Typography
+                                                                                    sx={{ display: 'inline' }}
+                                                                                    component="span"
+                                                                                    variant="body2"
+                                                                                    color="text.primary"
+                                                                                >
+                                                                                    {item.contentReviews}
+                                                                                </Typography>
+                                                                                
+                                                                            </>
+                                                                        }
+                                                                    />
+                                                                </ListItem>
+                                                            </List>
+                                                        ))
+                                                    }
+
+                                                    {
+                                                        isLogin === true
+                                                        ?
+                                                        (
+                                                            <Box sx={{ pt: 5, pl: 3, pb: 3, bgcolor: "#fafafa" }}>
+                                                                <p>
+                                                                    Rating: 
+                                                                    {
+                                                                        rating === 5 ? (
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Very good</strong>
+                                                                        ) : rating === 4 ? (
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Good</strong>
+                                                                        ) : rating === 3 ? (
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Fine</strong>
+                                                                        ) : rating === 2 ? (
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Bad</strong>
+                                                                        ) : rating === 1 ? (
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Very Bad</strong>
+                                                                        ) : (
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Your opinion</strong>
+                                                                        )
+                                                                    }
+                                                                </p>
+                                                                {[1, 2, 3, 4, 5].map((star) => (
+                                                                    <span
+                                                                    key={star}
+                                                                    onClick={() => handleStarClick(star)}
+                                                                    style={{ fontSize: '30px' ,cursor: 'pointer', color: star <= rating ? 'gold' : 'gray' }}
+                                                                    >
+                                                                    ★
+                                                                    </span>
+                                                                ))} 
+                                                                
+                                                                <form onSubmit={handleAddComment}>
+                                                                    <TextareaAutosize
+                                                                        onChange={(e) => setComment(e.target.value)}
+                                                                        value={comment}
+                                                                        aria-label="minimum height"
+                                                                        minRows={3}
+                                                                        placeholder="Add a comment..."
+                                                                        style={{ width: 400, padding: "5px" }}
+                                                                    />
+                                                                    <Box sx={{ pt: 1 }}>
+                                                                        <Button type='submit' variant='contained' disabled={isLoading}>Comment</Button>
+                                                                    </Box>
+                                                                </form>
+                                                            </Box>  
+                                                        ) : (
+                                                            <Link to='/login'><p>Please login to add comment</p></Link>
+                                                        )
+                                                    }
+                                                                                                                            
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

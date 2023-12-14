@@ -6,6 +6,8 @@ import Logo from '../img/logo.png';
 import 'font-awesome/css/font-awesome.min.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import cartAction from '../api/cartApi';
+import favoriteApi from '../api/favoriteApi';
 
 function Content(){
     const currentPage = window.location.pathname;
@@ -84,17 +86,31 @@ function Content(){
 
 function Header(){
     const [isLogin, setIsLogin] = useState (false);
+    const [listCartItems, setListCartItems] = useState('');
+    const [listFavourtites, setListFavourites] = useState('');
+
     useEffect (() => {
         const token = Cookies.get('token');
         if (token){
             setIsLogin(true);
         }
+
+        const fetchData = async() => {
+            try {
+                const response = await cartAction.getAll();
+                const data = await favoriteApi.getAll();
+                setListCartItems(response);
+                setListFavourites(data);
+                
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
     },[isLogin]) 
 
-    const handleLogOut = () => {
-        Cookies.remove('token');
-        setIsLogin(false);
-    };
+    
     return(
         <div>
             <header class="header">
@@ -158,15 +174,20 @@ function Header(){
                         <div class="col-lg-3">
                             <div class="header__cart">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                                     {isLogin === true 
                                         ? 
-                                        <li><Link to="/shopping-cart"><i class="fa fa-shopping-bag"></i></Link></li>
+                                        <>
+                                            <li><Link to="/favourite-list"><i class="fa fa-heart"></i><span>{listFavourtites.length}</span></Link></li>
+                                            <li><Link to="/shopping-cart"><i class="fa fa-shopping-bag"></i> <span>{listCartItems.length}</span></Link></li>
+                                        </>
                                         :
-                                        <li onClick={() => toast.info("Please login!")}><i class="fa fa-shopping-bag"></i></li>
+                                        <>
+                                            <li onClick={() => toast.info("Please login!")}><a href='#'><i class="fa fa-heart"></i></a></li>
+                                            <li onClick={() => toast.info("Please login!")}><a href='#'><i class="fa fa-shopping-bag"></i></a></li>
+                                        </>
                                     }
                                 </ul>
-                                <div class="header__cart__price">item: <span>$150.00</span></div>
+                                
                             </div>
                         </div>
                     </div>

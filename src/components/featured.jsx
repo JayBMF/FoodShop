@@ -16,12 +16,12 @@ function Featured(){
     useEffect(() => {
 
         fetchData();
-    });
+    },[]);
 
     const fetchData = async () => {
         try{
             const response = await listProducts.get();
-            setProducts(response);
+            setProducts(response.slice(0, 8));
             setLoading(false);
         } catch (error) {
             console.error('Error fetching data:', error);

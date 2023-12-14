@@ -17,11 +17,10 @@ function Content(){
             </div>;
         case `/shop-details/${id}`:
             return <div>
-                <h2>Vegetable’s Package</h2>
+                <h2>Product details</h2>
                 <div class="breadcrumb__option">
                     <Link to="/Home">Home</Link>
-                    <a href="./index.html">Vegetables</a>
-                    <span>Vegetable’s Package</span>
+                    <span>Product details</span>
                  </div>
             </div>;
         case '/shopping-cart':
@@ -30,6 +29,14 @@ function Content(){
                 <div class="breadcrumb__option">
                     <Link to="/Home">Home</Link>
                     <span>Shopping Cart</span>
+                </div>
+            </div>
+        case '/favourite-list':
+            return <div>
+                <h2>Favourite list</h2>
+                <div class="breadcrumb__option">
+                    <Link to="/Home">Home</Link>
+                    <span>Favourite list</span>
                 </div>
             </div>
         case '/contact':

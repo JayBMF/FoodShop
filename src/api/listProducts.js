@@ -2,7 +2,7 @@ import axiosClient from "./axiosClient";
 
 const listProducts= {
     get(){
-        const url = '/products';
+        const url = '/products/get-all';
         return axiosClient.get(url);
     },
     delete(id){
@@ -23,9 +23,8 @@ const listProducts= {
         const url = `/products/products-by-cate?cateId=${id}`;
         return axiosClient.get(url);
     },
-    getAndSort(idCategory, sortBy, sortDir){
-        const url = `/products?sortDir=${sortDir}&sortBy=${sortBy}&idCategory=${idCategory}`;
-        
+    getAndSort(idCategory, sortBy, sortDir, pageNo){
+        const url = `/products?sortDir=${sortDir}&sortBy=${sortBy}&idCategory=${idCategory}&pageNo=${pageNo}`;
         return axiosClient.get(url);
     }
 };

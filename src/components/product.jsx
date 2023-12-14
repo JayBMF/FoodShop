@@ -33,29 +33,33 @@ function Product(){
 
     const [listCategory, setListCategory] = useState('');
     const [listProduct, setListProducts] = useState('');
-    const [sortDir, setSortDir] = useState("Default");
+    const [sortDir, setSortDir] = useState("default");
     const [sortBy, setSortBy] = useState("id");
+    const [pageNo, setPageNo] = useState(0);
+    const [pageNumb, setPageNumb] = useState('')
+    
     
     const {id} = useParams();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchData();
-    }, [id, sortBy, sortDir]);
+    }, [id, sortBy, sortDir, pageNo]);
     const fetchData = async() => {
         
         try {
             const responseCategory = await listCategories.get();
-            const responseProducts = await listProducts.getAndSort(id, sortBy, sortDir);
+            const responseProducts = await listProducts.getAndSort(id, sortBy, sortDir, pageNo);
             setListCategory(responseCategory);
-            setListProducts(responseProducts);
+            setListProducts(responseProducts.products);
+            setPageNumb(responseProducts.pageSize);
             setLoading(false);
         } catch (error) {
             console.log(error);
         }
     };
 
-    
+    console.log(pageNumb);
 
     const handleSelected = (e) => {
         setSortDir(e.target.value);
@@ -65,6 +69,18 @@ function Product(){
             setSortBy("price");
         }
     };
+
+    const handleNextPage = () => {
+        setPageNo(pageNo + 1);
+    };
+
+    const handleReversePage = () => {
+        if ( pageNo >= 1) {
+            setPageNo(pageNo - 1);
+        }
+    };
+
+    
 
     const formattedAmount = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -150,10 +166,9 @@ function Product(){
 
                             </div>
                             <div class="product__pagination">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                                <a href="#"><i class="fa fa-long-arrow-left" onClick={handleReversePage}></i></a>
+                                <a href="#">{pageNo + 1}</a>
+                                <a href="#"><i class="fa fa-long-arrow-right" onClick={handleNextPage}></i></a>
                             </div>
                         </div>
                     </div>
