@@ -49,7 +49,7 @@ function AccountSetting(){
                                        
                                             <div>
                                                 <div className="text-center">
-                                                    <img className="profile-user-img img-fluid img-circle" src={data.urlAvatar} alt="User profile picture" />
+                                                    <img className="profile-user-img img-fluid img-circle" src={data.urlAvatar} alt="User profile picture" style={{ width: '125px', height: '125px' }}/>
                                                 </div>
                                                 <h3 className="profile-username text-center">{data.fullName}</h3>
                                                 <ul className="list-group list-group-unbordered mb-3">
@@ -66,7 +66,7 @@ function AccountSetting(){
                                             </div>
                                         
                                         <Link to="/profile/update"><button  className="btn btn-primary btn-block"><b>Setting</b></button></Link>
-                                        <button  className="btn btn-danger btn-block" onClick={handleLogOut}><b>Log out</b></button>
+                                        <button  className="btn btn-danger btn-block" style={{ marginTop: '5px' }} onClick={handleLogOut}><b>Log out</b></button>
                                     </div>
                                     {/* /.card-body */}
                                 </div>

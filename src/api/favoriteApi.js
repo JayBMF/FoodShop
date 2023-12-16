@@ -8,6 +8,10 @@ const favoriteApi = {
     getAll(){
         const url = "/user/favourite";
         return axiosClient.get(url);
+    },
+    remove(id){
+        const url = `/user/favourite?idProduct=${id}`;
+        return axiosClient.delete(url);
     }
 };
 

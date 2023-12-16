@@ -1,30 +1,38 @@
 import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 import { Link, useNavigate } from 'react-router-dom';
-import listUsers from "../api/listUsers";
-import { Box, IconButton } from "@mui/material";
+import listCategories from "../api/listCategories";
+import { Box } from "@mui/material";
+import {IconButton} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import deleteCategory from "../api/deleteCategory";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import orderApi from "../api/orderApi";
 
+function AdminOrders(){
+    const [data, setData] = useState([
+        
+    ]);
 
-function UserRegistration(){
-    
-    const [data, setData] = useState([]);
-
-    const fetchData = async () => {
-        try{
-            const response = await listUsers.get();
-            setData(response);
-            console.log(data);
-        } catch (error) {
-            console.log('Error fetching data:', error);
-            
-        }
-    };
 
     useEffect(() => {
         fetchData();
     }, []);
+
+    const fetchData = async () => {
+        try{
+            const response = await orderApi.getAll();
+            setData(response);
+            
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            
+        }
+    };
+
+    
     
        
     const columns = [
@@ -34,18 +42,8 @@ function UserRegistration(){
             sortable: true,
         },
         {
-            name: 'Username',
-            selector: 'username',
-            sortable: true,
-        },
-        {
-            name: 'Full name',
-            selector: 'fullName',
-            sortable: true,
-        },
-        {
-            name: 'Email',
-            selector: 'email',
+            name: 'Name',
+            selector: 'name',
             sortable: true,
         },
         {
@@ -54,21 +52,32 @@ function UserRegistration(){
             sortable: true,
         },
         {
-            name: 'Create Date',
-            selector: 'createdDate',
+            name: 'Total',
+            selector: 'totalPrice',
             sortable: true,
         },
-        // { name: 'Actions', cell: (row) => (
-        //     <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
-        //         <IconButton aria-label="edit" >
-        //             <EditIcon sx={{ color: '#1976d2' }} />
-        //         </IconButton>
-        //         <IconButton aria-label="delete">
-        //             <DeleteIcon sx={{ color: 'red' }} />
-        //         </IconButton>
-        //     </Box>
-        // ), },
-
+        {
+            name: 'Address',
+            selector: 'address.address',
+            sortable: true,
+        },
+        {
+            name: 'Status',
+            selector: 'statusOrder',
+            sortable: true,
+        },
+        { name: 'Actions', cell: (row) => (
+            <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
+                <Link to={`/admin/category/edit/${row.id}`}>
+                    <IconButton aria-label="edit" >
+                        <EditIcon sx={{ color: '#1976d2' }} />
+                    </IconButton>
+                </Link>
+                <IconButton aria-label="delete">
+                    <DeleteIcon sx={{ color: 'red' }} />
+                </IconButton>
+            </Box>
+        ), },
     ];
     
     const customStyles = {
@@ -90,15 +99,13 @@ function UserRegistration(){
         setCurrentPage(page);
     };
 
-    // const paginatedData = data.slice((currentPage - 1) * 10, currentPage * 10);
+    const paginatedData = data.slice((currentPage - 1) * 10, currentPage * 10);
 
-    const navigate = useNavigate();
+    const formattedAmount = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
 
-    const handleClick = () => {
-        navigate('/admin/Add-User');
-    };
-    
-    
     return(
         <div className="content-wrapper">
             {/* Content Header (Page header) */}
@@ -106,12 +113,12 @@ function UserRegistration(){
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>User Registrations</h1>
+                    <h1>Orders</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><Link to="/admin">Home</Link></li>
-                        <li className="breadcrumb-item active">User Registrations</li>
+                        <li className="breadcrumb-item active">Orders</li>
                     </ol>
                     </div>
                 </div>
@@ -124,10 +131,8 @@ function UserRegistration(){
                     <div className="col-12">
                     <div className="card">
                         <div className="card-header">
-                        <h2 className="card-title">DataTable with users information</h2>
-                        <div className="card-footer">
-                            <button className="btn btn-primary float-right" onClick={handleClick}><ion-icon name="add-outline"></ion-icon>Add User</button>
-                        </div>
+                        <h2 className="card-title">DataTable with orders</h2>
+                        
 
                         </div>
                         {/* /.card-header */}
@@ -137,7 +142,7 @@ function UserRegistration(){
                                 data={data}
                                 customStyles={customStyles}
                                 pagination
-                                // paginationTotalRows={data.length}
+                                paginationTotalRows={data.length}
                                 onChangePage={handleChangePage}
                             />
                         </div>
@@ -158,4 +163,4 @@ function UserRegistration(){
     );
 }
 
-export default UserRegistration;
+export default AdminOrders;

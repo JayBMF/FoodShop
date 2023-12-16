@@ -1,94 +1,150 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import cartAction from "../api/cartApi";
+import addressApi from "../api/addressApi";
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import profileApi from "../api/profileApi";
+import orderApi from "../api/orderApi";
 
 function CheckoutSection(){
+    const [listCartItems, setListCartItems] = useState([]);
+    const [listAddress, setListAddress] = useState([]);
+    const [totalPrice, setTotalPrice] = useState('');
+    const [newAddress, setNewAddress] = useState('');
+    const [isLoading, setLoading] = useState(false);
+    const [address, setAddress] = useState('');
+    const [userInfo, setUserInfo] = useState('');
+    const [payment, setPayment] = useState(1);
+
+    
+    const currentPage = useLocation().pathname;
+    const navigate = useNavigate();
+    
+    const [searchParams, setSearchParams] = useSearchParams();
+
+
+    useEffect(() => {
+        fetchData();
+        postOrder();
+    }, []);
+
+    const fetchData = async() => {
+        
+        try {
+            const response = await cartAction.getAll();
+            const data = await addressApi.get();
+            const identity = await profileApi.get();
+            setListCartItems(response);
+            setListAddress(data);
+            setUserInfo(identity);
+            setAddress(data[0].id);
+            let sumPrice = 0;
+            response.forEach(item => {
+                sumPrice += item.totalPrice;
+            });
+            setTotalPrice(sumPrice);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const postOrder = async() => {
+        if (searchParams && searchParams.get('vnp_ResponseCode')==="00") {
+            try {
+                await orderApi.postOrder(address,userInfo.fullName, userInfo.phone ,searchParams.get('vnpAmount'),searchParams.get('vnpBankCode'),searchParams.get('vnpTransactionNo'),searchParams.get('vnpOrderInfo'),searchParams.get('vnpSecureHash'),searchParams.get('vnpPayDate'),searchParams.get('vnpTxnRef'));
+                toast.success("Order success");
+                navigate('/Home');
+            } catch (error) {
+                console.log(error);
+                toast.error("Order failed");
+            }
+        }
+    }
+
+    
+    const formattedAmount = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
+    });
+
+    const handleAddAddress = async(e) => {
+        
+        try {
+            await addressApi.add(newAddress);
+            navigate("/check-out");
+            toast.success("Create new address success");
+            fetchData();
+        } catch (error) {
+            console.log(error);
+            toast.error("Create new address failed");
+        }
+    };
+
+    const handleSelected = (e) => {
+        setAddress(e.target.value);
+    };
+
+    const handleSelectedPayment = (e) => {
+        setPayment(e.target.value);
+    };
+
+    
+    const handleOrder = async() => {
+        setLoading(true);
+        if ( payment === 1) {
+            try {
+                await orderApi.add(address, userInfo.fullName, userInfo.phone);
+                toast.success("Order success");
+                navigate("/Home");
+            } catch (error) {
+                console.log(error);
+                toast.error("Order failed");
+            }
+        } else {
+            try {
+                const urlVNPay = await orderApi.addOnl(address, userInfo.fullName, userInfo.phone, totalPrice);
+                if (urlVNPay) {
+                    window.location=urlVNPay;
+                }
+            } catch (error) {
+                console.log(error);
+                toast.error("Order failed");
+            }
+        }
+    }
+    
     return(
         <div>
             <section className="checkout spad">
                 <div className="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
-                            </h6>
-                        </div>
-                    </div>
                     <div class="checkout__form">
                         <h4>Billing Details</h4>
-                        <form action="#">
+                        <form>
                             <div class="row">
                                 <div class="col-lg-8 col-md-6">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="checkout__input">
-                                                <p>Fist Name<span>*</span></p>
-                                                <input type="text"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="checkout__input">
-                                                <p>Last Name<span>*</span></p>
-                                                <input type="text"/>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="checkout__input">
-                                        <p>Country<span>*</span></p>
-                                        <input type="text"/>
-                                    </div>
-                                    <div class="checkout__input">
-                                        <p>Address<span>*</span></p>
-                                        <input type="text" placeholder="Street Address" class="checkout__input__add"/>
-                                        <input type="text" placeholder="Apartment, suite, unite ect (optinal)"/>
-                                    </div>
-                                    <div class="checkout__input">
-                                        <p>Town/City<span>*</span></p>
-                                        <input type="text"/>
-                                    </div>
-                                    <div class="checkout__input">
-                                        <p>Country/State<span>*</span></p>
-                                        <input type="text"/>
-                                    </div>
-                                    <div class="checkout__input">
-                                        <p>Postcode / ZIP<span>*</span></p>
-                                        <input type="text"/>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="checkout__input">
-                                                <p>Phone<span>*</span></p>
-                                                <input type="text"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="checkout__input">
-                                                <p>Email<span>*</span></p>
-                                                <input type="text"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="checkout__input__checkbox">
-                                        <label for="acc">
-                                            Create an account?
-                                            <input type="checkbox" id="acc"/>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <p>Create an account by entering the information below. If you are a returning customer
-                                        please login at the top of the page</p>
-                                    <div class="checkout__input">
-                                        <p>Account Password<span>*</span></p>
-                                        <input type="text"/>
-                                    </div>
-                                    <div class="checkout__input__checkbox">
-                                        <label for="diff-acc">
-                                            Ship to a different address?
-                                            <input type="checkbox" id="diff-acc"/>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="checkout__input">
-                                        <p>Order notes<span>*</span></p>
-                                        <input type="text"
-                                            placeholder="Notes about your order, e.g. special notes for delivery."/>
+                                        {
+                                            currentPage === "/check-out" ? (
+                                                <>
+                                                    <p>Address<span>*</span></p>
+                                                    <select style={{ width: '756px'}} onChange={handleSelected}>
+                                                        {
+                                                            listAddress && listAddress.map((item) => (
+                                                                <option key={item.id} value={item.id}>{item.address}</option>
+                                                            ))
+                                                        }
+                                                    </select>
+                                                    <Link to="/check-out/create-address"><button className="site-btn" style={{ marginTop: '10px'}}>Ship to another address</button></Link>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <p>New address<span>*</span></p>
+                                                    <input type="text" placeholder="Enter new address" onChange={(e) => setNewAddress(e.target.value)}/>
+                                                    <button className="site-btn" style={{ marginTop: '10px'}} onClick={handleAddAddress} disabled={isLoading}>Create new address</button>
+                                                </>
+                                            )
+                                        }
+                                        
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
@@ -96,36 +152,26 @@ function CheckoutSection(){
                                         <h4>Your Order</h4>
                                         <div class="checkout__order__products">Products <span>Total</span></div>
                                         <ul>
-                                            <li>Vegetable’s Package <span>$75.99</span></li>
-                                            <li>Fresh Vegetable <span>$151.99</span></li>
-                                            <li>Organic Bananas <span>$53.99</span></li>
+                                            {
+                                                listCartItems && listCartItems.map((item) => (
+                                                    <li>{item.name}<span>{formattedAmount.format(item.totalPrice)}</span></li>
+                                                ))
+                                            }
+                                            
                                         </ul>
-                                        <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                                        <div class="checkout__order__total">Total <span>$750.99</span></div>
-                                        <div class="checkout__input__checkbox">
-                                            <label for="acc-or">
-                                                Create an account?
-                                                <input type="checkbox" id="acc-or"/>
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                            ut labore et dolore magna aliqua.</p>
+                                        
+                                        <div class="checkout__order__total">Total <span>{formattedAmount.format(totalPrice)}</span></div>
+                                        
                                         <div class="checkout__input__checkbox">
                                             <label for="payment">
-                                                Check Payment
-                                                <input type="checkbox" id="payment"/>
-                                                <span class="checkmark"></span>
+                                                Payment
+                                                <select style={{ marginLeft: '10px'}} onChange={handleSelectedPayment}>
+                                                    <option value={1}>Ship cod</option>
+                                                    <option value={2}>Banking</option>
+                                                </select>
                                             </label>
                                         </div>
-                                        <div class="checkout__input__checkbox">
-                                            <label for="paypal">
-                                                Paypal
-                                                <input type="checkbox" id="paypal"/>
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <button type="submit" class="site-btn">PLACE ORDER</button>
+                                        <button class="site-btn" onClick={handleOrder} disabled={isLoading}>PLACE ORDER</button>
                                     </div>
                                 </div>
                             </div>

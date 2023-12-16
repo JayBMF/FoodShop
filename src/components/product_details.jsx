@@ -35,9 +35,11 @@ function ProductDetails(){
     const [userInfo, setUserInfo] = useState('');
 
     const {id} = useParams();
+    const idProduct = id;
     const [loading, setLoading] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
+    const [desiredItemExists, setDesiredItemExists] = useState(false);
 
     const navigate = useNavigate();
 
@@ -47,12 +49,13 @@ function ProductDetails(){
             setIsLogin(true);
         }
         fetchData();
+        fetchFavourites();
     }, []);
 
     const fetchData = async() => {
+        
         try {
             const response = await listProducts.getById(id);
-            
             setName(response.name);
             setAmount(response.available);
             setDiscount(response.discount);
@@ -61,8 +64,20 @@ function ProductDetails(){
             setImage(response.urlImage);
             setReviews(response.rate);
             setListComment(response.reviews);
-            
             setLoading(false);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const fetchFavourites = async () => {
+        try {
+            const data = await favoriteApi.getAll();
+            const isItemInData = data.some(item => {
+                return `${item.id}` === idProduct;
+            });
+            setDesiredItemExists(isItemInData);
+
         } catch (error) {
             console.log(error);
         }
@@ -128,16 +143,30 @@ function ProductDetails(){
         }
     };
 
+
     const handleAddFavorite = async (e) => {
         e.preventDefault();
         try {
             await favoriteApi.add(id);
+            fetchFavourites();
             toast.success("Add favorite success");
         } catch (error) {
             console.log(error);
             toast.error("Add favorite failed");
         }
     }
+
+    const handleRemoveFavourite = async (e) => {
+        e.preventDefault();
+        try {
+            await favoriteApi.remove(id);
+            fetchFavourites();
+            toast.success("Remove favoutite success!");
+        } catch (error) {
+            console.log(error);
+            toast.error("Remove favoutite failed");
+        }
+    };
 
     // const handleDeleteComment = async (id) => {
     //     setLoading(true);
@@ -220,7 +249,14 @@ function ProductDetails(){
                                             </div>
                                         </div>
                                         <button class="primary-btn" onClick={handleAddToCart} disabled={isLoading}>ADD TO CARD</button>
-                                        <a href="#" class="heart-icon" onClick={handleAddFavorite}><span class="icon_heart_alt"></span></a>
+                                        {
+                                            desiredItemExists ? (
+                                                <a href="#" class="heart-icon" style={{ color: "#228B22"}} onClick={handleRemoveFavourite}><span class="icon_heart"></span></a>
+                                            ) : (
+                                                <a href="#" class="heart-icon" onClick={handleAddFavorite}><span class="icon_heart_alt"></span></a>
+                                            )
+                                        }
+                                        
                                         <ul>
                                             <li><b>Availability</b> <span>{amount}</span></li>
                                             <li><b>Discount</b> <span>{discount * 100}%</span></li>
@@ -342,7 +378,7 @@ function ProductDetails(){
                                                                 </form>
                                                             </Box>  
                                                         ) : (
-                                                            <Link to='/login'><p>Please login to add comment</p></Link>
+                                                            <Link to='/login' style={{ textDecoration: 'none'}}><p>Please login to add comment</p></Link>
                                                         )
                                                     }
                                                                                                                             

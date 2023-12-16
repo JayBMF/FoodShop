@@ -26,7 +26,8 @@ const listProducts= {
     getAndSort(idCategory, sortBy, sortDir, pageNo){
         const url = `/products?sortDir=${sortDir}&sortBy=${sortBy}&idCategory=${idCategory}&pageNo=${pageNo}`;
         return axiosClient.get(url);
-    }
+    },
+    
 };
 
 export default listProducts;

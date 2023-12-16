@@ -9,27 +9,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
 
 function Product(){
-    const options = {
-        items: 1,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        animateOut: 'slideOutUp',
-        nav: false,
-        dots: true,
-        margin: 0,
-    };
-
-    const discountOptions = {
-        items: 3,
-        loop: true,
-        autoplay: true,
-        rewind: true,
-        autoplayTimeout: 3000,
-        dots: true,
-        nav: false,
-        margin: 10,
-    };
 
     const [listCategory, setListCategory] = useState('');
     const [listProduct, setListProducts] = useState('');
@@ -140,7 +119,7 @@ function Product(){
                                             {
                                                 listProduct && listProduct.map((item) => (
                                                     <div class="col-lg-4 col-md-6 col-sm-6" key={item.id}>
-                                                        <Link to={`/shop-details/${item.id}`}>
+                                                        <Link to={`/shop-details/${item.id}`} style={{ textDecoration: 'none' }}>
                                                             <div class="product__item">
                                                                 <div class="product__item__pic product__discount__item__pic set-bg" style={{backgroundImage: `url(${item.urlImage})`}}>
                                                                     {/* <ul class="product__item__pic__hover">

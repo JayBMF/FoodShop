@@ -95,7 +95,7 @@ function UpdateProfile () {
                                             </div>
 
                                             <button type="submit" className="btn btn-primary btn-block"  disabled={isLoading}><b>Submit</b></button>
-                                            <Link to="/profile/update-password"><button className="btn btn-warning btn-block" ><b>Change Password</b></button></Link>
+                                            <Link to="/profile/update-password"><button className="btn btn-warning btn-block" style={{ marginTop: '5px' }}><b>Change Password</b></button></Link>
                                         </div>
                                     </form>
                                     {/* /.card-body */}

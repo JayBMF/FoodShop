@@ -71,7 +71,7 @@ function Featured(){
                                 <>
                                     {products && products.map((item) => (
                                         <div class="col-lg-3 col-md-4 col-sm-6 product-box" key={item.id}>
-                                            <Link to={`/shop-details/${item.id}`}>
+                                            <Link to={`/shop-details/${item.id}`} style={{ textDecoration: 'none' }}>
                                                 <div class="featured__item">
                                                     <div class="featured__item__pic set-bg" style={{backgroundImage: `url(${item.urlImage})`}}>
                                                         {/* <ul class="featured__item__pic__hover">

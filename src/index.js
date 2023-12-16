@@ -37,6 +37,7 @@ root.render(
                     <Route path='favourite-list' element={<FavouriteList/>}/>
                     <Route path='contact' element={<Contact/>}/>
                     <Route path='check-out' element={<CheckOut/>}/>
+                    <Route path='check-out/create-address' element={<CheckOut/>}/>
                     <Route path='login' element={<Login/>}/>
                     <Route path='register' element={<Register/>}/>
                     <Route path='forgot-password' element={<ForgotPassword/>}/>
@@ -54,6 +55,7 @@ root.render(
                     <Route path='admin/Add-Product' element={<Admin/>}/>
                     <Route path='admin/category/edit/:id' element={<Admin/>}/>
                     <Route path='admin/product/edit/:id' element={<Admin/>}/>
+                    <Route path='admin/Orders' element={<Admin/>}/>
                     <Route path='/*' element={<Error/>}/>
                 </Routes>
             </BrowserRouter>

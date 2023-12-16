@@ -45,7 +45,7 @@ function Hero(){
                                     <ul className="hero__categories ul">
                                         {listCategory &&
                                          listCategory.map((item) => (
-                                            <li key={item.id}><Link to={`/Shop/${item.id}`}><a>{item.name}</a></Link></li>
+                                            <li key={item.id}><Link to={`/Shop/${item.id}`}><p>{item.name}</p></Link></li>
                                         ))}
                                     </ul>
                                 )}

@@ -151,7 +151,7 @@ function Header(){
                                             </Link>
                                         </div>
                                         :
-                                        <Link to="/login"><i class="fa fa-user"></i> Login</Link>
+                                        <Link to="/login" style={{ textDecoration: 'none'}}><i class="fa fa-user"></i> Login</Link>
                                         }
                                     </div>
                                 </div>

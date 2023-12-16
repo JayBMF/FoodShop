@@ -8,6 +8,7 @@ import Loading from "./Loading";
 import { debounce } from "lodash";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 
 function CartSection(){
@@ -16,14 +17,8 @@ function CartSection(){
     const [ totalPrice, setTotalPrice] = useState('');
 
     const increaseQuantity = async (idProduct, productQuantity) => {
-        // if(quantity === 0){
-        //     setQuantity(productQuantity);
-        // }
-        // setQuantity(quantity + 1);
-
-
         await cartAction.updateQuantity(idProduct, productQuantity + 1);
-        // setQuantity(0);
+        
         fetchData();
     };
 
@@ -158,7 +153,7 @@ function CartSection(){
                                             <li>Quantity <span>{totalQuantity}</span></li>
                                             <li>Total <span>{formattedAmount.format(totalPrice)}</span></li>
                                         </ul>
-                                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                                        <Link to="/check-out" style={{ textDecoration: 'none' }}><p class="primary-btn">PROCEED TO CHECKOUT</p></Link>
                                     </div>
                                 </div>
                             </div>

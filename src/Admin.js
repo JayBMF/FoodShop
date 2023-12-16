@@ -14,6 +14,7 @@ import { error } from "jquery";
 import Error from "./components/Error";
 import EditCategory from "./components/edit_category";
 import EditProduct from "./components/edit_product";
+import AdminOrders from "./components/admin_orders";
 
 function Content(){
     const currentPage = useLocation().pathname;
@@ -39,12 +40,16 @@ function Content(){
             return <EditCategory/>
         case(`/admin/product/edit/${id}`):
             return <EditProduct/>
+        case('/admin/Orders'):
+            return <AdminOrders/>;
         default:
             return <Dashboard/>;
     }
 }
 
 function Admin(){
+    const currentPage = useLocation().pathname;
+    const {id} = useParams();
     const navigate = useNavigate();
     const [isAdmin, setIsAdmin] = useState(false);
     useEffect (() => {
@@ -110,45 +115,103 @@ function Admin(){
                                 {/* Add icons to the links using the .nav-icon class
                                 with font-awesome or any other icon font library */}
                                 <li className="nav-item menu-open">
-                                    <a href="#" className="nav-link active">
+                                    {/* <a href="#" className="nav-link active">
                                         <i className="nav-icon fas fa-tachometer-alt" />
                                         <p>
                                         Dashboard
                                         <i className="right fas fa-angle-left" />
                                         </p>
-                                    </a>
+                                    </a> */}
                                     <ul className="nav nav-treeview">
                                         <li className="nav-item">
-                                            <Link to="/admin">
-                                                <a href="./index.html" className="nav-link">
-                                                    <i className="far    fa-circle nav-icon" />
-                                                    <p>Dashboard</p>
-                                                </a>
-                                            </Link>
+                                            {
+                                                currentPage === '/admin' ? (
+                                                    <a href="./index.html" className="nav-link">
+                                                        <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
+                                                        <p>Dashboard</p>
+                                                    </a>
+                                                ) : (
+                                                    <Link to="/admin">
+                                                        <a href="./index.html" className="nav-link">
+                                                            <i className="far fa-circle nav-icon"/>
+                                                            <p>Dashboard</p>
+                                                        </a>
+                                                    </Link>
+                                                )
+                                            }
+                                    
                                         </li>
                                         <li className="nav-item">
-                                            <Link to="/admin/Categories">
-                                                <a href="./index.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Categories</p>
-                                                </a>
-                                            </Link>
+                                            {
+                                                currentPage === '/admin/Orders' ? (
+                                                    <a href="./index.html" className="nav-link">
+                                                        <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
+                                                        <p>Orders</p>
+                                                    </a>
+                                                ) : (
+                                                    <Link to="/admin/Orders">
+                                                        <a href="./index.html" className="nav-link">
+                                                            <i className="far fa-circle nav-icon"/>
+                                                            <p>Orders</p>
+                                                        </a>
+                                                    </Link>
+                                                )
+                                            }
+                                    
                                         </li>
                                         <li className="nav-item">
-                                            <Link to="/admin/Products">
-                                                <a href="./index.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Products</p>
-                                                </a>
-                                            </Link>
+                                            {
+                                                currentPage === '/admin/Categories' || currentPage === '/admin/Add-Category' || currentPage === `/admin/category/edit/${id}` ? (
+                                                    <a href="./index.html" className="nav-link">
+                                                        <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
+                                                        <p>Categories</p>
+                                                    </a>
+                                                ) : (
+                                                    <Link to="/admin/Categories">
+                                                        <a href="./index.html" className="nav-link">
+                                                            <i className="far fa-circle nav-icon" />
+                                                            <p>Categories</p>
+                                                        </a>
+                                                    </Link>
+                                                )
+                                            }
+                                            
                                         </li>
                                         <li className="nav-item">
-                                            <Link to="/admin/Registrations">
-                                                <a className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Users</p>
-                                                </a>
-                                            </Link>
+                                            {
+                                                currentPage === '/admin/Products' || currentPage === '/admin/Add-Product' || currentPage === `/admin/product/edit/${id}` ? (
+                                                    <a href="./index.html" className="nav-link">
+                                                        <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
+                                                        <p>Products</p>
+                                                    </a>
+                                                ) : (
+                                                    <Link to="/admin/Products">
+                                                        <a href="./index.html" className="nav-link">
+                                                            <i className="far fa-circle nav-icon" />
+                                                            <p>Products</p>
+                                                        </a>
+                                                    </Link>
+                                                )
+                                            }
+                                            
+                                        </li>
+                                        <li className="nav-item">
+                                            {
+                                                currentPage === '/admin/Registrations' || currentPage === '/admin/Add-User' ? (
+                                                    <a href="./index.html" className="nav-link">
+                                                        <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
+                                                        <p>Users</p>
+                                                    </a>
+                                                ) : (
+                                                    <Link to="/admin/Registrations">
+                                                        <a href="./index.html" className="nav-link">
+                                                            <i className="far fa-circle nav-icon" />
+                                                            <p>Users</p>
+                                                        </a>
+                                                    </Link>
+                                                )
+                                            }
+                                            
                                         </li>
                                     </ul>
                                 </li>
