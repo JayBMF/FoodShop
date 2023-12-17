@@ -22,6 +22,7 @@ import ShopDetails from './shop_details';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer } from 'react-toastify';
 import FavouriteList from './favoutite_list';
+import SearchProduct from './SearchProduct';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -33,6 +34,7 @@ root.render(
                     <Route path='Home' element={<Home/>}/>
                     <Route path='Shop/:id' element={<Shop/>}/>
                     <Route path='shop-details/:id' element={<ShopDetails/>}/>
+                    <Route path='shop/search/:searchKey' element={<SearchProduct/>}/>
                     <Route path='shopping-cart' element={<ShoppingCart/>}/>
                     <Route path='favourite-list' element={<FavouriteList/>}/>
                     <Route path='contact' element={<Contact/>}/>

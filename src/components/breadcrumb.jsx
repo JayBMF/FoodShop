@@ -5,9 +5,19 @@ import '../css/hero_setbg.css';
 function Content(){
     const currentPage = window.location.pathname;
     const {id} = useParams();
+    const {searchKey} = useParams();
 
+    console.log(searchKey);
     switch(currentPage){
         case `/Shop/${id}`:
+            return <div>
+                <h2>Organi Shop</h2>
+                <div class="breadcrumb__option">
+                    <Link to="/Home">Home</Link>
+                    <span>Shop</span>
+                </div>
+            </div>;
+        case `/shop/search/${searchKey}`:
             return <div>
                 <h2>Organi Shop</h2>
                 <div class="breadcrumb__option">
@@ -80,7 +90,13 @@ function Content(){
                 </div>
             </div>;
         default:
-            return <div></div>; 
+            return <div>
+                <h2>Organi Shop</h2>
+                <div class="breadcrumb__option">
+                    <Link to="/Home">Home</Link>
+                    <span>Shop</span>
+                </div>
+            </div>; 
     }
 }
 

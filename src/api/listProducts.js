@@ -27,7 +27,10 @@ const listProducts= {
         const url = `/products?sortDir=${sortDir}&sortBy=${sortBy}&idCategory=${idCategory}&pageNo=${pageNo}`;
         return axiosClient.get(url);
     },
-    
+    seach(searchName){
+        const url = `/products/search?searchName=${searchName}`;
+        return axiosClient.get(url);
+    }
 };
 
 export default listProducts;

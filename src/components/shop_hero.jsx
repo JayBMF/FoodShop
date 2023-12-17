@@ -3,6 +3,7 @@ import Banner from '../img/hero/banner.jpg';
 import '../css/hero_setbg.css';
 import 'font-awesome/css/font-awesome.min.css';
 import listCategories from '../api/listCategories';
+import { useNavigate } from 'react-router-dom';
 
 function ShopHero(){
     // Sử dụng useState để quản lý trạng thái của việc hiển thị/ẩn danh sách ul
@@ -27,6 +28,17 @@ function ShopHero(){
             console.log(error);
         }
     };
+
+    const navigate = useNavigate();
+    const [search, setSearch] = useState('');
+
+    const searchKey = (e) => {
+        setSearch(e.target.value);
+    }
+
+    const handleSearch = () => {
+        navigate(`/shop/search/${search}`)
+    }
 
     return(
         <div>
@@ -57,8 +69,8 @@ function ShopHero(){
                                             All Categories
                                             <span class="arrow_carrot-down"></span>
                                         </div>
-                                        <input type="text" placeholder="What do yo u need?"/>
-                                        <button type="submit" class="site-btn">SEARCH</button>
+                                        <input type="text" placeholder="What do yo u need?" onChange={searchKey}/>
+                                        <button  class="site-btn" onClick={handleSearch}>SEARCH</button>
                                     </form>
                                 </div>
                                 <div class="hero__search__phone">

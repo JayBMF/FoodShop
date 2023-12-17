@@ -3,7 +3,7 @@ import Banner from '../img/hero/banner.jpg';
 import '../css/hero_setbg.css';
 import 'font-awesome/css/font-awesome.min.css';
 import listCategories from '../api/listCategories';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -30,6 +30,17 @@ function Hero(){
             console.log(error);
         }
     };
+
+    const navigate = useNavigate();
+    const [search, setSearch] = useState('');
+
+    const searchKey = (e) => {
+        setSearch(e.target.value);
+    }
+
+    const handleSearch = () => {
+        navigate(`/shop/search/${search}`)
+    }
     return(
         <div>
             <section class="hero">
@@ -59,8 +70,8 @@ function Hero(){
                                             All Categories
                                             <span class="arrow_carrot-down"></span>
                                         </div>
-                                        <input type="text" placeholder="What do yo u need?"/>
-                                        <button type="submit" class="site-btn">SEARCH</button>
+                                        <input type="text" placeholder="What do yo u need?" onChange={searchKey}/>
+                                        <button class="site-btn" onClick={handleSearch}>SEARCH</button>
                                     </form>
                                 </div>
                                 <div class="hero__search__phone">
