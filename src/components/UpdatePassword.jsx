@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import profileApi from "../api/profileApi";
 import Cookies from "js-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UpdatePassword () {
     const [password, setPassword] = useState('');
@@ -21,9 +23,11 @@ function UpdatePassword () {
                 await profileApi.changePassword(password, newPassword);
                 Cookies.remove('token');
                 setLoading(false);
+                toast.success("Reset password success");
                 navigate('/login');
             } catch (error) {
                 console.log(error);
+                toast.error("Reset password failed");
             }
         } else {
             alert("Mật khẩu không đúng");

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import forgotPasswordApi from '../api/forgotPassword'
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = () => {
 
@@ -10,8 +12,10 @@ const ForgotPassword = () => {
         e.preventDefault();
         const rs = await forgotPasswordApi.add(email);
         if (rs === "send mail success") {
-        alert("Vui lòng kiểm tra email");
-        navigate("/");
+            toast.success("Please check your email");
+            navigate("/");
+        } else {
+            toast.error("Your email is invalid");
         }
     };
   return (

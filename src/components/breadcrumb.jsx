@@ -89,6 +89,14 @@ function Content(){
                     <span>Update password</span>
                 </div>
             </div>;
+        case '/orders':
+            return <div>
+                <h2>Orders</h2>
+                <div class="breadcrumb__option">
+                    <Link to="/Home">Home</Link>
+                    <span>Orders</span>
+                </div>
+            </div>;
         default:
             return <div>
                 <h2>Organi Shop</h2>

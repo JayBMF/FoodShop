@@ -25,7 +25,7 @@ function CheckoutSection(){
 
     useEffect(() => {
         fetchData();
-        postOrder();
+        
     }, []);
 
     const fetchData = async() => {
@@ -47,19 +47,6 @@ function CheckoutSection(){
             console.log(error);
         }
     };
-
-    const postOrder = async() => {
-        if (searchParams && searchParams.get('vnp_ResponseCode')==="00") {
-            try {
-                await orderApi.postOrder(address,userInfo.fullName, userInfo.phone ,searchParams.get('vnpAmount'),searchParams.get('vnpBankCode'),searchParams.get('vnpTransactionNo'),searchParams.get('vnpOrderInfo'),searchParams.get('vnpSecureHash'),searchParams.get('vnpPayDate'),searchParams.get('vnpTxnRef'));
-                toast.success("Order success");
-                navigate('/Home');
-            } catch (error) {
-                console.log(error);
-                toast.error("Order failed");
-            }
-        }
-    }
 
     
     const formattedAmount = new Intl.NumberFormat('vi-VN', {

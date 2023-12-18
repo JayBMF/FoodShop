@@ -14,25 +14,13 @@ const orderApi = {
         const url = `/api/payment/pay?totalPrice=${totalPrice}&addressId=${idAddress}&name=${userName}&phone=${phone}`;
         return axiosClient.get(url);
     },
-    postOrder(idAddress, userName, phone, vnpAmount, vnpBankCode, vnpTransactionNo, vnpOrderInfo, vnpSecureHash, vnpPayDate, vnpTxnRef){
-        const url = '/order/payment-vnPay';
-        console.log(vnpOrderInfo);
-        return axiosClient.post(url, {
-            addressId: `${idAddress}`,
-            name: `${userName}`,
-            phone: `${phone}`,
-            vnpAmount: `${vnpAmount}`,
-            vnpBankCode: `${vnpBankCode}`,
-            vnpTransactionNo: `${vnpTransactionNo}`,
-            vnpOrderInfo: `${vnpOrderInfo}`,
-            vnpSecureHash: `${vnpSecureHash}`,
-            vnpPayDate: `${vnpPayDate}`,
-            vnpTxnRef: `${vnpTxnRef}`
-        });
-    },
     getAll(){
         const url = '/orders';
         return axiosAdmin.get(url);
+    },
+    getByUser(){
+        const url = '/user/orders';
+        return axiosClient.get(url);
     }
 };
 

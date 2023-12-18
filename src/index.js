@@ -23,6 +23,9 @@ import reportWebVitals from './reportWebVitals';
 import { ToastContainer } from 'react-toastify';
 import FavouriteList from './favoutite_list';
 import SearchProduct from './SearchProduct';
+import PaymentSuccess from './PaymentSuccess';
+import PaymentFailed from './PaymentFail';
+import OrdersList from './OrderList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -58,6 +61,9 @@ root.render(
                     <Route path='admin/category/edit/:id' element={<Admin/>}/>
                     <Route path='admin/product/edit/:id' element={<Admin/>}/>
                     <Route path='admin/Orders' element={<Admin/>}/>
+                    <Route path='payment/success' element={<PaymentSuccess/>}/>
+                    <Route path='payment/failed' element={<PaymentFailed/>}/>
+                    <Route path='orders' element={<OrdersList/>}/>
                     <Route path='/*' element={<Error/>}/>
                 </Routes>
             </BrowserRouter>

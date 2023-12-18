@@ -126,13 +126,13 @@ function Admin(){
                                         <li className="nav-item">
                                             {
                                                 currentPage === '/admin' ? (
-                                                    <a href="./index.html" className="nav-link">
+                                                    <a href="#" className="nav-link">
                                                         <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
                                                         <p>Dashboard</p>
                                                     </a>
                                                 ) : (
                                                     <Link to="/admin">
-                                                        <a href="./index.html" className="nav-link">
+                                                        <a href="#" className="nav-link">
                                                             <i className="far fa-circle nav-icon"/>
                                                             <p>Dashboard</p>
                                                         </a>
@@ -144,13 +144,13 @@ function Admin(){
                                         <li className="nav-item">
                                             {
                                                 currentPage === '/admin/Orders' ? (
-                                                    <a href="./index.html" className="nav-link">
+                                                    <a href="#" className="nav-link">
                                                         <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
                                                         <p>Orders</p>
                                                     </a>
                                                 ) : (
                                                     <Link to="/admin/Orders">
-                                                        <a href="./index.html" className="nav-link">
+                                                        <a href="#" className="nav-link">
                                                             <i className="far fa-circle nav-icon"/>
                                                             <p>Orders</p>
                                                         </a>
@@ -162,13 +162,13 @@ function Admin(){
                                         <li className="nav-item">
                                             {
                                                 currentPage === '/admin/Categories' || currentPage === '/admin/Add-Category' || currentPage === `/admin/category/edit/${id}` ? (
-                                                    <a href="./index.html" className="nav-link">
+                                                    <a href="#" className="nav-link">
                                                         <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
                                                         <p>Categories</p>
                                                     </a>
                                                 ) : (
                                                     <Link to="/admin/Categories">
-                                                        <a href="./index.html" className="nav-link">
+                                                        <a href="#" className="nav-link">
                                                             <i className="far fa-circle nav-icon" />
                                                             <p>Categories</p>
                                                         </a>
@@ -180,13 +180,13 @@ function Admin(){
                                         <li className="nav-item">
                                             {
                                                 currentPage === '/admin/Products' || currentPage === '/admin/Add-Product' || currentPage === `/admin/product/edit/${id}` ? (
-                                                    <a href="./index.html" className="nav-link">
+                                                    <a href="#" className="nav-link">
                                                         <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
                                                         <p>Products</p>
                                                     </a>
                                                 ) : (
                                                     <Link to="/admin/Products">
-                                                        <a href="./index.html" className="nav-link">
+                                                        <a href="#" className="nav-link">
                                                             <i className="far fa-circle nav-icon" />
                                                             <p>Products</p>
                                                         </a>
@@ -198,13 +198,13 @@ function Admin(){
                                         <li className="nav-item">
                                             {
                                                 currentPage === '/admin/Registrations' || currentPage === '/admin/Add-User' ? (
-                                                    <a href="./index.html" className="nav-link">
+                                                    <a href="#" className="nav-link">
                                                         <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
                                                         <p>Users</p>
                                                     </a>
                                                 ) : (
                                                     <Link to="/admin/Registrations">
-                                                        <a href="./index.html" className="nav-link">
+                                                        <a href="#" className="nav-link">
                                                             <i className="far fa-circle nav-icon" />
                                                             <p>Users</p>
                                                         </a>

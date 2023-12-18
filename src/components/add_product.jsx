@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function AddProduct(){
     const [name, setName] = useState('');
-    const [category, setCategory] = useState(9);
+    const [category, setCategory] = useState(10);
     const [amount, setAmount] = useState('');
     const [discount, setDiscount] = useState('');
     const [price, setPrice] = useState('');
@@ -49,6 +49,8 @@ function AddProduct(){
     const handleSelected = (e) => {
         setCategory(e.target.value);
     };
+
+    
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
@@ -113,7 +115,7 @@ function AddProduct(){
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Category</label>
-                                <select onChange={handleSelected}>
+                                <select onChange={handleSelected} style={{ marginLeft: '10px'}}>
                                     {
                                         listCategory && 
                                         listCategory.map(item => (

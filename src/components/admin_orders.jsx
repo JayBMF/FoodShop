@@ -12,9 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import orderApi from "../api/orderApi";
 
 function AdminOrders(){
-    const [data, setData] = useState([
-        
-    ]);
+    const [data, setData] = useState([]);
 
 
     useEffect(() => {
@@ -33,7 +31,13 @@ function AdminOrders(){
     };
 
     
-    
+    const formatPayment = (row) => {
+        return row.vnPayResponseDTO === null ? 'Unpaid' : 'Paid';
+    };
+
+    const formatTotal = (row) => {
+        return formattedAmount.format(row);
+    };
        
     const columns = [
         {
@@ -66,16 +70,15 @@ function AdminOrders(){
             selector: 'statusOrder',
             sortable: true,
         },
+        {
+            name: 'Payment',
+            selector: 'vnPayResponseDTO',
+            sortable: true,
+            cell: row => formatPayment(row),
+        },
         { name: 'Actions', cell: (row) => (
             <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
-                <Link to={`/admin/category/edit/${row.id}`}>
-                    <IconButton aria-label="edit" >
-                        <EditIcon sx={{ color: '#1976d2' }} />
-                    </IconButton>
-                </Link>
-                <IconButton aria-label="delete">
-                    <DeleteIcon sx={{ color: 'red' }} />
-                </IconButton>
+                <button className="btn-success" style={{ borderRadius: '5px'}}>Confirm</button>
             </Box>
         ), },
     ];

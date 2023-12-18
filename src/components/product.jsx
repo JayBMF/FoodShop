@@ -24,8 +24,8 @@ function Product(){
     useEffect(() => {
         fetchData();
     }, [id, sortBy, sortDir, pageNo]);
+    
     const fetchData = async() => {
-        
         try {
             const responseCategory = await listCategories.get();
             const responseProducts = await listProducts.getAndSort(id, sortBy, sortDir, pageNo);

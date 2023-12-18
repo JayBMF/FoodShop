@@ -3,7 +3,7 @@ import Banner from '../img/hero/banner.jpg';
 import '../css/hero_setbg.css';
 import 'font-awesome/css/font-awesome.min.css';
 import listCategories from '../api/listCategories';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function ShopHero(){
     // Sử dụng useState để quản lý trạng thái của việc hiển thị/ẩn danh sách ul
@@ -55,7 +55,7 @@ function ShopHero(){
                                     <ul className="hero__categories ul">
                                         {listCategory &&
                                          listCategory.map((item) => (
-                                            <li key={item.id}><a>{item.name}</a></li>
+                                            <li key={item.id}><Link to={`/Shop/${item.id}`}><p>{item.name}</p></Link></li>
                                         ))}
                                     </ul>
                                 )}

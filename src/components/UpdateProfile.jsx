@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import profileApi from "../api/profileApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UpdateProfile () {
     const [data, setData] = useState('');
@@ -56,9 +58,11 @@ function UpdateProfile () {
             }
             await profileApi.update(formData);
             setLoading(false);
+            toast.success("Update profile success");
             navigate('/profile');
         } catch (error) {
             console.log(error);
+            toast.error("Failed");
         }
     }
     

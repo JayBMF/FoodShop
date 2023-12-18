@@ -3595,3 +3595,70 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
 	content: "\f005 \f005 \f005 \f005 \f005";
 	color: #f8ce0b;
 }
+
+.success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.success-container i {
+	text-align: center;
+    padding: 50px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.back-home {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.back-home:hover {
+    background-color: #45a049;
+}
+
+.failed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.failed-container h2 {
+    margin: 15px 0;
+    color: #f44336;
+}
+
+.failed-container p {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.failed-container .back-to-store {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+	text-decoration: none;
+}
+
+.failed-container .back-to-store:hover {
+    background-color: #b71c1c;
+}

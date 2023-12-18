@@ -72,6 +72,13 @@ function AdminProducts(){
             backgroundColor: 'rgba(236, 236, 236, 0.8)',
           },
         },
+        cells: {
+            style: {
+               // For each cell
+              fontWeight: 'normal', // For each cell
+              width: '50px',
+            },
+         },
      };
 
     const [currentPage, setCurrentPage] = useState(1);
