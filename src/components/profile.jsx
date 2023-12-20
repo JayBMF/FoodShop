@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Avatar from "../img/Admin.png"
 import Cookies from "js-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import profileApi from "../api/profileApi";
 import { error } from "jquery";
+import Avatar from "../img/Avatar.png";
 
 function AccountSetting(){
     const [isLogin, setIsLogin] = useState (false);
+    const [avatar, setAvatar] = useState(Avatar);
     const navigate = useNavigate();
 
     useEffect (() => {
@@ -26,10 +27,14 @@ function AccountSetting(){
         try {
             const response = await profileApi.get();
             setData(response);
+            if (response.urlAvatar !== null) {
+                setAvatar(response.urlAvatar);
+            }
         } catch (error) {
             console.log(error);
         }
     };
+
 
     const handleLogOut = () => {
         Cookies.remove('token');
@@ -49,7 +54,7 @@ function AccountSetting(){
                                        
                                             <div>
                                                 <div className="text-center">
-                                                    <img className="profile-user-img img-fluid img-circle" src={data.urlAvatar} alt="User profile picture" style={{ width: '125px', height: '125px' }}/>
+                                                    <img className="profile-user-img img-fluid img-circle" src={avatar} alt="User profile picture" style={{ width: '125px', height: '125px' }}/>
                                                 </div>
                                                 <h3 className="profile-username text-center">{data.fullName}</h3>
                                                 <ul className="list-group list-group-unbordered mb-3" style={{ marginTop: '15px'}}>

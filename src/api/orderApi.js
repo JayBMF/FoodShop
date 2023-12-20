@@ -25,6 +25,14 @@ const orderApi = {
     updateStatus(orderId, statusOrderId){
         const url = `order/update-status?orderId=${orderId}&statusOrderId=${statusOrderId}`;
         return axiosAdmin.put(url);
+    },
+    receivedOrder(id){
+        const url = `/user/received-order?id=${id}`;
+        return axiosClient.put(url);
+    },
+    cancelOrder(id){
+        const url = `/user/cancel-order?id=${id}`;
+        return axiosClient.put(url);
     }
 };
 
