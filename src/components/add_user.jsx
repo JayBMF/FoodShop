@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import registerApi from "../api/registerApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddUser(){
     const [userName, setUserName] = useState('');
@@ -22,9 +24,11 @@ function AddUser(){
                 "email": email
             };
             registerApi.add(postData);
+            toast.success("Add user success");
             navigate('/admin/Registrations');
         } catch (error){
-            alert('Không thành công');
+            console.log(error);
+            toast.error("Failed");
         }
     };
     
@@ -35,13 +39,13 @@ function AddUser(){
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Add User</h1>
+                    <h1>Thêm khách hàng</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><Link to="/admin">Home</Link></li>
-                        <li className="breadcrumb-item">Registrations</li>
-                        <li className="breadcrumb-item active">Add User</li>
+                        <li className="breadcrumb-item">Khách hàng</li>
+                        <li className="breadcrumb-item active">Thêm khách hàng</li>
                     </ol>
                     </div>
                 </div>
@@ -56,36 +60,36 @@ function AddUser(){
                     {/* jquery validation */}
                     <div className="card card-primary">
                         <div className="card-header">
-                        <h3 className="card-title">Add User Form</h3>
+                        <h3 className="card-title">Mẫu thêm khách hàng</h3>
                         </div>
                         {/* /.card-header */}
                         {/* form start */}
                         <form id="quickForm">
                         <div className="card-body">
                             <div className="form-group">
-                                <label htmlFor="exampleInputEmail1">Full name</label>
-                                <input type="text" name="FullName" className="form-control" placeholder="Enter name" value={fullName} onChange={(e) => setFullName(e.target.value)} required/>
+                                <label htmlFor="exampleInputEmail1">Họ và tên</label>
+                                <input type="text" name="FullName" className="form-control" placeholder="Nhập tên" value={fullName} onChange={(e) => setFullName(e.target.value)} required/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Phone number</label>
-                                <input type="text" name="PhoneNumber" className="form-control" placeholder="Phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required/>
+                                <label htmlFor="exampleInputPassword1">Số điện thoại</label>
+                                <input type="text" name="PhoneNumber" className="form-control" placeholder="Nhập số điện thoại" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Email</label>
-                                <input type="email" name="email" className="form-control" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                                <input type="email" name="email" className="form-control" placeholder="Nhập email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">User name</label>
-                                <input type="text" name="UserName" className="form-control" placeholder="User Name" value={userName} onChange={(e) => setUserName(e.target.value)} required/>
+                                <label htmlFor="exampleInputPassword1">Tên đăng nhập</label>
+                                <input type="text" name="UserName" className="form-control" placeholder="Nhập tên đăng nhập" value={userName} onChange={(e) => setUserName(e.target.value)} required/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Password</label>
-                                <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}  required/>
+                                <label htmlFor="exampleInputPassword1">Mật khẩu</label>
+                                <input type="password" name="password" className="form-control" placeholder="Nhập mật khẩu" value={password} onChange={(e) => setPassword(e.target.value)}  required/>
                             </div>
                         </div>
                         {/* /.card-body */}
                         <div className="card-footer">
-                            <button type="submit" className="btn btn-primary float-right" onClick={handleAddUser}>Submit</button>
+                            <button type="submit" className="btn btn-primary float-right" onClick={handleAddUser}>Thêm</button>
                         </div>
                         </form>
                     </div>

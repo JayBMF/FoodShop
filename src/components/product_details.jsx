@@ -217,9 +217,9 @@ function ProductDetails(){
                                             </div>
                                             {
                                                 reviews === "NaN" ? (
-                                                    <span style={{ fontSize: '18px'}}>(0 Review)</span>
+                                                    <span style={{ fontSize: '18px'}}>(0 Đánh giá)</span>
                                                 ) : (
-                                                    <span style={{ fontSize: '18px'}}>({listComment.length} Reviews)</span>
+                                                    <span style={{ fontSize: '18px'}}>({listComment.length} Đánh giá)</span>
                                                     
                                                 )
                                             }
@@ -248,7 +248,7 @@ function ProductDetails(){
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="primary-btn" onClick={handleAddToCart} disabled={isLoading}>ADD TO CARD</button>
+                                        <button class="primary-btn" onClick={handleAddToCart} disabled={isLoading}>THÊM VÀO GIỎ</button>
                                         {
                                             desiredItemExists ? (
                                                 <a href="#" class="heart-icon" style={{ color: "#228B22"}} onClick={handleRemoveFavourite}><span class="icon_heart"></span></a>
@@ -258,8 +258,8 @@ function ProductDetails(){
                                         }
                                         
                                         <ul>
-                                            <li><b>Availability</b> <span>{amount}</span></li>
-                                            <li><b>Discount</b> <span>{discount * 100}%</span></li>
+                                            <li><b>Số lượng khả dụng</b> <span>{amount}</span></li>
+                                            <li><b>Giảm giá</b> <span>{discount * 100}%</span></li>
                                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                                             
                                         </ul>
@@ -270,7 +270,7 @@ function ProductDetails(){
                                         <ul class="nav nav-tabs" role="tablist">
                                             <li class="nav-item">
                                                 <a class="nav-link active" data-toggle="tab" data-target="#tabs-1" role="tab"
-                                                    aria-selected="true">Description</a>
+                                                    aria-selected="true">Thông tin sản phẩm</a>
                                             </li>
                                         
                                         </ul>
@@ -289,7 +289,7 @@ function ProductDetails(){
                                         <ul class="nav nav-tabs" role="tablist">
                                             <li class="nav-item">
                                                 <a class="nav-link active" data-toggle="tab" data-target="#tabs-1" role="tab"
-                                                    aria-selected="true">Comments</a>
+                                                    aria-selected="true">Bình luận</a>
                                             </li>
                                         
                                         </ul>
@@ -336,18 +336,18 @@ function ProductDetails(){
                                                         (
                                                             <Box sx={{ pt: 5, pl: 3, pb: 3, bgcolor: "#fafafa" }}>
                                                                 <p>
-                                                                    Rating: 
+                                                                    Đánh giá: 
                                                                     {
                                                                         rating === 5 ? (
-                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Very good</strong>
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Rất tốt</strong>
                                                                         ) : rating === 4 ? (
-                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Good</strong>
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Tốt</strong>
                                                                         ) : rating === 3 ? (
-                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Fine</strong>
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Tạm ổn</strong>
                                                                         ) : rating === 2 ? (
-                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Bad</strong>
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Tệ</strong>
                                                                         ) : rating === 1 ? (
-                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Very Bad</strong>
+                                                                            <strong style={{marginLeft: '20px', fontSize: '20px'}}>Rất tệ</strong>
                                                                         ) : (
                                                                             <strong style={{marginLeft: '20px', fontSize: '20px'}}>Your opinion</strong>
                                                                         )
@@ -369,16 +369,16 @@ function ProductDetails(){
                                                                         value={comment}
                                                                         aria-label="minimum height"
                                                                         minRows={3}
-                                                                        placeholder="Add a comment..."
+                                                                        placeholder="Nhập bình luận..."
                                                                         style={{ width: 400, padding: "5px" }}
                                                                     />
                                                                     <Box sx={{ pt: 1 }}>
-                                                                        <Button type='submit' variant='contained' disabled={isLoading}>Comment</Button>
+                                                                        <Button type='submit' variant='contained' disabled={isLoading}>Đăng</Button>
                                                                     </Box>
                                                                 </form>
                                                             </Box>  
                                                         ) : (
-                                                            <Link to='/login' style={{ textDecoration: 'none'}}><p>Please login to add comment</p></Link>
+                                                            <Link to='/login' style={{ textDecoration: 'none'}}><p>Để bình luận và đánh giá hãy đăng nhập</p></Link>
                                                         )
                                                     }
                                                                                                                             

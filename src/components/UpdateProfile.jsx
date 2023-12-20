@@ -77,11 +77,11 @@ function UpdateProfile () {
                                     <form id="quickForm" method="post" encType="multipart/form-data" onSubmit={handleUpdateProfile}>
                                         <div className="card-body box-profile">
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Full name</label>
+                                                <label htmlFor="exampleInputEmail1">Họ tên</label>
                                                 <input type="text" name="FullName" className="form-control" placeholder="Enter name" value={fullName} onChange={(e) => setFullName(e.target.value)}/>
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputPassword1">Phone number</label>
+                                                <label htmlFor="exampleInputPassword1">Số điện thoại</label>
                                                 <input type="text" name="PhoneNumber" className="form-control" placeholder="Phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
                                             </div>
                                             <div className="form-group">
@@ -89,17 +89,17 @@ function UpdateProfile () {
                                                 <input type="email" name="email" className="form-control" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputPassword1">Birth Date</label>
+                                                <label htmlFor="exampleInputPassword1">Ngày sinh</label>
                                                 <input type="date" name="BirthDate" className="form-control" placeholder="Enter birth date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)}/>
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputPassword1">Image</label>
+                                                <label htmlFor="exampleInputPassword1">Ảnh đại diện</label>
                                                 <img className="previewImage" alt="Preview Image" src={imagePreview} />
                                                 <input type="file" name="Image" className="form-control" accept="image/*"  onChange={handleChange} />
                                             </div>
 
-                                            <button type="submit" className="btn btn-primary btn-block"  disabled={isLoading}><b>Submit</b></button>
-                                            <Link to="/profile/update-password"><button className="btn btn-warning btn-block" style={{ marginTop: '5px' }}><b>Change Password</b></button></Link>
+                                            <button type="submit" className="btn btn-primary btn-block"  disabled={isLoading}><b>Cập nhật</b></button>
+                                            <Link to="/profile/update-password"><button className="btn btn-warning btn-block" style={{ marginTop: '5px' }}><b>Đổi mật khẩu</b></button></Link>
                                         </div>
                                     </form>
                                     {/* /.card-body */}

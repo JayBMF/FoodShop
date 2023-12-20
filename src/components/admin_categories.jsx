@@ -52,16 +52,16 @@ function AdminCategories(){
             sortable: true,
         },
         {
-            name: 'Name',
+            name: 'Tên',
             selector: 'name',
             sortable: true,
         },
         {
-            name: 'Description',
+            name: 'Mô tả',
             selector: 'description',
             sortable: true,
         },
-        { name: 'Actions', cell: (row) => (
+        { name: 'Tác vụ', cell: (row) => (
             <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
                 <Link to={`/admin/category/edit/${row.id}`}>
                     <IconButton aria-label="edit" >
@@ -109,12 +109,12 @@ function AdminCategories(){
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Categories</h1>
+                    <h1>Danh mục</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><Link to="/admin">Home</Link></li>
-                        <li className="breadcrumb-item active">Categories</li>
+                        <li className="breadcrumb-item active">Danh mục</li>
                     </ol>
                     </div>
                 </div>
@@ -127,9 +127,9 @@ function AdminCategories(){
                     <div className="col-12">
                     <div className="card">
                         <div className="card-header">
-                        <h2 className="card-title">DataTable with categories</h2>
+                        {/* <h2 className="card-title">DataTable with categories</h2> */}
                         <div className="card-footer">
-                            <button className="btn btn-primary float-right" onClick={handleClick}><ion-icon name="add-outline"></ion-icon>Add Category</button>
+                            <button className="btn btn-primary float-right" onClick={handleClick}><ion-icon name="add-outline"></ion-icon>Thêm danh mục</button>
                         </div>
 
                         </div>

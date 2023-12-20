@@ -21,6 +21,10 @@ const orderApi = {
     getByUser(){
         const url = '/user/orders';
         return axiosClient.get(url);
+    },
+    updateStatus(orderId, statusOrderId){
+        const url = `order/update-status?orderId=${orderId}&statusOrderId=${statusOrderId}`;
+        return axiosAdmin.put(url);
     }
 };
 

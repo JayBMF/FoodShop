@@ -4,12 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import listCategories from "../api/listCategories";
 import { Box } from "@mui/material";
 import {IconButton} from "@mui/material";
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import deleteCategory from "../api/deleteCategory";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import orderApi from "../api/orderApi";
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 function AdminOrders(){
     const [data, setData] = useState([]);
@@ -30,14 +30,59 @@ function AdminOrders(){
         }
     };
 
+    const handleUpdateStatus = async(id, statusOrder) => {
+        if (statusOrder === 'Đang xác nhận'){
+            try {
+                await orderApi.updateStatus(id, 2);
+                fetchData();
+                toast.success("Update status success");
+            } catch (error) {
+                console.log(error);
+                toast.error("Failed");
+            }
+        }
+        if (statusOrder === 'Đang tiến hàng đóng gói'){
+            try {
+                await orderApi.updateStatus(id, 3);
+                fetchData();
+                toast.success("Update status success");
+            } catch (error) {
+                console.log(error);
+                toast.error("Failed");
+            }
+        }
+        if (statusOrder === 'Đang chờ vận chuyển'){
+            try {
+                await orderApi.updateStatus(id, 4);
+                fetchData();
+                toast.success("Update status success");
+            } catch (error) {
+                console.log(error);
+                toast.error("Failed");
+            }
+        }
+    };
+
+    const handleCancelOrder = async(id) => {
+        try {
+            await orderApi.updateStatus(id, 6);
+            fetchData();
+            toast.success("Cancel order success");
+        } catch (error) {
+            console.log(error);
+            toast.error("Failed");
+        }
+    };
     
     const formatPayment = (row) => {
-        return row.vnPayResponseDTO === null ? 'Unpaid' : 'Paid';
+        return row.vnPayResponseDTO === null ? 'Chưa thanh toán' : 'Đã thanh toán';
     };
 
     const formatTotal = (row) => {
-        return formattedAmount.format(row);
+        return formattedAmount.format(row.totalPrice);
     };
+
+
        
     const columns = [
         {
@@ -46,39 +91,45 @@ function AdminOrders(){
             sortable: true,
         },
         {
-            name: 'Name',
+            name: 'Tên khách hàng',
             selector: 'name',
             sortable: true,
         },
         {
-            name: 'Phone',
+            name: 'SĐT',
             selector: 'phone',
             sortable: true,
         },
         {
-            name: 'Total',
+            name: 'Tổng giá',
             selector: 'totalPrice',
             sortable: true,
+            cell: row => formatTotal(row),
         },
         {
-            name: 'Address',
+            name: 'Địa chỉ',
             selector: 'address.address',
             sortable: true,
         },
         {
-            name: 'Status',
+            name: 'Trạng thái',
             selector: 'statusOrder',
             sortable: true,
         },
         {
-            name: 'Payment',
+            name: 'Thanh toán',
             selector: 'vnPayResponseDTO',
             sortable: true,
             cell: row => formatPayment(row),
         },
-        { name: 'Actions', cell: (row) => (
+        { name: 'Tác vụ', cell: (row) => (
             <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
-                <button className="btn-success" style={{ borderRadius: '5px'}}>Confirm</button>
+                <IconButton aria-label="check" onClick={() => handleUpdateStatus(row.id, row.statusOrder)}>
+                    <CheckBoxIcon sx={{ color: '#228B22' }} />
+                </IconButton>
+                <IconButton aria-label="cancel" onClick={() => handleCancelOrder(row.id)}>
+                    <CancelIcon sx={{ color: 'red' }} />
+                </IconButton>
             </Box>
         ), },
     ];
@@ -116,12 +167,12 @@ function AdminOrders(){
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Orders</h1>
+                    <h1>Đơn hàng</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><Link to="/admin">Home</Link></li>
-                        <li className="breadcrumb-item active">Orders</li>
+                        <li className="breadcrumb-item active">Đơn hàng</li>
                     </ol>
                     </div>
                 </div>
@@ -134,7 +185,7 @@ function AdminOrders(){
                     <div className="col-12">
                     <div className="card">
                         <div className="card-header">
-                        <h2 className="card-title">DataTable with orders</h2>
+                        <h2 className="card-title"></h2>
                         
 
                         </div>

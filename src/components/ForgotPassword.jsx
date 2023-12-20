@@ -24,13 +24,13 @@ const ForgotPassword = () => {
                 <div class="form-box">
                     <div class="form-value">
                         <form class="login-form" onSubmit={handleSendEmail}>
-                            <h2>Forgot password</h2>
+                            <h2>Quên mật khẩu</h2>
                             <div class="inputbox">
                                 <ion-icon name="mail-outline"></ion-icon>
                                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                                 <label for="">Email</label>
                             </div>
-                            <button type='submit' class="btn-login">Send</button>
+                            <button type='submit' class="btn-login">Gửi</button>
                         </form>
                     </div>
                 </div>

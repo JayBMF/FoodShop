@@ -87,10 +87,10 @@ function CartSection(){
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th class="shoping__product">Products</th>
-                                                    <th>Price</th>
-                                                    <th>Quantity</th>
-                                                    <th>Total</th>
+                                                    <th class="shoping__product">Sản phẩm</th>
+                                                    <th>Giá</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Tổng</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -147,13 +147,13 @@ function CartSection(){
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="shoping__checkout">
-                                        <h5>Cart Total</h5>
+                                        <h5>Thông tin giỏ hàng</h5>
                                         <ul>
-                                            <li>Items <span>{listCartItems.length}</span></li>
-                                            <li>Quantity <span>{totalQuantity}</span></li>
-                                            <li>Total <span>{formattedAmount.format(totalPrice)}</span></li>
+                                            <li>Sản phẩm <span>{listCartItems.length}</span></li>
+                                            <li>Số lượng <span>{totalQuantity}</span></li>
+                                            <li>Tổng <span>{formattedAmount.format(totalPrice)}</span></li>
                                         </ul>
-                                        <Link to="/check-out" style={{ textDecoration: 'none' }}><p class="primary-btn">PROCEED TO CHECKOUT</p></Link>
+                                        <Link to="/check-out" style={{ textDecoration: 'none' }}><p class="primary-btn">ĐẶT HÀNG</p></Link>
                                     </div>
                                 </div>
                             </div>

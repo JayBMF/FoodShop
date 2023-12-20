@@ -46,19 +46,19 @@ function UpdatePassword () {
                                     <form id="quickForm" method="post" encType="multipart/form-data" onSubmit={handleChangePassword}>
                                         <div className="card-body box-profile">
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Current Password</label>
-                                                <input type="password" name="currentPassword" className="form-control" placeholder="Enter current password" onChange={(e) => setPassword(e.target.value)}/>
+                                                <label htmlFor="exampleInputEmail1">Mật khẩu hiện tại</label>
+                                                <input type="password" name="currentPassword" className="form-control" placeholder="Nhập mật khẩu hiện tại" onChange={(e) => setPassword(e.target.value)}/>
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputPassword1">New Password</label>
-                                                <input type="password" name="newPassword" className="form-control" placeholder="Enter new password" onChange={(e) => setNewPassword(e.target.value)}/>
+                                                <label htmlFor="exampleInputPassword1">Mật khẩu mới</label>
+                                                <input type="password" name="newPassword" className="form-control" placeholder="Nhập mật khẩu mới" onChange={(e) => setNewPassword(e.target.value)}/>
                                             </div>
                                             <div className="form-group">
-                                                <label htmlFor="exampleInputPassword1">Confirm New Password</label>
-                                                <input type="password" name="cofirmNewPassword" className="form-control" placeholder="Confirm new password" onChange={(e) => setConfirmNewPassword(e.target.value)}/>
+                                                <label htmlFor="exampleInputPassword1">Xác nhận mật khẩu mới</label>
+                                                <input type="password" name="cofirmNewPassword" className="form-control" placeholder="Xác nhận mật khẩu mới" onChange={(e) => setConfirmNewPassword(e.target.value)}/>
                                             </div>
 
-                                            <button type="submit" className="btn btn-primary btn-block" disabled={isLoading}><b>Submit</b></button>
+                                            <button type="submit" className="btn btn-primary btn-block" disabled={isLoading}><b>Cập nhật</b></button>
                                         </div>
                                     </form>
                                     {/* /.card-body */}

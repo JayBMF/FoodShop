@@ -64,7 +64,7 @@ function EditCategory () {
         }
     }
 
-    console.log(image);
+    
 
     return (
         <div className="content-wrapper">
@@ -73,13 +73,13 @@ function EditCategory () {
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Edit Category</h1>
+                    <h1>Cập nhật danh mục</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><Link to="/admin">Home</Link></li>
-                        <li className="breadcrumb-item">Categories</li>
-                        <li className="breadcrumb-item active">Edit Category</li>
+                        <li className="breadcrumb-item">Danh mục</li>
+                        <li className="breadcrumb-item active">Cập nhật</li>
                     </ol>
                     </div>
                 </div>
@@ -94,29 +94,29 @@ function EditCategory () {
                     {/* jquery validation */}
                     <div className="card card-primary">
                         <div className="card-header">
-                        <h3 className="card-title">Edit Category Form</h3>
+                        <h3 className="card-title">Mẫu cập nhật</h3>
                         </div>
                         {/* /.card-header */}
                         {/* form start */}
                         <form id="quickForm" method="put" encType="multipart/form-data" onSubmit={handleUpdateCategory}>
                             <div className="card-body">
                                 <div className="form-group">
-                                    <label>Name</label>
+                                    <label>Tên</label>
                                     <input type="text" name="Name" className="form-control" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)}/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Description</label>
+                                    <label>Mô tả</label>
                                     <input type="text" name="Description" className="form-control" placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)}/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Image</label>
+                                    <label>Hỉnh ảnh</label>
                                     <img className="previewImage" alt="Preview Image" src={imagePreview}/>
                                     <input type="file" name="Image" className="form-control" accept="image/*" onChange={handleChange}/>
                                 </div>
                             </div>
                             {/* /.card-body */}
                             <div className="card-footer">
-                                <button type="submit" className="btn btn-primary float-right" disabled={isLoading}>Submit</button>
+                                <button type="submit" className="btn btn-primary float-right" disabled={isLoading}>Cập nhật</button>
                             </div>
                         </form>
                     </div>

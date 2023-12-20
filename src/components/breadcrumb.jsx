@@ -13,8 +13,8 @@ function Content(){
             return <div>
                 <h2>Organi Shop</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Shop</span>
+                    <Link to="/Home" style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Cửa hàng</span>
                 </div>
             </div>;
         case `/shop/search/${searchKey}`:
@@ -27,26 +27,26 @@ function Content(){
             </div>;
         case `/shop-details/${id}`:
             return <div>
-                <h2>Product details</h2>
+                <h2>Thông tin sản phẩm</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Product details</span>
+                    <Link to="/Home" style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Chi tiết</span>
                  </div>
             </div>;
         case '/shopping-cart':
             return <div>
-                <h2>Shopping Cart</h2>
+                <h2>Giỏ hàng</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Shopping Cart</span>
+                    <Link to="/Home" style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Giỏ hàng</span>
                 </div>
             </div>
         case '/favourite-list':
             return <div>
-                <h2>Favourite list</h2>
+                <h2>Danh sách yêu thích</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Favourite list</span>
+                    <Link to="/Home" style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Danh sách yêu thích</span>
                 </div>
             </div>
         case '/contact':
@@ -59,50 +59,50 @@ function Content(){
             </div>;
         case '/check-out':
             return <div>
-                <h2>Checkout</h2>
+                <h2>Đặt hàng</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Checkout</span>
+                    <Link to="/Home" style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Đặt hàng</span>
                 </div>
             </div>;
         case '/profile':
             return <div>
-                <h2>Profile</h2>
+                <h2>Thông tin người dùng</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Profile</span>
+                    <Link to="/Home" style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Thông tin người dùng</span>
                 </div>
             </div>;
         case '/profile/update':
             return <div>
-                <h2>Profile</h2>
+                <h2>Thông tin người dùng</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Profile update</span>
+                    <Link to="/Home"style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Cập nhật thông tin</span>
                 </div>
             </div>;
         case '/profile/update-password':
             return <div>
-                <h2>Profile</h2>
+                <h2>Thông tin người dùng</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Update password</span>
+                    <Link to="/Home" style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Cập nhật mật khẩu</span>
                 </div>
             </div>;
         case '/orders':
             return <div>
-                <h2>Orders</h2>
+                <h2>Đơn hàng</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Orders</span>
+                    <Link to="/Home" style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Đơn hàng</span>
                 </div>
             </div>;
         default:
             return <div>
                 <h2>Organi Shop</h2>
                 <div class="breadcrumb__option">
-                    <Link to="/Home">Home</Link>
-                    <span>Shop</span>
+                    <Link to="/Home" style={{ textDecoration: 'none'}}>Trang chủ</Link>
+                    <span>Cửa hàng</span>
                 </div>
             </div>; 
     }

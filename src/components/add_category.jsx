@@ -53,13 +53,13 @@ function AddCategory(){
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Add Category</h1>
+                    <h1>Thêm danh mục</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><Link to="/admin">Home</Link></li>
-                        <li className="breadcrumb-item">Categories</li>
-                        <li className="breadcrumb-item active">Add Category</li>
+                        <li className="breadcrumb-item">Danh mục</li>
+                        <li className="breadcrumb-item active">Thêm danh mục</li>
                     </ol>
                     </div>
                 </div>
@@ -74,29 +74,29 @@ function AddCategory(){
                     {/* jquery validation */}
                     <div className="card card-primary">
                         <div className="card-header">
-                        <h3 className="card-title">Add Category Form</h3>
+                        <h3 className="card-title">Mẫu thêm danh mục</h3>
                         </div>
                         {/* /.card-header */}
                         {/* form start */}
                         <form id="quickForm" method="post" encType="multipart/form-data">
                             <div className="card-body">
                                 <div className="form-group">
-                                    <label>Name</label>
-                                    <input type="text" name="Name" className="form-control" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} required/>
+                                    <label>Tên danh mục</label>
+                                    <input type="text" name="Name" className="form-control" placeholder="Nhập tên danh mục" value={name} onChange={(e) => setName(e.target.value)} required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Description</label>
-                                    <input type="text" name="Description" className="form-control" placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)} required/>
+                                    <label>Mô tả</label>
+                                    <input type="text" name="Description" className="form-control" placeholder="Nhập mô tả" value={description} onChange={(e) => setDescription(e.target.value)} required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Image</label>
+                                    <label>Hình ảnh</label>
                                     <img className="previewImage" alt="Preview Image" src={imagePreview}/>
                                     <input type="file" name="Image" className="form-control" accept="image/*"  onChange={handleChange} required/>
                                 </div>
                             </div>
                             {/* /.card-body */}
                             <div className="card-footer">
-                                <button type="submit" className="btn btn-primary float-right" onClick={handleAddCategory} disabled={isLoading}>Submit</button>
+                                <button type="submit" className="btn btn-primary float-right" onClick={handleAddCategory} disabled={isLoading}>Thêm</button>
                             </div>
                         </form>
                     </div>

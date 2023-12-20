@@ -74,7 +74,7 @@ function Product(){
                         <div class="col-lg-3 col-md-5">
                             <div class="sidebar">
                                 <div class="sidebar__item">
-                                    <h4>Department</h4>
+                                    <h4>Danh sách danh mục</h4>
                                     <ul>
                                         {listCategory &&
                                          listCategory.map((item) => (
@@ -94,11 +94,11 @@ function Product(){
                                 <div class="row">
                                     <div class="col-lg-4 col-md-5">
                                         <div class="filter__sort">
-                                            <span>Sort By</span>
+                                            <span>Lọc theo giá</span>
                                             <select onChange={handleSelected} style={{ marginLeft: '10px'}}>
-                                                <option value="Default">Default</option>
-                                                <option value="asc">Increase</option>
-                                                <option value="desc">Decrease</option>
+                                                <option value="Default">Mặc định</option>
+                                                <option value="asc">Tăng dần</option>
+                                                <option value="desc">Giảm dần</option>
                                             </select>
                                         </div>
                                     </div>

@@ -49,7 +49,7 @@ function ShopHero(){
                             <div class="hero__categories">
                                 <div class="hero__categories__all" onClick={handleAllClick}>
                                     <i class="fa fa-bars"></i>
-                                    <span>All departments</span>
+                                    <span>Các danh mục</span>
                                 </div>
                                 {isListVisible &&(
                                     <ul className="hero__categories ul">
@@ -66,11 +66,11 @@ function ShopHero(){
                                 <div class="hero__search__form">
                                     <form action="#">
                                         <div class="hero__search__categories">
-                                            All Categories
+                                            Tất cả danh mục
                                             <span class="arrow_carrot-down"></span>
                                         </div>
-                                        <input type="text" placeholder="What do yo u need?" onChange={searchKey}/>
-                                        <button  class="site-btn" onClick={handleSearch}>SEARCH</button>
+                                        <input type="text" placeholder="Bạn cần gì ?" onChange={searchKey}/>
+                                        <button  class="site-btn" onClick={handleSearch}>TÌM</button>
                                     </form>
                                 </div>
                                 <div class="hero__search__phone">

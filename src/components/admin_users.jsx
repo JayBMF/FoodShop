@@ -34,12 +34,12 @@ function UserRegistration(){
             sortable: true,
         },
         {
-            name: 'Username',
+            name: 'Tên đăng nhập',
             selector: 'username',
             sortable: true,
         },
         {
-            name: 'Full name',
+            name: 'Họ tên',
             selector: 'fullName',
             sortable: true,
         },
@@ -49,15 +49,15 @@ function UserRegistration(){
             sortable: true,
         },
         {
-            name: 'Phone',
+            name: 'SĐT',
             selector: 'phone',
             sortable: true,
         },
-        {
-            name: 'Create Date',
-            selector: 'createdDate',
-            sortable: true,
-        },
+        // {
+        //     name: 'Create Date',
+        //     selector: 'createdDate',
+        //     sortable: true,
+        // },
         // { name: 'Actions', cell: (row) => (
         //     <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
         //         <IconButton aria-label="edit" >
@@ -106,12 +106,12 @@ function UserRegistration(){
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>User Registrations</h1>
+                    <h1>Khách hàng</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><Link to="/admin">Home</Link></li>
-                        <li className="breadcrumb-item active">User Registrations</li>
+                        <li className="breadcrumb-item active">Khách hàng</li>
                     </ol>
                     </div>
                 </div>
@@ -124,9 +124,9 @@ function UserRegistration(){
                     <div className="col-12">
                     <div className="card">
                         <div className="card-header">
-                        <h2 className="card-title">DataTable with users information</h2>
+                        {/* <h2 className="card-title">DataTable with users information</h2> */}
                         <div className="card-footer">
-                            <button className="btn btn-primary float-right" onClick={handleClick}><ion-icon name="add-outline"></ion-icon>Add User</button>
+                            <button className="btn btn-primary float-right" onClick={handleClick}><ion-icon name="add-outline"></ion-icon>Thêm khách hàng</button>
                         </div>
 
                         </div>

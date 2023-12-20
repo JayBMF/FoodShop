@@ -105,7 +105,7 @@ function CheckoutSection(){
             <section className="checkout spad">
                 <div className="container">
                     <div class="checkout__form">
-                        <h4>Billing Details</h4>
+                        <h4>Thông tin đơn hàng</h4>
                         <form>
                             <div class="row">
                                 <div class="col-lg-8 col-md-6">
@@ -113,7 +113,7 @@ function CheckoutSection(){
                                         {
                                             currentPage === "/check-out" ? (
                                                 <>
-                                                    <p>Address<span>*</span></p>
+                                                    <p>Địa chỉ<span>*</span></p>
                                                     <select style={{ width: '756px'}} onChange={handleSelected}>
                                                         {
                                                             listAddress && listAddress.map((item) => (
@@ -121,13 +121,13 @@ function CheckoutSection(){
                                                             ))
                                                         }
                                                     </select>
-                                                    <Link to="/check-out/create-address"><button className="site-btn" style={{ marginTop: '10px'}}>Ship to another address</button></Link>
+                                                    <Link to="/check-out/create-address"><button className="site-btn" style={{ marginTop: '10px'}}>Thêm địa chỉ mới</button></Link>
                                                 </>
                                             ) : (
                                                 <>
-                                                    <p>New address<span>*</span></p>
-                                                    <input type="text" placeholder="Enter new address" onChange={(e) => setNewAddress(e.target.value)}/>
-                                                    <button className="site-btn" style={{ marginTop: '10px'}} onClick={handleAddAddress} disabled={isLoading}>Create new address</button>
+                                                    <p>Địa chỉ mới<span>*</span></p>
+                                                    <input type="text" placeholder="Nhập địa chỉ mới" onChange={(e) => setNewAddress(e.target.value)}/>
+                                                    <button className="site-btn" style={{ marginTop: '10px'}} onClick={handleAddAddress} disabled={isLoading}>Tạo địa chỉ mới</button>
                                                 </>
                                             )
                                         }
@@ -136,8 +136,8 @@ function CheckoutSection(){
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="checkout__order">
-                                        <h4>Your Order</h4>
-                                        <div class="checkout__order__products">Products <span>Total</span></div>
+                                        <h4>Đơn của bạn</h4>
+                                        <div class="checkout__order__products">Sản phẩm <span>Tổng</span></div>
                                         <ul>
                                             {
                                                 listCartItems && listCartItems.map((item) => (
@@ -147,18 +147,18 @@ function CheckoutSection(){
                                             
                                         </ul>
                                         
-                                        <div class="checkout__order__total">Total <span>{formattedAmount.format(totalPrice)}</span></div>
+                                        <div class="checkout__order__total">Tổng tiền <span>{formattedAmount.format(totalPrice)}</span></div>
                                         
                                         <div class="checkout__input__checkbox">
                                             <label for="payment">
-                                                Payment
-                                                <select style={{ marginLeft: '10px'}} onChange={handleSelectedPayment}>
-                                                    <option value={1}>Ship cod</option>
-                                                    <option value={2}>Banking</option>
+                                                Thanh toán
+                                                <select style={{ marginLeft: '10px', width: '150px'}} onChange={handleSelectedPayment}>
+                                                    <option value={1}>Khi nhận hàng</option>
+                                                    <option value={2}>Qua VNPAY</option>
                                                 </select>
                                             </label>
                                         </div>
-                                        <button class="site-btn" onClick={handleOrder} disabled={isLoading}>PLACE ORDER</button>
+                                        <button class="site-btn" onClick={handleOrder} disabled={isLoading}>Đặt hàng</button>
                                     </div>
                                 </div>
                             </div>

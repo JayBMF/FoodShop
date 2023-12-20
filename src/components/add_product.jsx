@@ -82,13 +82,13 @@ function AddProduct(){
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Add Product</h1>
+                    <h1>Thêm sản phẩm</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><Link to="/admin">Home</Link></li>
-                        <li className="breadcrumb-item">Products</li>
-                        <li className="breadcrumb-item active">Add Product</li>
+                        <li className="breadcrumb-item">Sản phẩm</li>
+                        <li className="breadcrumb-item active">Thêm sản phẩm</li>
                     </ol>
                     </div>
                 </div>
@@ -103,18 +103,18 @@ function AddProduct(){
                     {/* jquery validation */}
                     <div className="card card-primary">
                         <div className="card-header">
-                        <h3 className="card-title">Add Product Form</h3>
+                        <h3 className="card-title">Mẫu thêm sản phẩm</h3>
                         </div>
                         {/* /.card-header */}
                         {/* form start */}
                         <form id="quickForm" method="post" encType="multipart/form-data" onSubmit={handleAddProduct}>
                         <div className="card-body">
                         <div className="form-group">
-                                <label htmlFor="exampleInputEmail1">Name</label>
-                                <input type="text" name="Name" className="form-control" placeholder="Enter name" onChange={(e) => setName(e.target.value)} required/>
+                                <label htmlFor="exampleInputEmail1">Tên sản phẩm</label>
+                                <input type="text" name="Name" className="form-control" placeholder="Nhập tên sản phẩm" onChange={(e) => setName(e.target.value)} required/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Category</label>
+                                <label htmlFor="exampleInputPassword1">Loại</label>
                                 <select onChange={handleSelected} style={{ marginLeft: '10px'}}>
                                     {
                                         listCategory && 
@@ -127,31 +127,31 @@ function AddProduct(){
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Amount</label>
-                                <input type="text" name="Amount" className="form-control" placeholder="Enter amount" onChange={(e) => setAmount(e.target.value)} required/>
+                                <label htmlFor="exampleInputPassword1">Số lượng</label>
+                                <input type="text" name="Amount" className="form-control" placeholder="Nhập số lượng" onChange={(e) => setAmount(e.target.value)} required/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Price</label>
-                                <input type="text" name="Price" className="form-control" placeholder="Enter price" onChange={(e) => setPrice(e.target.value)} required/>
+                                <label htmlFor="exampleInputPassword1">Giá cả</label>
+                                <input type="text" name="Price" className="form-control" placeholder="Nhập giá" onChange={(e) => setPrice(e.target.value)} required/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Discount</label>
-                                <input type="text" name="Discount" className="form-control" placeholder="Enter discount" onChange={(e) => setDiscount(e.target.value)} required/>
+                                <label htmlFor="exampleInputPassword1">Giảm giá</label>
+                                <input type="text" name="Discount" className="form-control" placeholder="Nhập phần trăm giảm" onChange={(e) => setDiscount(e.target.value)} required/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Description</label>
+                                <label htmlFor="exampleInputPassword1">Thông tin sản phẩm</label>
                                 {/* <input type="text" name="Description" className="form-control" placeholder="Enter description" onChange={(e) => setDescription(e.target.value)} required/> */}
                                 <ReactQuill theme="snow"  value={description} onChange={setDescription} required/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Image</label>
+                                <label htmlFor="exampleInputPassword1">Hình ảnh</label>
                                 <img className="previewImage" alt="Preview Image" src={imagePreview}/>
                                 <input type="file" name="Image" className="form-control"  onChange={handleChange} required/>
                             </div>
                         </div>
                         {/* /.card-body */}
                         <div className="card-footer">
-                            <button type="submit" className="btn btn-primary float-right"  disabled={isLoading}>Submit</button>
+                            <button type="submit" className="btn btn-primary float-right"  disabled={isLoading}>Thêm</button>
                         </div>
                         </form>
                     </div>

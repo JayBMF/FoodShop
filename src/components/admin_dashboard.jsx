@@ -60,12 +60,12 @@ function Dashboard(){
                                         <div className="small-box bg-info">
                                             <div className="inner">
                                                 <h3>{orderAmount}</h3>
-                                                <p>New Orders</p>
+                                                <p>Danh sách đơn hàng</p>
                                             </div>
                                             <div className="icon">
                                                 <i className="ion ion-bag" />
                                             </div>
-                                            <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                                            <a href="#" className="small-box-footer">Tìm hiểu thêm <i className="fas fa-arrow-circle-right" /></a>
                                         </div>
                                     </Link>
                                 </div>
@@ -76,12 +76,12 @@ function Dashboard(){
                                         <div className="small-box bg-success">
                                             <div className="inner">
                                                 <h3>{categoryAmount}</h3>
-                                                <p>Categories</p>
+                                                <p>Danh sách danh mục</p>
                                             </div>
                                             <div className="icon">
                                                 <i className="ion ion-android-apps" />
                                             </div>
-                                            <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                                            <a href="#" className="small-box-footer">Tìm hiểu thêm <i className="fas fa-arrow-circle-right" /></a>
                                         </div>
                                     </Link>
                                 </div>
@@ -92,12 +92,12 @@ function Dashboard(){
                                         <div className="small-box bg-warning">
                                             <div className="inner">
                                                 <h3>{productAmount}</h3>
-                                                <p>Products</p>
+                                                <p>Danh sách sản phẩm</p>
                                             </div>
                                             <div className="icon">
                                                 <i className="ion ion-ios-nutrition" />
                                             </div>
-                                            <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                                            <a href="#" className="small-box-footer">Tìm hiểu thêm <i className="fas fa-arrow-circle-right" /></a>
                                         </div>
                                     </Link>
                                 </div>
@@ -108,12 +108,12 @@ function Dashboard(){
                                         <div className="small-box bg-danger">
                                             <div className="inner">
                                                 <h3>{userAmount}</h3>
-                                                <p>User Registrations</p>
+                                                <p>Danh sách khách hàng</p>
                                             </div>
                                             <div className="icon">
                                                 <i className="ion ion-person-add" />
                                             </div>
-                                            <a href="admin/Registrations" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                                            <a href="admin/Registrations" className="small-box-footer">Tìm hiểu thêm <i className="fas fa-arrow-circle-right" /></a>
                                         </div>
                                     </Link>
                                 </div>

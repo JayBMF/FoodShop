@@ -46,22 +46,22 @@ function OrdersSection(){
                     <section className="checkout spad">
                         <div className="container">
                             <div class="checkout__form">
-                                <h4>Orders</h4>
+                                <h4>Danh sách đơn hàng</h4>
                                 <form>
                                 <div className="row">
                                 {
                                     listOrders && listOrders.map((item) => (
                                         <div class="col-lg-6 col-md-6" style={{ marginTop: '20px'}}>
                                             <div class="checkout__order">
-                                                <h4>Your Order</h4>
+                                                <h4>Đơn của bạn</h4>
                                                 <ul>
-                                                    <li>Address<span>{item.address.address}</span></li>
-                                                    <li>Items<span>{item.cartLineItemResponseDTOs.length}</span></li>
-                                                    <li>Status<span>{item.statusOrder}</span></li>
-                                                    <li>Payment<span>{item.vnPayResponseDTO === null ? "Unpaid" : "Paid"}</span></li>
-                                                    <li>Delivery time<span>{formattedDate.getDate(item.deliveryTime)}/{formattedDate.getMonth(item.deliveryTime) + 1}</span></li>
+                                                    <li>Địa chỉ<span>{item.address.address}</span></li>
+                                                    <li>Số mặt hàng<span>{item.cartLineItemResponseDTOs.length}</span></li>
+                                                    <li>Trạng thái<span>{item.statusOrder}</span></li>
+                                                    <li>Thanh toán<span>{item.vnPayResponseDTO === null ? "Chưa thanh toán" : "Đã thanh toán"}</span></li>
+                                                    <li>Giao hàng<span>{formattedDate.getDate(item.deliveryTime)}/{formattedDate.getMonth(item.deliveryTime) + 1}</span></li>
                                                 </ul>
-                                                <div class="checkout__order__total">Total <span>{formattedAmount.format(item.totalPrice)}</span></div>
+                                                <div class="checkout__order__total">Tổng <span>{formattedAmount.format(item.totalPrice)}</span></div>
                                                 <button class="site-btn">VIEW DETAILS</button>
                                             </div>
                                         </div>

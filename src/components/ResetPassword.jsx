@@ -4,6 +4,8 @@ import "../css/login.css";
 // import forgotPasswordApi from "../api/forgotPasswordApi";
 import { useLocation, useNavigate } from "react-router-dom";
 import resetPasswordApi from "../api/resetPasswordApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ResetNewPassword() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,17 +20,17 @@ function ResetNewPassword() {
     setIsSubmitting(true);
     e.preventDefault();
     if (newPassword !== confirmNewPassword) {
-      alert("Mật khâu không khớp");
+      toast.error("Mật khâu không khớp");
       return;
     }
     const rs = await resetPasswordApi.add(username, token, newPassword);
     console.log(rs);
     if (!rs) {
-      alert("Reset mật khẩu không thành công");
+      toast.error("Reset mật khẩu không thành công");
       naigate("/");
       return;
     }
-    alert("Reset mật khẩu thành công");
+    toast.success("Reset mật khẩu thành công");
     naigate("/");
     setIsSubmitting(false);
   };
@@ -41,7 +43,7 @@ function ResetNewPassword() {
         >
           <div class="form-value">
             <form class="login-form" onSubmit={handleResetPassword}>
-              <h2>Forgot password</h2>
+              <h2>Quên mật khẩu</h2>
               <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
                 <input
@@ -51,7 +53,7 @@ function ResetNewPassword() {
                   onChange={(e) => setNewPassword(e.target.value)}
                   required
                 />
-                <label for="">Password</label>
+                <label for="">Mật khẩu mới</label>
               </div>
               <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
@@ -62,10 +64,10 @@ function ResetNewPassword() {
                   onChange={(e) => setConfirmNewPassword(e.target.value)}
                   required
                 />
-                <label for="">Confirm password</label>
+                <label for="">Xác nhận mật khẩu</label>
               </div>
               <button class="btn-login" type="submit" disabled={isSubmitting}>
-                Update
+                Cập nhật
               </button>
             </form>
           </div>

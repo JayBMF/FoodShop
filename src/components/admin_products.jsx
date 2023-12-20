@@ -41,13 +41,13 @@ function AdminProducts(){
        
     const columns = [
         { name: 'Id', selector: 'id', sortable: true },
-        { name: 'Name', selector: 'name', sortable: true },
-        { name: 'Category', selector: 'category_id', sortable: true },
-        { name: 'Amount', selector: 'available', sortable: true },
-        { name: 'Price', selector: 'price', sortable: true },
-        { name: 'Discount', selector: 'discount', sortable: true },
-        { name: 'Description', selector: 'description', sortable: true },
-        { name: 'Actions', cell: (row) => (
+        { name: 'Tên', selector: 'name', sortable: true },
+        { name: 'Loại', selector: 'category_id', sortable: true },
+        { name: 'Số lượng', selector: 'available', sortable: true },
+        { name: 'Giá', selector: 'price', sortable: true },
+        { name: 'Giảm', selector: 'discount', sortable: true },
+        { name: 'Thông tin', selector: 'description', sortable: true },
+        { name: 'Tác vụ', cell: (row) => (
             <Box sx={{ display: "flex", justifyContent: "space-between", width: "70px" }}>
                 <Link to={`/admin/product/edit/${row.id}`}>
                     <IconButton aria-label="edit" >
@@ -102,12 +102,12 @@ function AdminProducts(){
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Products</h1>
+                    <h1>Sản phẩm</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><Link to="/admin">Home</Link></li>
-                        <li className="breadcrumb-item active">Products</li>
+                        <li className="breadcrumb-item active">Sản phẩm</li>
                     </ol>
                     </div>
                 </div>
@@ -120,9 +120,9 @@ function AdminProducts(){
                     <div className="col-12">
                     <div className="card">
                         <div className="card-header">
-                        <h2 className="card-title">DataTable with products</h2>
+                        {/* <h2 className="card-title">DataTable with products</h2> */}
                         <div className="card-footer">
-                            <button className="btn btn-primary float-right" onClick={handleClick}><ion-icon name="add-outline"></ion-icon>Add Product</button>
+                            <button className="btn btn-primary float-right" onClick={handleClick}><ion-icon name="add-outline"></ion-icon>Thêm sản phẩm</button>
                         </div>
 
                         </div>
