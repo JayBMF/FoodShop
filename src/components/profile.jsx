@@ -70,7 +70,7 @@ function AccountSetting(){
                                                 </ul>
                                             </div>
                                         
-                                        <Link to="/profile/update"><button  className="btn btn-primary btn-block"><b>Cập nhật</b></button></Link>
+                                        <Link to="/profile/update"><button  className="btn btn-primary btn-block"><b>Cập nhật thông tin</b></button></Link>
                                         <button  className="btn btn-danger btn-block" style={{ marginTop: '5px' }} onClick={handleLogOut}><b>Đăng xuất</b></button>
                                     </div>
                                     {/* /.card-body */}

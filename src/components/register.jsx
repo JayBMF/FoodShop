@@ -55,7 +55,7 @@ function Register(){
                             <div class="inputbox">
                                 <ion-icon name="call-outline"></ion-icon>
                                 <input className="phoneNumber" type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required/>
-                                <label for="">Số điện thọau</label>
+                                <label for="">Số điện thoại</label>
                             </div>
                             <div class="inputbox">
                                 <ion-icon name="mail-outline"></ion-icon>

@@ -113,9 +113,9 @@ function Header(){
                                         </>
                                         :
                                         <>
-                                            <li onClick={() => toast.info("Please login!")}><a href='#'><i class="fa fa-heart"></i></a></li>
-                                            <li onClick={() => toast.info("Please login!")}><a href='#'><i class="fa fa-shopping-bag"></i></a></li>
-                                            <li onClick={() => toast.info("Please login!")}><a href='#'><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li onClick={() => toast.info("Please login!")}><Link to='/login'><a href='#'><i class="fa fa-heart"></i></a></Link></li>
+                                            <li onClick={() => toast.info("Please login!")}><Link to='/login'><a href='#'><i class="fa fa-shopping-bag"></i></a></Link></li>
+                                            <li onClick={() => toast.info("Please login!")}><Link to='/login'><a href='#'><i class="fa fa-shopping-cart"></i></a></Link></li>
                                         </>
                                     }
                                 </ul>

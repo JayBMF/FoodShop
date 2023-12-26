@@ -250,7 +250,10 @@ function ProductDetails(){
                                         </div>
                                         <button class="primary-btn" onClick={handleAddToCart} disabled={isLoading}>THÊM VÀO GIỎ</button>
                                         {
-                                            desiredItemExists ? (
+                                            !isLogin ? (
+                                                <Link to="/login" style={{ textDecoration: 'none'}}><a href="#" class="heart-icon" onClick={() => toast.info("Please login to add favourite")}><span class="icon_heart_alt"></span></a></Link>
+                                            ) 
+                                            : desiredItemExists ? (
                                                 <a href="#" class="heart-icon" style={{ color: "#228B22"}} onClick={handleRemoveFavourite}><span class="icon_heart"></span></a>
                                             ) : (
                                                 <a href="#" class="heart-icon" onClick={handleAddFavorite}><span class="icon_heart_alt"></span></a>

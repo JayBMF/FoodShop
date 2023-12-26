@@ -51,11 +51,13 @@ function Product(){
 
     const handleNextPage = () => {
         setPageNo(pageNo + 1);
+        
     };
 
     const handleReversePage = () => {
         if ( pageNo >= 1) {
             setPageNo(pageNo - 1);
+            
         }
     };
 
@@ -144,9 +146,22 @@ function Product(){
 
                             </div>
                             <div class="product__pagination">
-                                <a href="#"><i class="fa fa-long-arrow-left" onClick={handleReversePage}></i></a>
-                                <a href="#">{pageNo + 1}</a>
-                                <a href="#"><i class="fa fa-long-arrow-right" onClick={handleNextPage}></i></a>
+                                {
+                                    pageNo > 0 ? (
+                                        <a><i class="fa fa-long-arrow-left" onClick={handleReversePage}></i></a>
+                                    ) : (
+                                        <></>
+                                    )
+                                }
+                                <a >{pageNo + 1}</a>
+                                {
+                                    pageNo < pageNumb - 1 ? (
+                                        <a><i class="fa fa-long-arrow-right" onClick={handleNextPage}></i></a>
+                                    ) : (
+                                        <></>
+                                    )
+                                }
+                                
                             </div>
                         </div>
                     </div>

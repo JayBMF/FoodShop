@@ -106,7 +106,7 @@ function CheckoutSection(){
                 <div className="container">
                     <div class="checkout__form">
                         <h4>Thông tin đơn hàng</h4>
-                        <form>
+                        <div>
                             <div class="row">
                                 <div class="col-lg-8 col-md-6">
                                     <div class="checkout__input">
@@ -135,7 +135,7 @@ function CheckoutSection(){
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
-                                    <div class="checkout__order">
+                                    <div class="checkout__order" style={{ width: '440px'}}>
                                         <h4>Đơn của bạn</h4>
                                         <div class="checkout__order__products">Sản phẩm <span>Tổng</span></div>
                                         <ul>
@@ -162,7 +162,7 @@ function CheckoutSection(){
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </section>

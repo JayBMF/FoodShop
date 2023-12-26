@@ -146,13 +146,13 @@ function Admin(){
                                                 currentPage === '/admin/Orders' ? (
                                                     <a href="#" className="nav-link">
                                                         <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
-                                                        <p>Orders</p>
+                                                        <p>Đơn hàng</p>
                                                     </a>
                                                 ) : (
                                                     <Link to="/admin/Orders">
                                                         <a href="#" className="nav-link">
                                                             <i className="far fa-circle nav-icon"/>
-                                                            <p>Orders</p>
+                                                            <p>Đơn hàng</p>
                                                         </a>
                                                     </Link>
                                                 )
@@ -164,13 +164,13 @@ function Admin(){
                                                 currentPage === '/admin/Categories' || currentPage === '/admin/Add-Category' || currentPage === `/admin/category/edit/${id}` ? (
                                                     <a href="#" className="nav-link">
                                                         <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
-                                                        <p>Categories</p>
+                                                        <p>Danh mục</p>
                                                     </a>
                                                 ) : (
                                                     <Link to="/admin/Categories">
                                                         <a href="#" className="nav-link">
                                                             <i className="far fa-circle nav-icon" />
-                                                            <p>Categories</p>
+                                                            <p>Danh mục</p>
                                                         </a>
                                                     </Link>
                                                 )
@@ -182,13 +182,13 @@ function Admin(){
                                                 currentPage === '/admin/Products' || currentPage === '/admin/Add-Product' || currentPage === `/admin/product/edit/${id}` ? (
                                                     <a href="#" className="nav-link">
                                                         <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
-                                                        <p>Products</p>
+                                                        <p>Sản phẩm</p>
                                                     </a>
                                                 ) : (
                                                     <Link to="/admin/Products">
                                                         <a href="#" className="nav-link">
                                                             <i className="far fa-circle nav-icon" />
-                                                            <p>Products</p>
+                                                            <p>Sản phẩm</p>
                                                         </a>
                                                     </Link>
                                                 )
@@ -200,13 +200,13 @@ function Admin(){
                                                 currentPage === '/admin/Registrations' || currentPage === '/admin/Add-User' ? (
                                                     <a href="#" className="nav-link">
                                                         <i className="fas fa-circle nav-icon" style={{ color: '#1E90FF'}}/>
-                                                        <p>Users</p>
+                                                        <p>Khách hàng</p>
                                                     </a>
                                                 ) : (
                                                     <Link to="/admin/Registrations">
                                                         <a href="#" className="nav-link">
                                                             <i className="far fa-circle nav-icon" />
-                                                            <p>Users</p>
+                                                            <p>Khách hàng</p>
                                                         </a>
                                                     </Link>
                                                 )

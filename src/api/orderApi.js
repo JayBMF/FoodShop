@@ -11,7 +11,7 @@ const orderApi = {
         });
     },
     addOnl(idAddress, userName, phone, totalPrice){
-        const url = `/api/payment/pay?totalPrice=${totalPrice}&addressId=${idAddress}&name=${userName}&phone=${phone}`;
+        const url = `/payment/pay?totalPrice=${totalPrice}&addressId=${idAddress}&name=${userName}&phone=${phone}`;
         return axiosClient.get(url);
     },
     getAll(){

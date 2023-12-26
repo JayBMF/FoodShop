@@ -43,7 +43,7 @@ function ResetNewPassword() {
         >
           <div class="form-value">
             <form class="login-form" onSubmit={handleResetPassword}>
-              <h2>Quên mật khẩu</h2>
+              <h2>Đặt lại mật khẩu</h2>
               <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
                 <input
